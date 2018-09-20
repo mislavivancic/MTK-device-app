@@ -1,0 +1,2382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ACA1A1">
+    <ScrollView
+        android:id="@+id/layout"
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal|vertical"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dip"
+        android:scrollbarStyle="outsideInset"
+        android:fillViewport="true"
+        android:background="#ACA1A1">
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalView"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal|vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dip"
+            android:background="#ACA1A1">
+
+    tools:context="hr.fer.ruazosa.bluetooth.SecondActivity">
+<TableLayout
+    android:id="@+id/table_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ACA1A1"
+    >
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/WiperTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Wiper and Close"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/TopLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Relay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:text=" Relay  1  "
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Relay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="0"
+        android:background="@drawable/my_border"
+        android:text=" Relay  2  "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Relay3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="0"
+        android:text=" Relay  3  "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="@drawable/my_border"/>
+
+    <TextView
+        android:id="@+id/Relay4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="0"
+        android:text=" Relay  4  "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="@drawable/my_border"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/WiperEnable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:background="@drawable/my_border"
+        android:text="Wiper Enable                                    "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/WiperEnable1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/WiperEnable2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/WiperEnable3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/WiperEnable4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/Retrigerable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:background="@drawable/my_border"
+        android:text="Retrigerable                                     "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/Retrig1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="2"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Retrig2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="2"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Retrig3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="2"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Retrig4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="2"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/ActivationCommand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:background="@drawable/my_border"
+        android:text="Activation command                      "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ActComm1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ActComm2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ActComm3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ActComm4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/SwitchingDelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="4"
+        android:background="@drawable/my_border"
+        android:text="Switching delay                               "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:text="TextView"
+
+
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="4"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="4"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Switch4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="4"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/WiperTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="5"
+        android:background="@drawable/my_border"
+        android:text="Wiper time                                        "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/WiperTime1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="5"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/WiperTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="5"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/WiperTime3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="5"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/WiperTime4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="5"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+    </TableRow>
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ScheduledSwitching"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="6"
+
+            android:background="@drawable/my_border"
+            android:text="Scheduled switching activation delay"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/background_dark"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Sched1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_row="6"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Sched2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:layout_row="6"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Sched3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_column="3"
+            android:layout_row="6"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Sched4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_column="4"
+            android:layout_row="6"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/LoopEnable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="7"
+        android:background="@drawable/my_border"
+        android:text="Loop enable                                      "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/Loop1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Loop2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Loop3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Loop4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/DurationInPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="8"
+        android:background="@drawable/my_border"
+        android:text="Duration in position                        "
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Duration1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="8"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Duration2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="8"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Duration3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="8"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/Duration4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="8"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+    </TableRow>
+
+
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Blank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+    </TableRow>
+
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ArrivalAndLossTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Arrival and loss of supply"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/ArRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/ArRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Blank3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2 "
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ArRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/ArRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Relay 4"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+
+    </TableRow>
+
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/StopLearn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop learn and wiper functions"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/StopRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/StopRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/StopRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/StopRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+             />
+
+    </TableRow>
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/PowerSupply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Power supply loss time"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/PowerSupplyRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/PowerSupplyRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+             />
+
+        <TextView
+            android:id="@+id/PowerSupplyRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/PowerSupplyRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+             />
+
+    </TableRow>
+
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/LossofSupplyShort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loss of supply(short)-action"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LossShortRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LossShortRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossShortRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/LossShortRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/LossofSupplyLongIgnore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loss of supply(long)-ignore action"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LossLongIgnRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossLongIgnRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossLongIgnRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/LossLongIgnRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/LossofSupplyLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loss of supply(long)-action"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LossLongRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossLongRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossLongRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/LossLongRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/SwitchingDelayMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switching delay - min"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SwitchDelMinRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/SwitchDelMinRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/SwitchDelMinRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/SwitchDelMinRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/SwitchingDelayMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switching delay - max"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SwitchDelMaxRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/SwitchDelMaxRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/SwitchDelMaxRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/SwitchDelMaxRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/ScheduledSwitchingActDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loss of supply(long)-action"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SchedSwitchActRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/SchedSwitchActRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/SchedSwitchActRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/SchedSwitchActRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+
+
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/LossOfSupplyAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loss of supply - action"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LossOfSupplyActionRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 1"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossOfSupplyActionRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 2"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/LossOfSupplyActionRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 3"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/LossOfSupplyActionRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Relay 4"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+    </TableRow>
+
+
+    <TableRow>
+
+
+
+        <TextView
+            android:id="@+id/Blank2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </TableRow>
+
+
+
+
+
+    <!--  TELEGRAM ABSENCE !-->
+    <!--  TELEGRAM ABSENCE !-->
+    <!--  TELEGRAM ABSENCE !-->
+    <!--  TELEGRAM ABSENCE !-->
+    <!--  TELEGRAM ABSENCE !-->
+    <!--  TELEGRAM ABSENCE !-->
+    <!--  TELEGRAM ABSENCE !-->
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TelegramTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Telegram absence"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TopLeft1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TeleRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:text="Relay 1"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TeleRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text=" Relay  2  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TeleRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:text=" Relay  3  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/my_border"/>
+
+        <TextView
+            android:id="@+id/TeleRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="0"
+            android:text=" Relay  4  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/my_border"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/AbsenceTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Absence time"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/AbsenceRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/AbsenceRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/AbsenceRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/AbsenceRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ResetTimerOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:lines="2"
+            android:background="@drawable/my_border"
+            android:text="Reset timer on"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ResetTimerRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ResetTimerRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ResetTimerRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ResetTimerRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+    <TableRow
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/OnTimerRestartEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:lines="2"
+            android:text="On timer restart event \ndisables work schedule"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/OnTimerRestartRelay1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/OnTimerRestartRelay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/OnTimerRestartRelay3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="3"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/OnTimerRestartRelay4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="4"
+        android:layout_row="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+</TableRow>
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Action"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ActionRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ActionRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ActionRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ActionRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/LearnFunctionDisabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Learn function disabled"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnFunctionRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LearnFunctionRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LearnFunctionRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LearnFunctionRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+    <!--  Learn Functions !-->
+    <!--  Learn Functions !-->
+    <!--  Learn Functions !-->
+    <!--  Learn Functions !-->
+    <!--  Learn Functions !-->
+    <!--  Learn Functions !-->
+    <!--  Learn Functions !-->
+
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/LearnTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Learn functions"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TopLeft2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:text="Relay 1"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text=" Relay  2  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:text=" Relay  3  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/my_border"/>
+
+        <TextView
+            android:id="@+id/LearnRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="0"
+            android:text=" Relay  4  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/my_border"/>
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/LearnPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Learn period"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnPeriodRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LearnPeriodRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LearnPeriodRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/LearnPeriodRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Position"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/PositionRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/PositionRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/PositionRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/PositionRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Min"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/MinRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/MinRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/MinRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/MinRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:text="Max"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/MaxRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/MaxRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/MaxRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/MaxRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+
+    <!--TIME PAIRS RELAYS-->
+    <!--TIME PAIRS RELAYS-->
+    <!--TIME PAIRS RELAYS-->
+    <!--TIME PAIRS RELAYS-->
+    <!--TIME PAIRS RELAYS-->
+    <!--
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/WorkSchedulesTimePairsRelay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_span="2"
+            android:text="Work schedules - Time pairs Relay 1"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Workschedulestest11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="1"
+            android:text="Work Schedulestest1"
+            android:background="@drawable/my_border"
+
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TimePairTest21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:background="@drawable/my_border"
+            android:text="Time pair test2"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Tatest31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text="  T- a test3  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Tbtest41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text="  T- b test4  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:id="@+id/Workschedulestest11Res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/TimePairTest21Res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/Tatest31Res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="1"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/Tbtest41Res"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_row="1"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="15sp" />
+        </TableRow>
+
+
+
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/WorkSchedulesTimePairsRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_span="2"
+            android:text="Work schedules - Time pairs Relay 2"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Workschedulestest12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="1"
+            android:text="Work Schedulestest1"
+            android:background="@drawable/my_border"
+
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TimePairTest22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:background="@drawable/my_border"
+            android:text="Time pair test2"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Tatest32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text="  T- a test3  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Tbtest42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text="  T- b test4  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </TableRow>
+
+
+    <TableRow>
+        <TextView
+            android:id="@+id/Workschedulestest12Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/TimePairTest22Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Tatest32Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Tbtest42Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/WorkSchedulesTimePairsRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_span="2"
+            android:text="Work schedules - Time pairs Relay 3"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Workschedulestest13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="1"
+            android:text="Work Schedulestest1"
+            android:background="@drawable/my_border"
+
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TimePairTest23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:background="@drawable/my_border"
+            android:text="Time pair test2"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Tatest33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text="  T- a test3  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Tbtest43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text="  T- b test4  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+    </TableRow>
+
+
+    <TableRow>
+        <TextView
+            android:id="@+id/Workschedulestest13Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/TimePairTest23Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Tatest33Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Tbtest43Res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+-->
+
+
+
+    <!-- RELAY SETTINGS  -->
+    <!-- RELAY SETTINGS  -->
+    <!-- RELAY SETTINGS  -->
+    <!-- RELAY SETTINGS  -->
+    <!-- RELAY SETTINGS  -->
+    <!-- RELAY SETTINGS  -->
+    <!-- RELAY SETTINGS  -->
+
+
+    <TableRow android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/RelaySettingsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Relay settings"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TopLeft2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:text="Relay 1"
+            android:background="@drawable/my_border"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:background="@drawable/my_border"
+            android:text=" Relay  2  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/LearnRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:text=" Relay  3  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/my_border"/>
+
+        <TextView
+            android:id="@+id/LearnRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="0"
+            android:text=" Relay  4  "
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/my_border"/>
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/RelayInstalled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:lines="1"
+            android:text="Relay installed (active)"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/RelayInstallRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/RelayInstallRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/RelayInstallRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/RelayInstallRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/InvertedLogic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@drawable/my_border"
+            android:lines="1"
+            android:text="Inverted logic"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/InvertedLogicRelay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/InvertedLogicRelay2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/InvertedLogicRelay3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/InvertedLogicRelay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="15sp" />
+    </TableRow>
+</TableLayout>
+
+        </HorizontalScrollView>
+    </ScrollView>
+</LinearLayout>

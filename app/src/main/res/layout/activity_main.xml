@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="hr.fer.ruazosa.bluetooth.MainActivity">
+
+    <Button
+        android:id="@+id/connectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contextClickable="false"
+        android:elevation="10dp"
+        android:text="Prepare for Connecting"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/runBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contextClickable="false"
+        android:elevation="10dp"
+        android:text="Connect"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/connectedBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:cursorVisible="false"
+        android:defaultFocusHighlightEnabled="false"
+        android:elegantTextHeight="false"
+        android:elevation="10dp"
+        android:text="Read data"
+        android:textAllCaps="false"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/ubtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_row="4"
+        android:elevation="10dp"
+        android:text="Show wiper"
+        android:textAlignment="center"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_column="0"
+        android:layout_row="5"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_column="0"
+        android:layout_row="10" />
+
+    <Button
+        android:id="@+id/closeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contextClickable="false"
+        android:elevation="10dp"
+        android:text="Close connection"
+        android:textAllCaps="false" />
+
+</GridLayout>
