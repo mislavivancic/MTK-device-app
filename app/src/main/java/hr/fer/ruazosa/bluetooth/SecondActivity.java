@@ -319,7 +319,7 @@ public class SecondActivity extends AppCompatActivity {
 
     IntrlockStr[] m_RelInterLock=new IntrlockStr[8];
 
-    private TextView txtviewExample = new TextView(this);
+    //private TextView txtviewExample = new TextView(this);
 
    // TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,1.0f);
 
@@ -1928,7 +1928,7 @@ for (int i=0;i<23;i++){
         subTitle1[3].setLayoutParams(eightColumnSpan);
 
 
-        TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
+        //TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
 
         for (int i=4;i<20;i++){
             subTitle1[i].setLayoutParams(twoColumnSpan);
