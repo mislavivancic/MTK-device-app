@@ -30,12 +30,14 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button connectBtn;
-    Button runBtn;
+    //Button connectBtn;
+    //Button runBtn;
     Button closeBtn;
-    Button connectedBtn;
+    //Button connectedBtn;
     Button uBtn;
+    Button oneBtn;
 
+    ProgressBar progressBar;
 
 
 
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     TlgAbstr[] tlgAbstrs;
     StrLoadMng[] strLoadMngs;
 
-
+    boolean CONNECTED=false;
 
 
 
@@ -80,17 +82,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mBluetoothAdapter=BluetoothAdapter.getDefaultAdapter();
-        connectBtn=findViewById(R.id.connectBtn);
-        runBtn=findViewById(R.id.runBtn);
+        //connectBtn=findViewById(R.id.connectBtn);
+        //runBtn=findViewById(R.id.runBtn);
         closeBtn=findViewById(R.id.closeBtn);
-        connectedBtn=findViewById(R.id.connectedBtn);
+        //connectedBtn=findViewById(R.id.connectedBtn);
         uBtn=findViewById(R.id.ubtn);
         statusView=findViewById(R.id.textView);
 
+        oneBtn=findViewById(R.id.oneBtn);
+       progressBar=findViewById(R.id.progressBar);
 
 
 
 
+        progressBar.setVisibility(View.INVISIBLE);
 
             pairedDevices=mBluetoothAdapter.getBondedDevices();
                 if (pairedDevices.size() > 0) {
@@ -119,6 +124,35 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(enableBtIntent,REQUEST_ENABLE_BT);
        }
 
+       oneBtn.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v){
+               //Create Socket
+               device=mBluetoothAdapter.getRemoteDevice("00:07:80:F5:ED:BF");
+               ConnectThread createSocketThread=new ConnectThread(device);
+               statusView.setText("Connected to: "+device.getName());
+
+
+               //Connect to device
+               ConnectThread connectThread=new ConnectThread(device);
+               connectThread.start();
+
+
+
+               //Start reading
+               ConnectedThread2 writeThread=new ConnectedThread2(tempSocket);
+               ConnectedThread readThread=new ConnectedThread(tempSocket);
+
+
+               progressBar.setVisibility(View.VISIBLE);
+
+               //connectedThread.start();
+               writeThread.start();
+              readThread.start();
+
+           }
+       });
+
+/*
        connectBtn.setOnClickListener(new View.OnClickListener() {
            public void onClick(View v){
                device=mBluetoothAdapter.getRemoteDevice("00:07:80:F5:ED:BF");
@@ -135,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+*/
         closeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ConnectThread connectThread=new ConnectThread(device);
@@ -147,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Connection closed",Toast.LENGTH_SHORT).show();
             }
         });
-
+/*
         connectedBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ConnectedThread2 writeThread=new ConnectedThread2(tempSocket);
@@ -164,11 +198,12 @@ public class MainActivity extends AppCompatActivity {
                 //uBtn.performClick();
             }
         });
-
+*/
 
 
         uBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 for (Character c:input){
                     System.out.print(c);
                 }
@@ -181,73 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i=0;i<input.size()-39;i++){
                     dataTemp[i]=(byte) input.get(i+39).charValue();
                 }
-          /*
-                wiper=new Wiper[4];
-                wiper[0]=new Wiper();
-                wiper[1]=new Wiper();
-                wiper[2]=new Wiper();
-                wiper[3]=new Wiper();
 
-                ponPoffStrs=new PonPoffStr[4];
-                ponPoffStrs[0]=new PonPoffStr();
-                ponPoffStrs[1]=new PonPoffStr();
-                ponPoffStrs[2]=new PonPoffStr();
-                ponPoffStrs[3]=new PonPoffStr();
-
-                tlgAbstrs=new TlgAbstr[4];
-                tlgAbstrs[0]=new TlgAbstr();
-                tlgAbstrs[1]=new TlgAbstr();
-                tlgAbstrs[2]=new TlgAbstr();
-                tlgAbstrs[3]=new TlgAbstr();
-
-                strLoadMngs=new StrLoadMng[4];
-                strLoadMngs[0]=new StrLoadMng();
-                strLoadMngs[1]=new StrLoadMng();
-                strLoadMngs[2]=new StrLoadMng();
-                strLoadMngs[3]=new StrLoadMng();
-
-
-
-
-                m_PProg_R1=new Opprog[16];
-                m_PProg_R2=new Opprog[16];
-                m_PProg_R3=new Opprog[16];
-                m_PProg_R4=new Opprog[16];
-
-                for (int i=0;i<16;i++){
-                    m_PProg_R1[i]=new Opprog();
-                    for (int j=0;j<14;j++){
-                        m_PProg_R1[i].Tpro[j]=new Tonoff();
-                    }
-                }
-                for (int i=0;i<16;i++){
-                    m_PProg_R2[i]=new Opprog();
-                    for (int j=0;j<14;j++){
-                        m_PProg_R2[i].Tpro[j]=new Tonoff();
-                    }
-                }
-                for (int i=0;i<16;i++){
-                    m_PProg_R3[i]=new Opprog();
-                    for (int j=0;j<14;j++){
-                        m_PProg_R3[i].Tpro[j]=new Tonoff();
-                    }
-                }
-                for (int i=0;i<16;i++){
-                    m_PProg_R4[i]=new Opprog();
-                    for (int j=0;j<14;j++){
-                        m_PProg_R4[i].Tpro[j]=new Tonoff();
-                    }
-                }
-
-                m_opPrij=new Oprij();
-                m_opPrij.init();
-
-
-
-                data=new Data(dataTemp);
-               data.processData(wiper,ponPoffStrs,tlgAbstrs,strLoadMngs,m_PProg_R1,m_PProg_R2,m_PProg_R3,m_PProg_R4);
-
-*/
                Bundle b=new Bundle();
                 b.putByteArray("data",dataTemp);
                 b.putByteArray("MTKVer",MtkVer);
@@ -255,55 +224,19 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent wiperIntent=new Intent(MainActivity.this,SecondActivity.class);
 
-               /*
-                Bundle b=new Bundle();
-                b.putParcelable("wiper1",wiper[0]);
-                b.putParcelable("wiper2",wiper[1]);
-                b.putParcelable("wiper3",wiper[2]);
-                b.putParcelable("wiper4",wiper[3]);
 
-                b.putParcelable("PonPoff1",ponPoffStrs[0]);
-                b.putParcelable("PonPoff2",ponPoffStrs[1]);
-                b.putParcelable("PonPoff3",ponPoffStrs[2]);
-                b.putParcelable("PonPoff4",ponPoffStrs[3]);
 
-                b.putParcelable("tlg1",tlgAbstrs[0]);
-                b.putParcelable("tlg2",tlgAbstrs[1]);
-                b.putParcelable("tlg3",tlgAbstrs[2]);
-                b.putParcelable("tlg4",tlgAbstrs[3]);
-
-                b.putParcelable("str1",strLoadMngs[0]);
-                b.putParcelable("str2",strLoadMngs[1]);
-                b.putParcelable("str3",strLoadMngs[2]);
-                b.putParcelable("str4",strLoadMngs[3]);
-
-                 b.putParcelableArray("PProg1",m_PProg_R1);
-                b.putParcelableArray("PProg2",m_PProg_R2);
-               b.putParcelableArray("PProg3",m_PProg_R3);
-               b.putParcelableArray("PProg4",m_PProg_R4);
-*/
-         //      b.putParcelable("opPrij",m_opPrij);
                 wiperIntent.putExtras(b);
                 startActivity(wiperIntent);
                 finish();
             }
         });
 
-      //  showWiperBtn.setOnClickListener(new View.OnClickListener() {
-        //    public void onClick(View v) {
-         //       Intent wiperIntent=new Intent(MainActivity.this,SecondActivity.class);
-          //      Bundle b=new Bundle();
-           //     b.putParcelableArray("key",wiper);
-            //    wiperIntent.putExtras(b);
-            //    startActivity(wiperIntent);
-             //   finish();
 
-        //    }
-        //});
 
     }
 
-   //private native String getNativeString();
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -316,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Bluetooth wasn't ENABLED",Toast.LENGTH_SHORT).show();
             }
         }
-    }//onActivityResult
+    }
 
 
     private class ConnectThread extends Thread {
@@ -346,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void run() {
             // Cancel discovery because it otherwise slows down the connection.
+
             Looper.prepare();
             mBluetoothAdapter.cancelDiscovery();
 
@@ -369,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
                 statusView.setText("Connected and ready to read");
                         //.makeText(MainActivity.this,"Connected and ready to read",Toast.LENGTH_SHORT).show();
 
+                CONNECTED=true;
             }
            // System.out.println("Connection type: " + mmSocket.getConnectionType());
 
@@ -427,16 +362,18 @@ public class MainActivity extends AppCompatActivity {
                 mmInStream = tmpIn;
                 mmOutStream = tmpOut;
                 System.out.println("CONNECTED2");
-               /* try{
-                    this.sleep(1000);
-                }catch (InterruptedException e){
-                    //ignore
-                }
-                System.out.println("Slept 1 sec");*/
+
             }
 
             public void run() {
                 System.out.println("Entered .run()");
+
+                try{
+                    this.sleep(4000);
+                }catch (InterruptedException e){
+                    //ignore
+                }
+                statusView.setText("Rading data...");
                 mmBuffer = new byte[1024];
                 Looper.prepare();
                 mHandler=new Handler();
@@ -455,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                            statusView.setText("Completed reading");
+                         progressBar.setVisibility(View.INVISIBLE);
                        }
 
                         //resultView.append((Character.valueOf((char)word)));
@@ -556,6 +494,7 @@ public class MainActivity extends AppCompatActivity {
         private byte[] mmBuffer; // mmBuffer store for the stream
 
         public ConnectedThread2(BluetoothSocket socket) {
+
             mmSocket = socket;
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
@@ -585,7 +524,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void run() {
+
             try {
+                try{
+                    this.sleep(4000);
+                }catch (InterruptedException e){
+                    //ignore
+                }
                 mmOutStream.write(hexStringToByteArray("2F3F210D0A"));
 
                 // Share the sent message with the UI activity.
