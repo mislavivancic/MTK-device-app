@@ -1,20 +1,17 @@
 package hr.fer.ruazosa.bluetooth;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
+
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -321,7 +318,7 @@ public class SecondActivity extends AppCompatActivity {
 
     //private TextView txtviewExample = new TextView(this);
 
-   // TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,1.0f);
+   TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 
 
     @Override
@@ -331,7 +328,8 @@ public class SecondActivity extends AppCompatActivity {
 
         tableLayout=findViewById(R.id.table_layout);
 
-//paramsExample.setMargins(1,1,1,1);
+    paramsExample.setMargins(3,3,3,3);
+
 
 
         wiper=new Wiper[4];
@@ -982,6 +980,9 @@ public class SecondActivity extends AppCompatActivity {
         TextView workSchedTest11 = new TextView(this);
         workSchedTest11.setTextSize(16);
         workSchedTest11.setText("Work Schedulestest1");
+        workSchedTest11.setBackgroundResource(R.color.whiteColor);
+        workSchedTest11.setLayoutParams(paramsExample);
+
         TextView timePair11 = new TextView(this);
         timePair11.setTextSize(16);
         timePair11.setText("Time pair test2");
@@ -1175,6 +1176,8 @@ public class SecondActivity extends AppCompatActivity {
             switchDelayTR[i] = new TableRow(this);
             for (int j = 0; j < 5; j++) {
                 switchDelayTV[i][j] = new TextView(this);
+                switchDelayTV[i][j].setBackgroundResource(R.color.whiteColor);
+                switchDelayTV[i][j].setLayoutParams(paramsExample);
                 switchDelayTR[i].addView(switchDelayTV[i][j]);
             }
         }
@@ -1189,6 +1192,7 @@ public class SecondActivity extends AppCompatActivity {
         switchDelayTV[0][2].setText(GetZatez(oprij.KlOpR2.KRelDela, 't'));
         switchDelayTV[0][3].setText(GetZatez(oprij.KlOpR3.KRelDela, 't'));
         switchDelayTV[0][4].setText(GetZatez(oprij.KlOpR4.KRelDela, 't'));
+
 
 
         switchDelayTV[1][1].setText(GetZatez(oprij.KlOpR1.KRelDela, 'm'));
@@ -1874,8 +1878,9 @@ for (int i=0;i<23;i++){
 
         for (int i=0;i<50;i++){
             telegramStat[i]=new TextView(this);
-            //telegramStat[i].setBackgroundColor(0xffffff);
-            //telegramStat[i].setLayoutParams(paramsExample);
+
+            telegramStat[i].setBackgroundResource(R.color.whiteColor);
+            telegramStat[i].setLayoutParams(paramsExample);
             telegramStatTR.addView(telegramStat[i]);
         }
 
@@ -1891,8 +1896,10 @@ for (int i=0;i<23;i++){
             }
             if (A!=0 && N!=0){
                 telegramStat[ibimp].setText(" + ");
+                telegramStat[ibimp].setBackgroundResource(R.color.colorRed);
             }else if(A==0 && N!=0){
                 telegramStat[ibimp].setText(" - ");
+                telegramStat[ibimp].setBackgroundResource(R.color.colorGreen);
             }else {
                 telegramStat[ibimp].setText("  ");
             }
@@ -1916,13 +1923,16 @@ for (int i=0;i<23;i++){
         //column spans
         TableRow.LayoutParams twoColumnSpan = new TableRow.LayoutParams();
         twoColumnSpan.span=2;
+        twoColumnSpan.setMargins(3,3,3,3);
 
 
         TableRow.LayoutParams fourColumnSpan = new TableRow.LayoutParams();
         fourColumnSpan.span=4;
+       fourColumnSpan.setMargins(3,3,3,3);
 
         TableRow.LayoutParams eightColumnSpan = new TableRow.LayoutParams();
         eightColumnSpan.span=8;
+        eightColumnSpan.setMargins(3,3,3,3);
 
         subTitle1[2].setLayoutParams(fourColumnSpan);
         subTitle1[3].setLayoutParams(eightColumnSpan);
@@ -1932,6 +1942,7 @@ for (int i=0;i<23;i++){
 
         for (int i=4;i<20;i++){
             subTitle1[i].setLayoutParams(twoColumnSpan);
+            subTitle1[i].setBackgroundResource(R.color.whiteColor);
 
            // subTitle1[i].setLayoutParams(paramsExample);
         }
@@ -1941,6 +1952,16 @@ for (int i=0;i<23;i++){
         subTitle1[1].setText("Telegram");
         subTitle1[2].setText("A");
         subTitle1[3].setText("B");
+
+
+        subTitle1[0].setBackgroundResource(R.color.whiteColor);
+        subTitle1[1].setLayoutParams(paramsExample);
+        subTitle1[0].setLayoutParams(paramsExample);
+        subTitle1[1].setBackgroundResource(R.color.whiteColor);
+        subTitle1[2].setBackgroundResource(R.color.whiteColor);
+        subTitle1[3].setBackgroundResource(R.color.whiteColor);
+
+
 
         for (int i=4;i<20;i++){
             subTitle1[i].setText(String.format("DP%d",i-3));
@@ -1970,6 +1991,8 @@ for (int i=0;i<23;i++){
         TextView [] subTitleTop1=new TextView[46];
         for (int i=0;i<46;i++){
             subTitleTop1[i]=new TextView(this);
+            subTitleTop1[i].setLayoutParams(paramsExample);
+            subTitleTop1[i].setBackgroundResource(R.color.whiteColor);
         }
 
 
@@ -1980,16 +2003,16 @@ for (int i=0;i<23;i++){
         subTitleTop1[1].setText("");
 
         for (int i=1;i<5;i++){
-            subTitleTop1[i+1].setText(String.format("%d",i));
+            subTitleTop1[i+1].setText(String.format("%d ",i));
         }
 
         for (int i=1;i<9;i++){
-            subTitleTop1[i+5].setText(String.format("%d",i));
+            subTitleTop1[i+5].setText(String.format("%d ",i));
         }
 
         for (int i=14;i<46;i+=2){
-            subTitleTop1[i].setText("Z   ");
-            subTitleTop1[i+1].setText("V    ");
+            subTitleTop1[i].setText("  Z ");
+            subTitleTop1[i+1].setText("  V ");
 
         }
 
@@ -2017,6 +2040,8 @@ for (int i=0;i<23;i++){
         TextView [] subTitleBot1=new TextView[46];
         for (int i=0;i<46;i++){
             subTitleBot1[i]=new TextView(this);
+            subTitleBot1[i].setBackgroundResource(R.color.whiteColor);
+            subTitleBot1[i].setLayoutParams(paramsExample);
         }
 
 
