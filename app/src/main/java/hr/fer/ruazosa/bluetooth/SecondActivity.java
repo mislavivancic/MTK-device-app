@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -318,7 +319,7 @@ public class SecondActivity extends AppCompatActivity {
 
     //private TextView txtviewExample = new TextView(this);
 
-   TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+   TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
 
 
     @Override
@@ -327,8 +328,9 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         tableLayout=findViewById(R.id.table_layout);
+       // paramsExample.gravity= Gravity.FILL_HORIZONTAL;
+    paramsExample.setMargins(2,1,1,1);
 
-    paramsExample.setMargins(3,3,3,3);
 
 
 
@@ -497,20 +499,41 @@ public class SecondActivity extends AppCompatActivity {
         Parcelable[] in4;
 
 */
-
+// .setBackgroundResource(R.color.whiteColor);
+// .setLayoutParams(paramsExample);
 
         //-------INICIJALIZACIJA TEXTVIEW-------
         wipEnable=new TextView[4];
         wipEnable[0]=findViewById(R.id.WiperEnable1);
+        wipEnable[0].setBackgroundResource(R.color.whiteColor);
+        wipEnable[0].setLayoutParams(paramsExample);
         wipEnable[1]=findViewById(R.id.WiperEnable2);
+        wipEnable[1].setBackgroundResource(R.color.whiteColor);
+        wipEnable[1].setLayoutParams(paramsExample);
         wipEnable[2]=findViewById(R.id.WiperEnable3);
+        wipEnable[2].setBackgroundResource(R.color.whiteColor);
+        wipEnable[2].setLayoutParams(paramsExample);
         wipEnable[3]=findViewById(R.id.WiperEnable4);
+        wipEnable[3].setBackgroundResource(R.color.whiteColor);
+        wipEnable[3].setLayoutParams(paramsExample);
+
 
         retrig=new TextView[4];
         retrig[0]=findViewById(R.id.Retrig1);
         retrig[1]=findViewById(R.id.Retrig2);
         retrig[2]=findViewById(R.id.Retrig3);
         retrig[3]=findViewById(R.id.Retrig4);
+
+        retrig[0].setBackgroundResource(R.color.whiteColor);
+        retrig[1].setBackgroundResource(R.color.whiteColor);
+        retrig[2].setBackgroundResource(R.color.whiteColor);
+        retrig[3].setBackgroundResource(R.color.whiteColor);
+
+        retrig[0].setLayoutParams(paramsExample);
+        retrig[1].setLayoutParams(paramsExample);
+        retrig[2].setLayoutParams(paramsExample);
+        retrig[3].setLayoutParams(paramsExample);
+
 
         actComm=new TextView[4];
         actComm[0]=findViewById(R.id.ActComm1);
@@ -964,12 +987,19 @@ public class SecondActivity extends AppCompatActivity {
 
         workSchedTitleTV1.setTextSize(16);
         workSchedTitleTV1.setText("Work schedules - Time pairs Relay 1");
+        workSchedTitleTV1.setBackgroundResource(R.color.colorPrimary);
+        workSchedTitleTV1.setLayoutParams(paramsExample);
+
 
         workSchedTitleTV2.setTextSize(16);
         workSchedTitleTV2.setText("Work schedules - Time pairs Relay 2");
+        workSchedTitleTV2.setBackgroundResource(R.color.colorPrimary);
+        workSchedTitleTV2.setLayoutParams(paramsExample);
 
         workSchedTitleTV3.setTextSize(16);
         workSchedTitleTV3.setText("Work schedules - Time pairs Relay 3");
+        workSchedTitleTV3.setBackgroundResource(R.color.colorPrimary);
+        workSchedTitleTV3.setLayoutParams(paramsExample);
 
         workSchedTitleTR1.addView(workSchedTitleTV1);
         workSchedTitleTR2.addView(workSchedTitleTV2);
@@ -980,18 +1010,24 @@ public class SecondActivity extends AppCompatActivity {
         TextView workSchedTest11 = new TextView(this);
         workSchedTest11.setTextSize(16);
         workSchedTest11.setText("Work Schedulestest1");
-        workSchedTest11.setBackgroundResource(R.color.whiteColor);
+        workSchedTest11.setBackgroundResource(R.color.colorPrimaryDark);
         workSchedTest11.setLayoutParams(paramsExample);
 
         TextView timePair11 = new TextView(this);
         timePair11.setTextSize(16);
         timePair11.setText("Time pair test2");
+        timePair11.setBackgroundResource(R.color.colorPrimaryDark);
+        timePair11.setLayoutParams(paramsExample);
         TextView TaTest11 = new TextView(this);
         TaTest11.setTextSize(16);
         TaTest11.setText("T- a test3");
+        TaTest11.setBackgroundResource(R.color.colorPrimaryDark);
+        TaTest11.setLayoutParams(paramsExample);
         TextView TbTest11 = new TextView(this);
         TbTest11.setTextSize(16);
         TbTest11.setText("T- b test4");
+        TbTest11.setBackgroundResource(R.color.colorPrimaryDark);
+        TbTest11.setLayoutParams(paramsExample);
         workSchedColumnTR1.addView(workSchedTest11);
         workSchedColumnTR1.addView(timePair11);
         workSchedColumnTR1.addView(TaTest11);
@@ -1002,15 +1038,23 @@ public class SecondActivity extends AppCompatActivity {
         TextView workSchedTest12 = new TextView(this);
         workSchedTest12.setTextSize(16);
         workSchedTest12.setText("Work Schedulestest1");
+        workSchedTest12.setBackgroundResource(R.color.colorPrimaryDark);
+        workSchedTest12.setLayoutParams(paramsExample);
         TextView timePair12 = new TextView(this);
         timePair12.setTextSize(16);
         timePair12.setText("Time pair test2");
+        timePair12.setBackgroundResource(R.color.colorPrimaryDark);
+        timePair12.setLayoutParams(paramsExample);
         TextView TaTest12 = new TextView(this);
         TaTest12.setTextSize(16);
         TaTest12.setText("T- a test3");
+        TaTest12.setBackgroundResource(R.color.colorPrimaryDark);
+        TaTest12.setLayoutParams(paramsExample);
         TextView TbTest12 = new TextView(this);
         TbTest12.setTextSize(16);
         TbTest12.setText("T- b test4");
+        TbTest12.setBackgroundResource(R.color.colorPrimaryDark);
+        TbTest12.setLayoutParams(paramsExample);
         workSchedColumnTR2.addView(workSchedTest12);
         workSchedColumnTR2.addView(timePair12);
         workSchedColumnTR2.addView(TaTest12);
@@ -1021,15 +1065,23 @@ public class SecondActivity extends AppCompatActivity {
         TextView workSchedTest13 = new TextView(this);
         workSchedTest13.setTextSize(16);
         workSchedTest13.setText("Work Schedulestest1");
+        workSchedTest13.setBackgroundResource(R.color.colorPrimaryDark);
+        workSchedTest13.setLayoutParams(paramsExample);
         TextView timePair13 = new TextView(this);
         timePair13.setTextSize(16);
         timePair13.setText("Time pair test2");
+        timePair13.setBackgroundResource(R.color.colorPrimaryDark);
+        timePair13.setLayoutParams(paramsExample);
         TextView TaTest13 = new TextView(this);
         TaTest13.setTextSize(16);
         TaTest13.setText("T- a test3");
+        TaTest13.setBackgroundResource(R.color.colorPrimaryDark);
+        TaTest13.setLayoutParams(paramsExample);
         TextView TbTest13 = new TextView(this);
         TbTest13.setTextSize(16);
         TbTest13.setText("T- b test4");
+        TbTest13.setBackgroundResource(R.color.colorPrimaryDark);
+        TbTest13.setLayoutParams(paramsExample);
         workSchedColumnTR3.addView(workSchedTest13);
         workSchedColumnTR3.addView(timePair13);
         workSchedColumnTR3.addView(TaTest13);
@@ -1044,6 +1096,16 @@ public class SecondActivity extends AppCompatActivity {
             timePairsTV[1][i]=new TextView(this);
             timePairsTV[2][i]=new TextView(this);
             timePairsTV[3][i]=new TextView(this);
+
+            timePairsTV[0][i].setBackgroundResource(R.color.title);
+            timePairsTV[1][i].setBackgroundResource(R.color.title);
+            timePairsTV[2][i].setBackgroundResource(R.color.title);
+            timePairsTV[3][i].setBackgroundResource(R.color.title);
+
+            timePairsTV[0][i].setLayoutParams(paramsExample);
+            timePairsTV[1][i].setLayoutParams(paramsExample);
+            timePairsTV[2][i].setLayoutParams(paramsExample);
+            timePairsTV[3][i].setLayoutParams(paramsExample);
 
         }
 
@@ -1073,8 +1135,10 @@ public class SecondActivity extends AppCompatActivity {
             timePairsTV[relej-1][0].setText("Work Schedules");
             timePairsTV[relej-1][1].setText("Active");
 
+
             for (int kkk=0;kkk<8;kkk++){
                 timePairsTV[relej-1][kkk+2].setText(schDays[kkk]);
+
             }
 
             for (int i=0;i<10;i++){
@@ -1153,6 +1217,9 @@ public class SecondActivity extends AppCompatActivity {
         TextView switchDelayTitle = new TextView(this);
         switchDelayTitleTR.addView(switchDelayTitle);
         switchDelayTitle.setText("Switching delay");
+            switchDelayTitle.setLayoutParams(paramsExample);
+            switchDelayTitle.setBackgroundResource(R.color.title);
+
         tableLayout.addView(switchDelayTitleTR);
 
 
@@ -1160,6 +1227,8 @@ public class SecondActivity extends AppCompatActivity {
         TextView[] switchDelayColumnsTV = new TextView[5];
         for (int i = 0; i < 5; i++) {
             switchDelayColumnsTV[i] = new TextView(this);
+            switchDelayColumns.setLayoutParams(paramsExample);
+            switchDelayColumns.setBackgroundResource(R.color.title);
             switchDelayColumns.addView(switchDelayColumnsTV[i]);
         }
         switchDelayColumnsTV[0].setText("");
@@ -1319,6 +1388,8 @@ public class SecondActivity extends AppCompatActivity {
         TableRow logicFunctionsTR=new TableRow(this);
         TextView logicFunctionsTV=new TextView(this);
         logicFunctionsTV.setText("Logic functions");
+        logicFunctionsTV.setLayoutParams(paramsExample);
+        logicFunctionsTV.setBackgroundResource(R.color.title);
         logicFunctionsTR.addView(logicFunctionsTV);
         tableLayout.addView(logicFunctionsTR);
 
@@ -1331,13 +1402,24 @@ public class SecondActivity extends AppCompatActivity {
             for (int i=0;i<11;i++){
                 relaySwitchAssignTR[i]=new TableRow(this);
                 for (int j=0;j<5;j++){
-                    relaySwitchAssignTV[i][j]=new TextView(this);
-                    relaySwitchAssignTR[i].addView( relaySwitchAssignTV[i][j]);
+
+                        relaySwitchAssignTV[i][j] = new TextView(this);
+                    relaySwitchAssignTR[i].addView(relaySwitchAssignTV[i][j]);
+                    if (i>2) {
+                        relaySwitchAssignTV[i][j].setBackgroundResource(R.color.whiteColor);
+                        relaySwitchAssignTV[i][j].setLayoutParams(paramsExample);
+
+
+                    }
                 }
             }
 
-            relaySwitchAssignTV[0][0].setText("Relay switching assignment"); //title
-            relaySwitchAssignTV[1][1].setText("Relay switching assignment"); //tableTittle
+            relaySwitchAssignTV[0][0].setText("Relay switching assignment");
+            relaySwitchAssignTV[0][0].setLayoutParams(paramsExample);
+            relaySwitchAssignTV[0][0].setBackgroundResource(R.color.title);//title
+            relaySwitchAssignTV[1][1].setText("Relay switching assignment");
+            relaySwitchAssignTV[1][1].setLayoutParams(paramsExample);
+            relaySwitchAssignTV[1][1].setBackgroundResource(R.color.title);//tableTittle
             for (int i=1;i<5;i++){
                 relaySwitchAssignTV[2][i].setText(String.format("Relay %d",i));
             }
@@ -1390,10 +1472,18 @@ public class SecondActivity extends AppCompatActivity {
             String res=UnPackLadderSTR(rel, cfg);
             if (rel<3){
                 logicFuncTV[rel][0].setText(String.format("R%d %s",rel+1,"a"));
+                logicFuncTV[rel][0].setLayoutParams(paramsExample);
+                logicFuncTV[rel][0].setBackgroundResource(R.color.title);
                 logicFuncTV[rel][1].setText(res);
+                logicFuncTV[rel][1].setLayoutParams(paramsExample);
+                logicFuncTV[rel][1].setBackgroundResource(R.color.whiteColor);
             }else {
                 logicFuncTV[rel][0].setText(String.format("R%d %s",rel%3+1,"b"));
+                logicFuncTV[rel][0].setLayoutParams(paramsExample);
+                logicFuncTV[rel][0].setBackgroundResource(R.color.title);
                 logicFuncTV[rel][1].setText(res);
+                logicFuncTV[rel][1].setLayoutParams(paramsExample);
+                logicFuncTV[rel][1].setBackgroundResource(R.color.whiteColor);
             }
         }
         for (int i=0;i<6;i++){
@@ -1566,14 +1656,22 @@ public class SecondActivity extends AppCompatActivity {
                                 relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
                             }
                             relAkProTV[pItem][0].setText(String.format("%d",pItem+1));
+                            relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][0].setLayoutParams(paramsExample);
 
                             relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR1)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                             for (int iItem=7;iItem>=0;iItem--){
                                 if((bVtmask[iItem]&(m_PProg_R1[pItem].DanPr))!=0){
                                     relAkProTV[pItem][9-iItem].setText("+");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }else {
                                     relAkProTV[pItem][9-iItem].setText("-");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }
                             }
 
@@ -1589,14 +1687,22 @@ public class SecondActivity extends AppCompatActivity {
                                 relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
                             }
                             relAkProTV[pItem][0].setText(String.format("%d",pItem+1));
+                            relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][0].setLayoutParams(paramsExample);
 
-                            relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR2)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR1)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                             for (int iItem=7;iItem>=0;iItem--){
                                 if((bVtmask[iItem]&(m_PProg_R2[pItem].DanPr))!=0){
                                     relAkProTV[pItem][9-iItem].setText("+");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }else {
                                     relAkProTV[pItem][9-iItem].setText("-");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }
                             }
 
@@ -1613,14 +1719,22 @@ public class SecondActivity extends AppCompatActivity {
                                 relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
                             }
                             relAkProTV[pItem][0].setText(String.format("%d",pItem+1));
+                            relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][0].setLayoutParams(paramsExample);
 
-                            relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR3)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR1)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                             for (int iItem=7;iItem>=0;iItem--){
                                 if((bVtmask[iItem]&(m_PProg_R3[pItem].DanPr))!=0){
                                     relAkProTV[pItem][9-iItem].setText("+");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }else {
                                     relAkProTV[pItem][9-iItem].setText("-");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }
                             }
 
@@ -1637,14 +1751,22 @@ public class SecondActivity extends AppCompatActivity {
                                 relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
                             }
                             relAkProTV[pItem][0].setText(String.format("%d",pItem+1));
+                            relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][0].setLayoutParams(paramsExample);
 
-                            relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR4)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setText(((iVtmask[pItem]&oprij.VOpRe.VAkProR1)!=0)?"Yes":"No");
+                            relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
+                            relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                             for (int iItem=7;iItem>=0;iItem--){
                                 if((bVtmask[iItem]&(m_PProg_R4[pItem].DanPr))!=0){
                                     relAkProTV[pItem][9-iItem].setText("+");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }else {
                                     relAkProTV[pItem][9-iItem].setText("-");
+                                    relAkProTV[pItem][9-iItem].setBackgroundResource(R.color.whiteColor);
+                                    relAkProTV[pItem][9-iItem].setLayoutParams(paramsExample);
                                 }
                             }
 
@@ -1673,6 +1795,8 @@ public class SecondActivity extends AppCompatActivity {
         TextView[] eventLog=new TextView[40];
         for (int i=0;i<40;i++){
             eventLog[i]=new TextView(this);
+            eventLog[i].setLayoutParams(paramsExample);
+            eventLog[i].setBackgroundResource(R.color.whiteColor);
         }
 
         eventLog[0].setText("Common Log");
@@ -2253,9 +2377,20 @@ for (int i=0;i<23;i++){
 
                         workTB1[cnt1]=new TableRow(this);
                         workSchedTime1[cnt1][iItem]=new TextView(this);
-                        timePair1[cnt1][iItem]=new TextView(this);
-                         Ta_test1[cnt1][iItem]=new TextView(this);
-                         Tb_test1[cnt1][iItem]=new TextView(this);
+                             timePair1[cnt1][iItem]=new TextView(this);
+                              Ta_test1[cnt1][iItem]=new TextView(this);
+                              Tb_test1[cnt1][iItem]=new TextView(this);
+
+                        workSchedTime1[cnt1][iItem].setLayoutParams(paramsExample);
+                        timePair1[cnt1][iItem].setLayoutParams(paramsExample);
+                        Ta_test1[cnt1][iItem].setLayoutParams(paramsExample);
+                        Tb_test1[cnt1][iItem].setLayoutParams(paramsExample);
+
+                        workSchedTime1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
+                        timePair1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
+                        Ta_test1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
+                        Tb_test1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
+
                         cnt++;
                         if (cnt==1){
                             workSchedTime1[cnt1][iItem].setText(String.valueOf(cntWork1+1));
@@ -2289,6 +2424,17 @@ for (int i=0;i<23;i++){
                         timePair2[cnt2][iItem]=new TextView(this);
                         Ta_test2[cnt2][iItem]=new TextView(this);
                         Tb_test2[cnt2][iItem]=new TextView(this);
+
+                        workSchedTime2[cnt2][iItem].setLayoutParams(paramsExample);
+                        timePair2[cnt2][iItem].setLayoutParams(paramsExample);
+                        Ta_test2[cnt2][iItem].setLayoutParams(paramsExample);
+                        Tb_test2[cnt2][iItem].setLayoutParams(paramsExample);
+
+                        workSchedTime2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
+                        timePair2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
+                        Ta_test2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
+                        Tb_test2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
+
                         cnt++;
                         if (cnt==1){
                             workSchedTime2[cnt2][iItem].setText(String.valueOf(cntWork2+1));
@@ -2323,9 +2469,21 @@ for (int i=0;i<23;i++){
                         timePair3[cnt3][iItem]=new TextView(this);
                         Ta_test3[cnt3][iItem]=new TextView(this);
                         Tb_test3[cnt3][iItem]=new TextView(this);
+
+                        workSchedTime3[cnt3][iItem].setLayoutParams(paramsExample);
+                        timePair3[cnt3][iItem].setLayoutParams(paramsExample);
+                        Ta_test3[cnt3][iItem].setLayoutParams(paramsExample);
+                        Tb_test3[cnt3][iItem].setLayoutParams(paramsExample);
+
+                        workSchedTime3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
+                        timePair3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
+                        Ta_test3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
+                        Tb_test3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
+
                         cnt++;
                         if (cnt==1){
                             workSchedTime3[cnt3][iItem].setText(String.valueOf(cntWork3+1));
+
                             cntWork3++;
                         }
 
@@ -2372,7 +2530,11 @@ for (int i=0;i<23;i++){
         TextView deviceType=new TextView(this);
         TextView deviceTypeRes=new TextView(this);
         deviceType.setText("Device type");
+        deviceType.setLayoutParams(paramsExample);
+        deviceType.setBackgroundResource(R.color.title);
         deviceTypeRes.setText(String.format("MTK-%d-%s-V-%d",m_tip+1,str,m_SWVerPri));
+        deviceTypeRes.setLayoutParams(paramsExample);
+        deviceTypeRes.setBackgroundResource(R.color.whiteColor);
         TRdeviceType.addView(deviceType);
         TRdeviceType.addView(deviceTypeRes);
 
@@ -2383,7 +2545,10 @@ for (int i=0;i<23;i++){
             TextView HDOfrequency=new TextView(this);
             TextView HDOfrequencyRes=new TextView(this);
             HDOfrequency.setText("HDO frequency ");
-
+            HDOfrequency.setLayoutParams(paramsExample);
+            HDOfrequency.setBackgroundResource(R.color.title);
+            HDOfrequencyRes.setLayoutParams(paramsExample);
+            HDOfrequencyRes.setBackgroundResource(R.color.whiteColor);
             TRHDOfrequency.addView(HDOfrequency);
             TRHDOfrequency.addView(HDOfrequencyRes);
 
@@ -2416,7 +2581,10 @@ for (int i=0;i<23;i++){
             TextView raster=new TextView(this);
             TextView rasterRes=new TextView(this);
             raster.setText("Raster");
-
+            raster.setLayoutParams(paramsExample);
+            raster.setBackgroundResource(R.color.title);
+            rasterRes.setLayoutParams(paramsExample);
+            rasterRes.setBackgroundResource(R.color.whiteColor);
             TRraster.addView(raster);
             TRraster.addView(rasterRes);
             String [] rra={"Semagyr 50a","Ricontic b","Pulsadis(EdF)","Inematic 2000","ZPA-I-I","ZPA-I-Ik" ,"CEZ 50D","CEZ 50K"};
@@ -2432,7 +2600,10 @@ for (int i=0;i<23;i++){
             TextView sensitivity=new TextView(this);
             TextView sensitivityRes=new TextView(this);
             sensitivity.setText("Sensitivity");
-
+            sensitivity.setLayoutParams(paramsExample);
+            sensitivity.setBackgroundResource(R.color.title);
+            sensitivityRes.setLayoutParams(paramsExample);
+            sensitivityRes.setBackgroundResource(R.color.whiteColor);
             TRSensitivity.addView(sensitivity);
             TRSensitivity.addView(sensitivityRes);
 
@@ -2448,6 +2619,10 @@ for (int i=0;i<23;i++){
             TextView telRaster=new TextView(this);
             TextView telRasterRes=new TextView(this);
             telRaster.setText("Tel. raster time base");
+            telRaster.setLayoutParams(paramsExample);
+            telRaster.setBackgroundResource(R.color.title);
+            telRasterRes.setLayoutParams(paramsExample);
+            telRasterRes.setBackgroundResource(R.color.whiteColor);
 
             TRTelRaster.addView(telRaster);
             TRTelRaster.addView(telRasterRes);
@@ -2470,6 +2645,10 @@ for (int i=0;i<23;i++){
         TextView RTCTimeBase=new TextView(this);
         TextView RTCTimeBaseRes=new TextView(this);
         RTCTimeBase.setText("RTC time base");
+        RTCTimeBase.setLayoutParams(paramsExample);
+        RTCTimeBase.setBackgroundResource(R.color.title);
+        RTCTimeBaseRes.setLayoutParams(paramsExample);
+        RTCTimeBaseRes.setBackgroundResource(R.color.whiteColor);
 
         TRRTCTimeBase.addView(RTCTimeBase);
         TRRTCTimeBase.addView(RTCTimeBaseRes);
@@ -2492,6 +2671,10 @@ for (int i=0;i<23;i++){
             TextView RTCLossAction=new TextView(this);
             TextView RTCLossActionRes=new TextView(this);
             RTCLossAction.setText("RTC Loss action");
+            RTCLossAction.setLayoutParams(paramsExample);
+            RTCLossAction.setBackgroundResource(R.color.title);
+            RTCLossActionRes.setLayoutParams(paramsExample);
+            RTCLossActionRes.setBackgroundResource(R.color.whiteColor);
 
             TRRTCLossAction.addView(RTCLossAction);
             TRRTCLossAction.addView(RTCLossActionRes);
@@ -2526,7 +2709,10 @@ for (int i=0;i<23;i++){
                 TextView AdressLength=new TextView(this);
                 TextView AdressLengthRes=new TextView(this);
                 AdressLength.setText("Address length of telegram DIN-43861-301 ");
-
+                AdressLength.setLayoutParams(paramsExample);
+                AdressLength.setBackgroundResource(R.color.title);
+                AdressLengthRes.setLayoutParams(paramsExample);
+                AdressLengthRes.setBackgroundResource(R.color.whiteColor);
                 TRAdressLength.addView(AdressLength);
                 TRAdressLength.addView(AdressLengthRes);
 
@@ -2544,6 +2730,10 @@ for (int i=0;i<23;i++){
                 TextView SyncTelegram=new TextView(this);
                 TextView SyncTelegramRes=new TextView(this);
                 SyncTelegram.setText("synchronization telegram - day >> time ");
+                SyncTelegram.setLayoutParams(paramsExample);
+                SyncTelegram.setBackgroundResource(R.color.title);
+                SyncTelegramRes.setLayoutParams(paramsExample);
+                SyncTelegramRes.setBackgroundResource(R.color.whiteColor);
 
                 TRSyncTelegram.addView(SyncTelegram);
                 TRSyncTelegram.addView(SyncTelegramRes);
@@ -2568,6 +2758,10 @@ for (int i=0;i<23;i++){
                 TextView ID=new TextView(this);
                 TextView IDRes=new TextView(this);
                 ID.setText("ID");
+                ID.setLayoutParams(paramsExample);
+                ID.setBackgroundResource(R.color.title);
+                IDRes.setLayoutParams(paramsExample);
+                IDRes.setBackgroundResource(R.color.whiteColor);
 
                 TRID.addView(ID);
                 TRID.addView(IDRes);
@@ -2588,6 +2782,10 @@ for (int i=0;i<23;i++){
                 TextView IDSI_24HC_ACT=new TextView(this);
                 TextView IDSI_24HC_ACTRes=new TextView(this);
                 IDSI_24HC_ACT.setText("24h cycle - active ");
+               IDSI_24HC_ACT.setLayoutParams(paramsExample);
+               IDSI_24HC_ACT.setBackgroundResource(R.color.title);
+               IDSI_24HC_ACTRes.setLayoutParams(paramsExample);
+               IDSI_24HC_ACTRes.setBackgroundResource(R.color.whiteColor);
 
                 TRIDSI_24HC_ACT.addView(IDSI_24HC_ACT);
                 TRIDSI_24HC_ACT.addView(IDSI_24HC_ACTRes);
@@ -2603,6 +2801,10 @@ for (int i=0;i<23;i++){
                 TextView IDSI_24HC_DLY=new TextView(this);
                 TextView IDSI_24HC_DLYRes=new TextView(this);
                 IDSI_24HC_DLY.setText("24h cycle - delay ");
+                IDSI_24HC_DLY.setLayoutParams(paramsExample);
+                IDSI_24HC_DLY.setBackgroundResource(R.color.title);
+                IDSI_24HC_DLYRes.setLayoutParams(paramsExample);
+                IDSI_24HC_DLYRes.setBackgroundResource(R.color.whiteColor);
 
                 TRIDSI_24HC_DLY.addView(IDSI_24HC_DLY);
                 TRIDSI_24HC_DLY.addView(IDSI_24HC_DLYRes);
@@ -2620,6 +2822,10 @@ for (int i=0;i<23;i++){
                 TextView IDSI_SYNC_TRACK=new TextView(this);
                 TextView IDSI_SYNC_TRACKRes=new TextView(this);
                 IDSI_SYNC_TRACK.setText("Track relay position after time synchronization ");
+                IDSI_SYNC_TRACK.setLayoutParams(paramsExample);
+                IDSI_SYNC_TRACK.setBackgroundResource(R.color.title);
+                IDSI_SYNC_TRACKRes.setLayoutParams(paramsExample);
+                IDSI_SYNC_TRACKRes.setBackgroundResource(R.color.whiteColor);
 
                 TRIDSI_SYNC_TRACK.addView(IDSI_SYNC_TRACK);
                 TRIDSI_SYNC_TRACK.addView(IDSI_SYNC_TRACKRes);
@@ -2638,6 +2844,10 @@ for (int i=0;i<23;i++){
         TextView PowerBridge=new TextView(this);
         TextView PowerBridgeRes=new TextView(this);
         PowerBridge.setText("Power bridging time");
+        PowerBridge.setLayoutParams(paramsExample);
+        PowerBridge.setBackgroundResource(R.color.title);
+        PowerBridgeRes.setLayoutParams(paramsExample);
+        PowerBridgeRes.setBackgroundResource(R.color.whiteColor);
 
         TRPowerBridge.addView(PowerBridge);
         TRPowerBridge.addView(PowerBridgeRes);
@@ -2653,6 +2863,7 @@ for (int i=0;i<23;i++){
         TableRow TRParameters=new TableRow(this);
         TextView Parameters=new TextView(this);
         Parameters.setText("Parameters");
+
 
         TRParameters.addView(Parameters);
             tableLayout.addView(TRParameters);
