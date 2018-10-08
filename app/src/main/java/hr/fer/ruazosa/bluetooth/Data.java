@@ -451,9 +451,7 @@ private void storeDataTlgRel(Telegrel TlgRel,byte[] m_pbuf){
       if (rel>4 || rel<1) {
           rel=1;
       }
-if(rel==3){
-          System.out.print("Stt");
-}
+
 
       if((m_SWVerPri >= 90) && (m_HWVerPri == TIP_SPA) ) {
           nrTpar = NR_TPAR_SPA;
@@ -478,6 +476,7 @@ if(rel==3){
       x.updti();
 
 
+      System.out.print("a");
 
       switch (rel){
           case 1:

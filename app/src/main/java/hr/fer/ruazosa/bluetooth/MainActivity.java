@@ -378,12 +378,12 @@ public class MainActivity extends AppCompatActivity {
                 Looper.prepare();
                 mHandler=new Handler();
                 int word;
-                int numBytes; // bytes returned from read()
-                StringBuilder sb=new StringBuilder();
+
 
                 // Keep listening to the InputStream until an exception occurs.
                 while (true) {
                     try {
+                        System.out.print(" k");
                         // Read from the InputStream.
                        word=mmInStream.read();
                        System.out.print((char) word);
@@ -395,14 +395,6 @@ public class MainActivity extends AppCompatActivity {
                          progressBar.setVisibility(View.INVISIBLE);
                        }
 
-                        //resultView.append((Character.valueOf((char)word)));
-                       // resultView.append((String.valueOf((char)word)));
-                        // numBytes = mmInStream.read(mmBuffer,0,100);
-                        // Send the obtained bytes to the UI activity.
-                        //System.out.println(mmBuffer.toString());
-                        //Message readMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_READ, numBytes, -1,mmBuffer);
-                       // readMsg.sendToTarget();
-                        //mHandler.handleMessage(readMsg);
                     } catch (IOException e) {
                         Log.d("DEBUGG", "Input stream was disconnected", e);
                         Toast.makeText(MainActivity.this,"Input stream was disconnected",Toast.LENGTH_SHORT).show();
@@ -527,7 +519,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 try{
-                    this.sleep(4000);
+                    this.sleep(5000);
                 }catch (InterruptedException e){
                     //ignore
                 }
@@ -548,7 +540,7 @@ public class MainActivity extends AppCompatActivity {
                 //mHandler.sendMessage(writeErrorMsg);
             }
             try{
-                TimeUnit.MILLISECONDS.sleep(4000);
+                TimeUnit.MILLISECONDS.sleep(5000);
             }catch(InterruptedException e){
                 System.out.println("Gasi sve");
             }
