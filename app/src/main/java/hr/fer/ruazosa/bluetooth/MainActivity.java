@@ -383,10 +383,10 @@ public class MainActivity extends AppCompatActivity {
                 // Keep listening to the InputStream until an exception occurs.
                 while (true) {
                     try {
-                        System.out.print(" k");
+                       // System.out.print(" k");
                         // Read from the InputStream.
                        word=mmInStream.read();
-                       System.out.print((char) word);
+                       //System.out.print((char) word);
                        input.add((Character.valueOf((char)word)));
                        if (word==0x21){
 
