@@ -2,32 +2,23 @@ package hr.fer.ruazosa.bluetooth;
 
 
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.Gravity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Logger;
 
 
 public class SecondActivity extends AppCompatActivity {
@@ -219,7 +210,7 @@ public class SecondActivity extends AppCompatActivity {
     private final String[] schDays = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Ho."};
 
 
-    String CSS="<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
+    String CSS = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
             "<html>\n" +
             "\t<head>\n" +
             "     <meta content=\"text/html; charset=windows-1250\" http-equiv=\"Content-Type\">\n" +
@@ -1147,75 +1138,6 @@ public class SecondActivity extends AppCompatActivity {
             "\t</head>";
 
 
-    TextView[] wipEnable;
-    TextView[] retrig;
-    TextView[] actComm;
-    TextView[] wipTime;
-    TextView[] schedSwitActDelay;
-    TextView[] loopEnbl;
-    TextView[] durationInPos;
-    TextView[] switchDelay;
-
-    //Arrival and loss of supply
-    TextView[] stopLearn;
-    TextView[] powerSupply;
-    TextView[] lossOfSupplyShort;
-    TextView[] lossOfSupplyLongIgn;
-    TextView[] lossOfSupplyLong;
-    TextView[] switchDelayMin;
-    TextView[] switchDelayMax;
-    TextView[] schedSwitchActDel;
-    TextView[] lossOfSupplyAction;
-
-
-    TextView[] absenceTime;
-    TextView[] resetTimer;
-    TextView[] onTimeRestartEvent;
-    TextView[] action;
-    TextView[] learnFunctionDisabled;
-
-
-    //Learn functions
-    TextView[] learnPeriod;
-    TextView[] position;
-    TextView[] minTV;
-    TextView[] maxTV;
-
-
-    TextView[][] workSchedTime1;
-    TextView[][] workSchedTime2;
-    TextView[][] workSchedTime3;
-
-    TextView[][] timePair1;
-    TextView[][] timePair2;
-    TextView[][] timePair3;
-
-
-    TextView[][] Ta_test1;
-    TextView[][] Ta_test2;
-    TextView[][] Ta_test3;
-
-
-    TextView[][] Tb_test1;
-    TextView[][] Tb_test2;
-    TextView[][] Tb_test3;
-
-    TableRow[] workTB1;
-    TableRow[] workTB2;
-    TableRow[] workTB3;
-
-    TextView[] relayInstalled;
-    TextView[] invertedLogic;
-
-    //TableRow.LayoutParams params;
-
-    TableLayout tableLayout;
-
-
-    //Data needed
-
-    //List<Character> input=new LinkedList<>();
-
     Wiper[] wiper;
     PonPoffStr[] ponPoffStrs;
     TlgAbstr[] tlgAbstrs;
@@ -1250,20 +1172,14 @@ public class SecondActivity extends AppCompatActivity {
 
     IntrlockStr[] m_RelInterLock = new IntrlockStr[8];
 
-    //private TextView txtviewExample = new TextView(this);
 
-    TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
 
-private WebView webView;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
 
-        tableLayout = findViewById(R.id.table_layout);
-        // paramsExample.gravity= Gravity.FILL_HORIZONTAL;
-        paramsExample.setMargins(2, 1, 1, 1);
 
 
         wiper = new Wiper[4];
@@ -1367,12 +1283,6 @@ private WebView webView;
                 m_ParFiltera, oprij, m_op50Prij, m_Realloc, m_TelegSync, m_TlgFnD, m_RelInterLock);
 
 
-        //
-
-
-        System.out.print("a");
-
-
         fVis_VersacomPS = (m_HWVerPri != TIP_PS);
         fVis_Versacom = ((m_HWVerPri != TIP_S) && (m_HWVerPri != TIP_SN) && (m_HWVerPri != TIP_SPN));
         fVis_Uklsat = ((m_HWVerPri) == TIP_SPA) || ((m_HWVerPri) == TIP_S) || ((m_HWVerPri) == TIP_SN) || ((m_HWVerPri) == TIP_SPN);
@@ -1388,243 +1298,6 @@ private WebView webView;
         fVis_Cz95P = ((m_SWVerPri) >= 95);
         fVis_Cz96P = ((m_SWVerPri) >= 96);
 
-        System.out.print("a");
-
-
-        //-------INICIJALIZACIJA TEXTVIEW-------
-        wipEnable = new TextView[4];
-        wipEnable[0] = findViewById(R.id.WiperEnable1);
-        wipEnable[0].setBackgroundResource(R.color.whiteColor);
-        wipEnable[0].setLayoutParams(paramsExample);
-        wipEnable[1] = findViewById(R.id.WiperEnable2);
-        wipEnable[1].setBackgroundResource(R.color.whiteColor);
-        wipEnable[1].setLayoutParams(paramsExample);
-        wipEnable[2] = findViewById(R.id.WiperEnable3);
-        wipEnable[2].setBackgroundResource(R.color.whiteColor);
-        wipEnable[2].setLayoutParams(paramsExample);
-        wipEnable[3] = findViewById(R.id.WiperEnable4);
-        wipEnable[3].setBackgroundResource(R.color.whiteColor);
-        wipEnable[3].setLayoutParams(paramsExample);
-
-
-        retrig = new TextView[4];
-        retrig[0] = findViewById(R.id.Retrig1);
-        retrig[1] = findViewById(R.id.Retrig2);
-        retrig[2] = findViewById(R.id.Retrig3);
-        retrig[3] = findViewById(R.id.Retrig4);
-
-        retrig[0].setBackgroundResource(R.color.whiteColor);
-        retrig[1].setBackgroundResource(R.color.whiteColor);
-        retrig[2].setBackgroundResource(R.color.whiteColor);
-        retrig[3].setBackgroundResource(R.color.whiteColor);
-
-        retrig[0].setLayoutParams(paramsExample);
-        retrig[1].setLayoutParams(paramsExample);
-        retrig[2].setLayoutParams(paramsExample);
-        retrig[3].setLayoutParams(paramsExample);
-
-
-        actComm = new TextView[4];
-        actComm[0] = findViewById(R.id.ActComm1);
-        actComm[1] = findViewById(R.id.ActComm2);
-        actComm[2] = findViewById(R.id.ActComm3);
-        actComm[3] = findViewById(R.id.ActComm4);
-
-        wipTime = new TextView[4];
-        wipTime[0] = findViewById(R.id.WiperTime1);
-        wipTime[1] = findViewById(R.id.WiperTime2);
-        wipTime[2] = findViewById(R.id.WiperTime3);
-        wipTime[3] = findViewById(R.id.WiperTime4);
-
-        schedSwitActDelay = new TextView[4];
-        schedSwitActDelay[0] = findViewById(R.id.Sched1);
-        schedSwitActDelay[1] = findViewById(R.id.Sched2);
-        schedSwitActDelay[2] = findViewById(R.id.Sched3);
-        schedSwitActDelay[3] = findViewById(R.id.Sched4);
-
-        loopEnbl = new TextView[4];
-        loopEnbl[0] = findViewById(R.id.Loop1);
-        loopEnbl[1] = findViewById(R.id.Loop2);
-        loopEnbl[2] = findViewById(R.id.Loop3);
-        loopEnbl[3] = findViewById(R.id.Loop4);
-
-        durationInPos = new TextView[4];
-        durationInPos[0] = findViewById(R.id.Duration1);
-        durationInPos[1] = findViewById(R.id.Duration2);
-        durationInPos[2] = findViewById(R.id.Duration3);
-        durationInPos[3] = findViewById(R.id.Duration4);
-
-        switchDelay = new TextView[4];
-        switchDelay[0] = findViewById(R.id.Switch1);
-        switchDelay[1] = findViewById(R.id.Switch2);
-        switchDelay[2] = findViewById(R.id.Switch3);
-        switchDelay[3] = findViewById(R.id.Switch4);
-
-        //Arrival and learn
-
-
-        stopLearn = new TextView[4];
-        stopLearn[0] = findViewById(R.id.StopRelay1);
-        stopLearn[1] = findViewById(R.id.StopRelay2);
-        stopLearn[2] = findViewById(R.id.StopRelay3);
-        stopLearn[3] = findViewById(R.id.StopRelay4);
-
-        powerSupply = new TextView[4];
-        powerSupply[0] = findViewById(R.id.PowerSupplyRelay1);
-        powerSupply[1] = findViewById(R.id.PowerSupplyRelay2);
-        powerSupply[2] = findViewById(R.id.PowerSupplyRelay3);
-        powerSupply[3] = findViewById(R.id.PowerSupplyRelay4);
-
-        lossOfSupplyShort = new TextView[4];
-        lossOfSupplyShort[0] = findViewById(R.id.LossShortRelay1);
-        lossOfSupplyShort[1] = findViewById(R.id.LossShortRelay2);
-        lossOfSupplyShort[2] = findViewById(R.id.LossShortRelay3);
-        lossOfSupplyShort[3] = findViewById(R.id.LossShortRelay4);
-
-        lossOfSupplyLongIgn = new TextView[4];
-        lossOfSupplyLongIgn[0] = findViewById(R.id.LossLongIgnRelay1);
-        lossOfSupplyLongIgn[1] = findViewById(R.id.LossLongIgnRelay2);
-        lossOfSupplyLongIgn[2] = findViewById(R.id.LossLongIgnRelay3);
-        lossOfSupplyLongIgn[3] = findViewById(R.id.LossLongIgnRelay4);
-
-        lossOfSupplyLong = new TextView[4];
-        lossOfSupplyLong[0] = findViewById(R.id.LossLongRelay1);
-        lossOfSupplyLong[1] = findViewById(R.id.LossLongRelay2);
-        lossOfSupplyLong[2] = findViewById(R.id.LossLongRelay3);
-        lossOfSupplyLong[3] = findViewById(R.id.LossLongRelay4);
-
-        switchDelayMin = new TextView[4];
-        switchDelayMin[0] = findViewById(R.id.SwitchDelMinRelay1);
-        switchDelayMin[1] = findViewById(R.id.SwitchDelMinRelay2);
-        switchDelayMin[2] = findViewById(R.id.SwitchDelMinRelay3);
-        switchDelayMin[3] = findViewById(R.id.SwitchDelMinRelay4);
-
-        switchDelayMax = new TextView[4];
-        switchDelayMax[0] = findViewById(R.id.SwitchDelMaxRelay1);
-        switchDelayMax[1] = findViewById(R.id.SwitchDelMaxRelay2);
-        switchDelayMax[2] = findViewById(R.id.SwitchDelMaxRelay3);
-        switchDelayMax[3] = findViewById(R.id.SwitchDelMaxRelay4);
-
-        schedSwitchActDel = new TextView[4];
-        schedSwitchActDel[0] = findViewById(R.id.SchedSwitchActRelay1);
-        schedSwitchActDel[1] = findViewById(R.id.SchedSwitchActRelay2);
-        schedSwitchActDel[2] = findViewById(R.id.SchedSwitchActRelay3);
-        schedSwitchActDel[3] = findViewById(R.id.SchedSwitchActRelay4);
-
-        lossOfSupplyAction = new TextView[4];
-        lossOfSupplyAction[0] = findViewById(R.id.LossOfSupplyActionRelay1);
-        lossOfSupplyAction[1] = findViewById(R.id.LossOfSupplyActionRelay2);
-        lossOfSupplyAction[2] = findViewById(R.id.LossOfSupplyActionRelay3);
-        lossOfSupplyAction[3] = findViewById(R.id.LossOfSupplyActionRelay4);
-
-
-        //Telegram absence
-
-        absenceTime = new TextView[4];
-        absenceTime[0] = findViewById(R.id.AbsenceRelay1);
-        absenceTime[1] = findViewById(R.id.AbsenceRelay2);
-        absenceTime[2] = findViewById(R.id.AbsenceRelay3);
-        absenceTime[3] = findViewById(R.id.AbsenceRelay4);
-
-        resetTimer = new TextView[4];
-        resetTimer[0] = findViewById(R.id.ResetTimerRelay1);
-        resetTimer[1] = findViewById(R.id.ResetTimerRelay2);
-        resetTimer[2] = findViewById(R.id.ResetTimerRelay3);
-        resetTimer[3] = findViewById(R.id.ResetTimerRelay4);
-
-        onTimeRestartEvent = new TextView[4];
-        onTimeRestartEvent[0] = findViewById(R.id.OnTimerRestartRelay1);
-        onTimeRestartEvent[1] = findViewById(R.id.OnTimerRestartRelay2);
-        onTimeRestartEvent[2] = findViewById(R.id.OnTimerRestartRelay3);
-        onTimeRestartEvent[3] = findViewById(R.id.OnTimerRestartRelay4);
-
-        action = new TextView[4];
-        action[0] = findViewById(R.id.ActionRelay1);
-        action[1] = findViewById(R.id.ActionRelay2);
-        action[2] = findViewById(R.id.ActionRelay3);
-        action[3] = findViewById(R.id.ActionRelay4);
-
-        learnFunctionDisabled = new TextView[4];
-        learnFunctionDisabled[0] = findViewById(R.id.LearnFunctionRelay1);
-        learnFunctionDisabled[1] = findViewById(R.id.LearnFunctionRelay2);
-        learnFunctionDisabled[2] = findViewById(R.id.LearnFunctionRelay3);
-        learnFunctionDisabled[3] = findViewById(R.id.LearnFunctionRelay4);
-
-
-        //Learn functions
-
-        learnPeriod = new TextView[4];
-        learnPeriod[0] = findViewById(R.id.LearnPeriodRelay1);
-        learnPeriod[1] = findViewById(R.id.LearnPeriodRelay2);
-        learnPeriod[2] = findViewById(R.id.LearnPeriodRelay3);
-        learnPeriod[3] = findViewById(R.id.LearnPeriodRelay4);
-
-        position = new TextView[4];
-        position[0] = findViewById(R.id.PositionRelay1);
-        position[1] = findViewById(R.id.PositionRelay2);
-        position[2] = findViewById(R.id.PositionRelay3);
-        position[3] = findViewById(R.id.PositionRelay4);
-
-        minTV = new TextView[4];
-        minTV[0] = findViewById(R.id.MinRelay1);
-        minTV[1] = findViewById(R.id.MinRelay2);
-        minTV[2] = findViewById(R.id.MinRelay3);
-        minTV[3] = findViewById(R.id.MinRelay4);
-
-        maxTV = new TextView[4];
-        maxTV[0] = findViewById(R.id.MaxRelay1);
-        maxTV[1] = findViewById(R.id.MaxRelay2);
-        maxTV[2] = findViewById(R.id.MaxRelay3);
-        maxTV[3] = findViewById(R.id.MaxRelay4);
-
-
-        //relay settings
-        relayInstalled = new TextView[4];
-        relayInstalled[0] = findViewById(R.id.RelayInstallRelay1);
-        relayInstalled[1] = findViewById(R.id.RelayInstallRelay2);
-        relayInstalled[2] = findViewById(R.id.RelayInstallRelay3);
-        relayInstalled[3] = findViewById(R.id.RelayInstallRelay4);
-
-        invertedLogic = new TextView[4];
-        invertedLogic[0] = findViewById(R.id.InvertedLogicRelay1);
-        invertedLogic[1] = findViewById(R.id.InvertedLogicRelay2);
-        invertedLogic[2] = findViewById(R.id.InvertedLogicRelay3);
-        invertedLogic[3] = findViewById(R.id.InvertedLogicRelay4);
-
-        //Work schedules - Time pairs
-        workSchedTime1 = new TextView[50][16];
-        //  workSchedTime1[0]=findViewById(R.id.Workschedulestest11Res);
-        //  workSchedTime1[1]=findViewById(R.id.TimePairTest21Res);
-        //  workSchedTime1[2]=findViewById(R.id.Tatest31Res);
-        //  workSchedTime1[3]=findViewById(R.id.Tbtest41Res);
-
-        workSchedTime2 = new TextView[50][16];
-        //  workSchedTime2[0]=findViewById(R.id.Workschedulestest12Res);
-        //  workSchedTime2[1]=findViewById(R.id.TimePairTest22Res);
-        //  workSchedTime2[2]=findViewById(R.id.Tatest32Res);
-        //  workSchedTime2[3]=findViewById(R.id.Tbtest42Res);
-
-        workSchedTime3 = new TextView[50][16];
-        //  workSchedTime3[0]=findViewById(R.id.Workschedulestest13Res);
-        //  workSchedTime3[1]=findViewById(R.id.TimePairTest23Res);
-        //  workSchedTime3[2]=findViewById(R.id.Tatest33Res);
-        //  workSchedTime3[3]=findViewById(R.id.Tbtest43Res);
-
-        timePair1 = new TextView[50][16];
-        timePair2 = new TextView[50][16];
-        timePair3 = new TextView[50][16];
-
-        Ta_test1 = new TextView[50][16];
-        Ta_test2 = new TextView[50][16];
-        Ta_test3 = new TextView[50][16];
-
-        Tb_test1 = new TextView[50][16];
-        Tb_test2 = new TextView[50][16];
-        Tb_test3 = new TextView[50][16];
-
-        workTB1 = new TableRow[100];
-        workTB2 = new TableRow[100];
-        workTB3 = new TableRow[100];
 
         for (int i = 0; i < 4; i++) {
             m_RelInterLock[i].wBitsOn = 0xFFFF;
@@ -1640,7 +1313,7 @@ private WebView webView;
             m_RelInterLock[i].PcCnfg[1] = 0;
 
         }
-    webView=new WebView(this);
+        webView = new WebView(this);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
 
@@ -1657,11 +1330,11 @@ private WebView webView;
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
-        String wholeFile=readFromFile(filename, getApplicationContext());
+        String wholeFile = readFromFile(filename, getApplicationContext());
 
-        webView.loadData(wholeFile,"text/html","UTF-8");
-        setContentView(webView);
-  System.out.println();
+        webView.loadData(wholeFile, "text/html", "UTF-8");
+         setContentView(webView);
+        System.out.println();
     }
 
     private void displayValues(Wiper[] wiper, PonPoffStr[] ponPoffStr, TlgAbstr[] tlgAbstrs, StrLoadMng[] strLoadMng, Opprog[] m_PProg_R1, Opprog[] m_PProg_R2, Opprog[] m_PProg_R3, Opprog[] m_PProg_R4, Oprij oprij, OutputStreamWriter htmlWriter) throws IOException {
@@ -1680,10 +1353,8 @@ private WebView webView;
         htmlWriter.write("<th>Wiper Enable</th>");
         for (int i = 0; i < 4; i++) {
             if ((wiper[i].status & WIPER_DISEB_MASK) == 0x00) {
-                wipEnable[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                wipEnable[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -1693,10 +1364,8 @@ private WebView webView;
         htmlWriter.write("<th>Retrigerable</th>");
         for (int i = 0; i < 4; i++) {
             if ((wiper[i].status & WIPPER_RETRIG_MASK) != 0x00) {
-                retrig[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                retrig[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -1707,13 +1376,10 @@ private WebView webView;
         htmlWriter.write("<th>Activation command</th>");
         for (int i = 0; i < 4; i++) {
             if ((wiper[i].status & WIPER_ON_MASK) != 0x00) {
-                actComm[i].setText("a");
                 htmlWriter.write("<td>a</td>");
             } else if ((wiper[i].status & WIPER_OFF_MASK) != 0x00) {
-                actComm[i].setText("b");
                 htmlWriter.write("<td>b</td>");
             } else {
-                actComm[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
 
@@ -1724,7 +1390,6 @@ private WebView webView;
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Switching delay</th>");
         for (int i = 0; i < 4; i++) {
-            wipTime[i].setText(GetHMSfromInt(wiper[i].Tswdly));
             htmlWriter.write("<td>" + GetHMSfromInt(wiper[i].Tswdly) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -1734,7 +1399,6 @@ private WebView webView;
         htmlWriter.write("<th>Wiper time</th>");
 
         for (int i = 0; i < 4; i++) {
-            switchDelay[i].setText(GetHMSfromInt(0000));
             htmlWriter.write("<td>" + GetHMSfromInt(0000) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -1744,7 +1408,6 @@ private WebView webView;
         htmlWriter.write("<th>Scheduled switching activation delay</th>");
 
         for (int i = 0; i < 4; i++) {
-            schedSwitActDelay[i].setText(GetHMSfromInt(wiper[i].TBlockPrePro));
             htmlWriter.write("<td>" + GetHMSfromInt(wiper[i].TBlockPrePro) + "</td>");
 
         }
@@ -1757,11 +1420,9 @@ private WebView webView;
 
         for (int i = 0; i < 4; i++) {
             if ((wiper[i].status & LOOP_DISEB_MASK) == 0x00) {
-                loopEnbl[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
 
             } else {
-                loopEnbl[i].setText("No");
                 htmlWriter.write("<td>No</td>");
 
             }
@@ -1774,7 +1435,6 @@ private WebView webView;
 
         for (int i = 0; i < 4; i++) {
 
-            durationInPos[i].setText(GetHMSfromInt(wiper[i].Twiper));
             htmlWriter.write("<td>" + GetHMSfromInt(wiper[i].Twiper) + "</td>");
 
         }
@@ -1798,10 +1458,8 @@ private WebView webView;
         htmlWriter.write("<th>Stop learn and wiper functions</th>");
         for (int i = 0; i < 4; i++) {
             if ((ponPoffStr[i].OnPonExe & PON_DISLRN_I_W_MASK) != 0) {
-                stopLearn[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                stopLearn[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -1810,7 +1468,6 @@ private WebView webView;
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Power supply loss time</th>");
         for (int i = 0; i < 4; i++) {
-            powerSupply[i].setText(GetHMSfromInt(ponPoffStr[i].Tlng));
             htmlWriter.write("<td>" + GetHMSfromInt(ponPoffStr[i].Tlng) + "</td>");
 
         }
@@ -1821,11 +1478,9 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             byte ss = (byte) (ponPoffStr[i].OnPonExe & 0x7F);
             if (ss < 10) {
-                lossOfSupplyShort[i].setText(PoffS[ss]);
                 htmlWriter.write("<td>" + PoffS[ss] + "</td>");
 
             } else {
-                lossOfSupplyShort[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
 
@@ -1839,11 +1494,9 @@ private WebView webView;
         htmlWriter.write("<th>Loss of supply(long) - ignore action </th>");
         for (int i = 0; i < 4; i++) {
             if ((ponPoffStr[i].lperIgno & PON_LPERIOD_DIS_MASK) != 0) {
-                lossOfSupplyLongIgn[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
                 ign[i] = 1;
             } else {
-                lossOfSupplyLongIgn[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -1854,15 +1507,12 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             byte ss = (ponPoffStr[i].lOnPonExe);
             if (ign[i] == 1) {
-                lossOfSupplyLong[i].setText("/");
                 htmlWriter.write("<td>/</td>");
                 continue;
             }
             if (ss < 6) {
-                lossOfSupplyLong[i].setText(PoffL[ss]);
                 htmlWriter.write("<td>" + PoffL[ss] + "</td>");
             } else {
-                lossOfSupplyLong[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
         }
@@ -1872,7 +1522,6 @@ private WebView webView;
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Switching delay - min</th>");
         for (int i = 0; i < 4; i++) {
-            switchDelayMin[i].setText(GetHMSfromInt(ponPoffStr[i].TminSwdly));
             htmlWriter.write("<td>" + GetHMSfromInt(ponPoffStr[i].TminSwdly) + "</td>");
 
         }
@@ -1881,7 +1530,6 @@ private WebView webView;
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Switching delay - max</th>");
         for (int i = 0; i < 4; i++) {
-            switchDelayMax[i].setText(GetHMSfromInt(ponPoffStr[i].TrndSwdly));
             htmlWriter.write("<td>" + GetHMSfromInt(ponPoffStr[i].TrndSwdly) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -1889,7 +1537,6 @@ private WebView webView;
         htmlWriter.write("<tr>");
         htmlWriter.write("<th> Scheduled switching activation delay</th>");
         for (int i = 0; i < 4; i++) {
-            schedSwitchActDel[i].setText(GetHMSfromInt(ponPoffStr[i].TBlockPrePro));
             htmlWriter.write("<td>" + GetHMSfromInt(ponPoffStr[i].TBlockPrePro) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -1899,10 +1546,8 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             byte ss = (byte) ponPoffStr[i].OnPoffExe;
             if (ss < 3) {
-                lossOfSupplyAction[i].setText(PoffAct[ss]);
                 htmlWriter.write("<td>" + PoffAct[ss] + "</td>");
             } else {
-                lossOfSupplyAction[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
         }
@@ -1924,7 +1569,6 @@ private WebView webView;
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Absence time</th>");
         for (int i = 0; i < 4; i++) {
-            absenceTime[i].setText(GetHMSfromInt(tlgAbstrs[i].TDetect));
             htmlWriter.write("<td>" + GetHMSfromInt(tlgAbstrs[i].TDetect) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -1933,10 +1577,8 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             byte ss = tlgAbstrs[i].RestOn;
             if (ss < 0x0F) {
-                resetTimer[i].setText(rst[ss]);
                 htmlWriter.write("<td>" + rst[ss] + "</td>");
             } else {
-                resetTimer[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
         }
@@ -1946,10 +1588,8 @@ private WebView webView;
 
         for (int i = 0; i < 4; i++) {
             if ((tlgAbstrs[i].OnRes & 0x01) != 0) {
-                onTimeRestartEvent[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                onTimeRestartEvent[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -1961,10 +1601,8 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             byte ss = (byte) (tlgAbstrs[i].OnTaExe & 0x0F);
             if (ss < 0x0F) {
-                action[i].setText(act[ss]);
                 htmlWriter.write("<td>" + act[ss] + "</td>");
             } else {
-                action[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
         }
@@ -1973,10 +1611,8 @@ private WebView webView;
         htmlWriter.write("<th>Learn function disabled</th>");
         for (int i = 0; i < 4; i++) {
             if ((tlgAbstrs[i].OnTaExe & TLGA_ON_DISLRN) != 0) {
-                learnFunctionDisabled[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                learnFunctionDisabled[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -1999,10 +1635,8 @@ private WebView webView;
         htmlWriter.write("<th>Learn period</th>");
         for (int i = 0; i < 4; i++) {
             if ((strLoadMng[i].Status & LEARN_7DAYS_MASK) == 0) {
-                learnPeriod[i].setText("24 h");
                 htmlWriter.write("<td>24 h</td>");
             } else {
-                learnPeriod[i].setText("7 days");
                 htmlWriter.write("<td>7 days</td>");
             }
         }
@@ -2012,13 +1646,10 @@ private WebView webView;
 
         for (int i = 0; i < 4; i++) {
             if ((strLoadMng[i].RelPos & LEARN_R_ON_MASK) != 0) {
-                position[i].setText("a");
                 htmlWriter.write("<td>a</td>");
             } else if ((strLoadMng[i].RelPos & LEARN_R_OFF_MASK) != 0) {
-                position[i].setText("b");
                 htmlWriter.write("<td>b</td>");
             } else {
-                position[i].setText("XX");
                 htmlWriter.write("<td>XX</td>");
             }
         }
@@ -2028,7 +1659,6 @@ private WebView webView;
 
 
         for (int i = 0; i < 4; i++) {
-            minTV[i].setText(GetHMfromInt(strLoadMng[i].TPosMin));
             htmlWriter.write("<td>" + GetHMfromInt(strLoadMng[i].TPosMin) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -2036,7 +1666,6 @@ private WebView webView;
         htmlWriter.write("<th>Max</th>");
 
         for (int i = 0; i < 4; i++) {
-            maxTV[i].setText(GetHMfromInt(strLoadMng[i].TPosMax));
             htmlWriter.write("<td>" + GetHMfromInt(strLoadMng[i].TPosMax) + "</td>");
         }
         htmlWriter.write("</tr>");
@@ -2058,10 +1687,8 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             int msk = 0x80 >> i;
             if ((oprij.VOpRe.StaPrij & msk) != 0) {
-                relayInstalled[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                relayInstalled[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
         }
@@ -2072,10 +1699,8 @@ private WebView webView;
         for (int i = 0; i < 4; i++) {
             int msk = 0x80 >> i;
             if ((oprij.PolUKRe & msk) != 0) {
-                invertedLogic[i].setText("Yes");
                 htmlWriter.write("<td>Yes</td>");
             } else {
-                invertedLogic[i].setText("No");
                 htmlWriter.write("<td>No</td>");
             }
 
@@ -2087,150 +1712,6 @@ private WebView webView;
 
         //Work schedules
 
-
-        TableRow workSchedTitleTR1 = new TableRow(this);
-        TableRow workSchedTitleTR2 = new TableRow(this);
-        TableRow workSchedTitleTR3 = new TableRow(this);
-
-        TextView workSchedTitleTV1 = new TextView(this);
-        TextView workSchedTitleTV2 = new TextView(this);
-        TextView workSchedTitleTV3 = new TextView(this);
-
-
-
-
-
-        workSchedTitleTV1.setTextSize(16);
-        workSchedTitleTV1.setText("Work schedules - Time pairs Relay 1");
-        workSchedTitleTV1.setBackgroundResource(R.color.colorPrimary);
-        workSchedTitleTV1.setLayoutParams(paramsExample);
-
-
-        workSchedTitleTV2.setTextSize(16);
-        workSchedTitleTV2.setText("Work schedules - Time pairs Relay 2");
-        workSchedTitleTV2.setBackgroundResource(R.color.colorPrimary);
-        workSchedTitleTV2.setLayoutParams(paramsExample);
-
-        workSchedTitleTV3.setTextSize(16);
-        workSchedTitleTV3.setText("Work schedules - Time pairs Relay 3");
-        workSchedTitleTV3.setBackgroundResource(R.color.colorPrimary);
-        workSchedTitleTV3.setLayoutParams(paramsExample);
-
-        workSchedTitleTR1.addView(workSchedTitleTV1);
-        workSchedTitleTR2.addView(workSchedTitleTV2);
-        workSchedTitleTR3.addView(workSchedTitleTV3);
-
-
-        TableRow workSchedColumnTR1 = new TableRow(this);
-        TextView workSchedTest11 = new TextView(this);
-        workSchedTest11.setTextSize(16);
-        workSchedTest11.setText("Work Schedulestest1");
-        workSchedTest11.setBackgroundResource(R.color.colorPrimaryDark);
-        workSchedTest11.setLayoutParams(paramsExample);
-
-        TextView timePair11 = new TextView(this);
-        timePair11.setTextSize(16);
-        timePair11.setText("Time pair test2");
-        timePair11.setBackgroundResource(R.color.colorPrimaryDark);
-        timePair11.setLayoutParams(paramsExample);
-        TextView TaTest11 = new TextView(this);
-        TaTest11.setTextSize(16);
-        TaTest11.setText("T- a test3");
-        TaTest11.setBackgroundResource(R.color.colorPrimaryDark);
-        TaTest11.setLayoutParams(paramsExample);
-        TextView TbTest11 = new TextView(this);
-        TbTest11.setTextSize(16);
-        TbTest11.setText("T- b test4");
-        TbTest11.setBackgroundResource(R.color.colorPrimaryDark);
-        TbTest11.setLayoutParams(paramsExample);
-        workSchedColumnTR1.addView(workSchedTest11);
-        workSchedColumnTR1.addView(timePair11);
-        workSchedColumnTR1.addView(TaTest11);
-        workSchedColumnTR1.addView(TbTest11);
-
-
-        TableRow workSchedColumnTR2 = new TableRow(this);
-        TextView workSchedTest12 = new TextView(this);
-        workSchedTest12.setTextSize(16);
-        workSchedTest12.setText("Work Schedulestest1");
-        workSchedTest12.setBackgroundResource(R.color.colorPrimaryDark);
-        workSchedTest12.setLayoutParams(paramsExample);
-        TextView timePair12 = new TextView(this);
-        timePair12.setTextSize(16);
-        timePair12.setText("Time pair test2");
-        timePair12.setBackgroundResource(R.color.colorPrimaryDark);
-        timePair12.setLayoutParams(paramsExample);
-        TextView TaTest12 = new TextView(this);
-        TaTest12.setTextSize(16);
-        TaTest12.setText("T- a test3");
-        TaTest12.setBackgroundResource(R.color.colorPrimaryDark);
-        TaTest12.setLayoutParams(paramsExample);
-        TextView TbTest12 = new TextView(this);
-        TbTest12.setTextSize(16);
-        TbTest12.setText("T- b test4");
-        TbTest12.setBackgroundResource(R.color.colorPrimaryDark);
-        TbTest12.setLayoutParams(paramsExample);
-        workSchedColumnTR2.addView(workSchedTest12);
-        workSchedColumnTR2.addView(timePair12);
-        workSchedColumnTR2.addView(TaTest12);
-        workSchedColumnTR2.addView(TbTest12);
-
-
-        TableRow workSchedColumnTR3 = new TableRow(this);
-        TextView workSchedTest13 = new TextView(this);
-        workSchedTest13.setTextSize(16);
-        workSchedTest13.setText("Work Schedulestest1");
-        workSchedTest13.setBackgroundResource(R.color.colorPrimaryDark);
-        workSchedTest13.setLayoutParams(paramsExample);
-        TextView timePair13 = new TextView(this);
-        timePair13.setTextSize(16);
-        timePair13.setText("Time pair test2");
-        timePair13.setBackgroundResource(R.color.colorPrimaryDark);
-        timePair13.setLayoutParams(paramsExample);
-        TextView TaTest13 = new TextView(this);
-        TaTest13.setTextSize(16);
-        TaTest13.setText("T- a test3");
-        TaTest13.setBackgroundResource(R.color.colorPrimaryDark);
-        TaTest13.setLayoutParams(paramsExample);
-        TextView TbTest13 = new TextView(this);
-        TbTest13.setTextSize(16);
-        TbTest13.setText("T- b test4");
-        TbTest13.setBackgroundResource(R.color.colorPrimaryDark);
-        TbTest13.setLayoutParams(paramsExample);
-        workSchedColumnTR3.addView(workSchedTest13);
-        workSchedColumnTR3.addView(timePair13);
-        workSchedColumnTR3.addView(TaTest13);
-        workSchedColumnTR3.addView(TbTest13);
-
-        TableRow[] workSchedulesRow = new TableRow[4];
-        TableLayout[] workSchedulesLayout = new TableLayout[4];
-        for (int i = 0; i < 4; i++) {
-            workSchedulesRow[i] = new TableRow(this);
-            workSchedulesLayout[i] = new TableLayout(this);
-            workSchedulesRow[i].addView(workSchedulesLayout[i]);
-        }
-
-
-        TableRow[] timePairsTR = new TableRow[4];
-        TextView[][] timePairsTV = new TextView[4][10];
-
-        for (int i = 0; i < 10; i++) {
-            timePairsTV[0][i] = new TextView(this);
-            timePairsTV[1][i] = new TextView(this);
-            timePairsTV[2][i] = new TextView(this);
-            timePairsTV[3][i] = new TextView(this);
-
-            timePairsTV[0][i].setBackgroundResource(R.color.title);
-            timePairsTV[1][i].setBackgroundResource(R.color.title);
-            timePairsTV[2][i].setBackgroundResource(R.color.title);
-            timePairsTV[3][i].setBackgroundResource(R.color.title);
-
-            timePairsTV[0][i].setLayoutParams(paramsExample);
-            timePairsTV[1][i].setLayoutParams(paramsExample);
-            timePairsTV[2][i].setLayoutParams(paramsExample);
-            timePairsTV[3][i].setLayoutParams(paramsExample);
-
-        }
 
         //Work schedules - Time pairs Relay
 
@@ -2245,7 +1726,7 @@ private WebView webView;
             builderWorkSchedTimeDays[i] = new StringBuilder();
         }
 
-        showTimePairs(m_PProg_R1, m_PProg_R2, m_PProg_R3, m_PProg_R4, workTB1, workTB2, workTB3, builderWorkSchedTimePairs);
+        showTimePairs(m_PProg_R1, m_PProg_R2, m_PProg_R3, m_PProg_R4, builderWorkSchedTimePairs);
 
         //Work schedules - Time pairs Relay END
         for (int relej = 1; relej <= 4; relej++) {
@@ -2255,94 +1736,32 @@ private WebView webView;
             switch (relej) {
 
                 case 1:
-                    tableLayout.addView(workSchedTitleTR1);
                     break;
                 case 2:
-                    tableLayout.addView(workSchedTitleTR2);
                     break;
                 case 3:
-                    tableLayout.addView(workSchedTitleTR3);
                     break;
                 case 4:
                     break;
             }
 
-            timePairsTR[relej - 1] = new TableRow(this);
-            timePairsTV[relej - 1][0].setText("Work Schedules");
-            timePairsTV[relej - 1][1].setText("Active");
-
-
-            for (int kkk = 0; kkk < 8; kkk++) {
-                timePairsTV[relej - 1][kkk + 2].setText(schDays[kkk]);
-
-            }
-
-            for (int i = 0; i < 10; i++) {
-                timePairsTR[relej - 1].addView(timePairsTV[relej - 1][i]);
-            }
-            workSchedulesLayout[relej - 1].addView(timePairsTR[relej - 1]);
-            // tableLayout.addView(workSchedulesRow[relej-1]);
 
             //Work schedules - Time pairs Relay Days
 
-            GetRelAkProg(relej, workSchedulesLayout[relej - 1], workSchedulesRow[relej - 1], builderWorkSchedTimeDays);
+            GetRelAkProg(relej, builderWorkSchedTimeDays);
 
             //Work schedules - Time pairs Relay Days END
 
-            switch (relej) {
-                case 1:
-
-                    tableLayout.addView(workSchedColumnTR1);
-
-                    for (int j = 0; j < 50; j++) {
-                        if (workTB1[j] != null) {
-                            tableLayout.addView(workTB1[j]);
-                        }
-                    }
-                    break;
-                case 2:
-
-                    tableLayout.addView(workSchedColumnTR2);
-                    for (int i = 0; i < 50; i++) {
-                        if (workTB2[i] != null) {
-                            tableLayout.addView(workTB2[i]);
-                        }
-                    }
-                    break;
-                case 3:
-
-                    tableLayout.addView(workSchedColumnTR3);
-                    for (int i = 0; i < 50; i++) {
-                        if (workTB3[i] != null) {
-                            tableLayout.addView(workTB3[i]);
-                        }
-                    }
-                    break;
-                default:
-                    break;
-
-            }
 
         }
         //Work schedules - Time pairs Relay (DAYS) ispis
         for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<h2>Work schedules - Time pairs Relay "+(i+1)+"</h2>");
+            htmlWriter.write("<h2>Work schedules - Time pairs Relay " + (i + 1) + "</h2>");
             htmlWriter.write(builderWorkSchedTimeDays[i].toString());
             htmlWriter.write(builderWorkSchedTimePairs[i].toString());
         }
         //Work schedules - Time pairs Relay (DAYS) ispis
 
-        TableRow tbr = new TableRow(this);
-
-        TextView[] tx = new TextView[4];
-        for (int i = 0; i < 4; i++) {
-            tx[i] = new TextView(this);
-            tx[i].setText("test " + i);
-            //tx[i].setLayoutParams(params);
-            tx[i].setTextSize(17);
-            tbr.addView(tx[i]);
-        }
-        tableLayout.addView(tbr);
 
         //General
         DisplayGeneral(htmlWriter);
@@ -2357,36 +1776,10 @@ private WebView webView;
             htmlWriter.write("<h2>Switching delay</h2>");
             htmlWriter.write("<table>");
 
-            TableRow switchDelayTitleTR = new TableRow(this);
-            TextView switchDelayTitle = new TextView(this);
-            switchDelayTitleTR.addView(switchDelayTitle);
-            switchDelayTitle.setText("Switching delay");
-            switchDelayTitle.setLayoutParams(paramsExample);
-            switchDelayTitle.setBackgroundResource(R.color.title);
 
-            tableLayout.addView(switchDelayTitleTR);
-
-            TableRow switchingDelayRow = new TableRow(this);
-            TableLayout switchingDelayLayout = new TableLayout(this);
-            switchingDelayRow.addView(switchingDelayLayout);
-
-
-            TableRow switchDelayColumns = new TableRow(this);
-            TextView[] switchDelayColumnsTV = new TextView[5];
-            for (int i = 0; i < 5; i++) {
-                switchDelayColumnsTV[i] = new TextView(this);
-                switchDelayColumns.setLayoutParams(paramsExample);
-                switchDelayColumns.setBackgroundResource(R.color.title);
-                switchDelayColumns.addView(switchDelayColumnsTV[i]);
-
-            }
             htmlWriter.write("<tr>");
 
-            switchDelayColumnsTV[0].setText("");
-            switchDelayColumnsTV[1].setText("Relay 1");
-            switchDelayColumnsTV[2].setText("Relay 2");
-            switchDelayColumnsTV[3].setText("Relay 3");
-            switchDelayColumnsTV[4].setText("Relay 4");
+
             htmlWriter.write("<th></th>");
             htmlWriter.write("<th>Relay 1</th>");
             htmlWriter.write("<th>Relay 2</th>");
@@ -2395,80 +1788,40 @@ private WebView webView;
 
             htmlWriter.write("</tr>");
 
-            switchingDelayLayout.addView(switchDelayColumns);
-
-
-            TableRow[] switchDelayTR = new TableRow[4];
-            TextView[][] switchDelayTV = new TextView[4][5];
-            for (int i = 0; i < 4; i++) {
-                switchDelayTR[i] = new TableRow(this);
-                for (int j = 0; j < 5; j++) {
-                    switchDelayTV[i][j] = new TextView(this);
-                    switchDelayTV[i][j].setBackgroundResource(R.color.whiteColor);
-                    switchDelayTV[i][j].setLayoutParams(paramsExample);
-                    switchDelayTR[i].addView(switchDelayTV[i][j]);
-                }
-            }
-
-            switchDelayTV[0][0].setText("Delay a(hh:mm:ss)");
-            switchDelayTV[1][0].setText("Delay a(hh:mm:ss)");
-            switchDelayTV[2][0].setText("Delay b(hh:mm:ss)");
-            switchDelayTV[3][0].setText("Delay b(hh:mm:ss)");
-
-
-            switchDelayTV[0][1].setText(GetZatez(oprij.KlOpR1.KRelDela, 't'));
-            switchDelayTV[0][2].setText(GetZatez(oprij.KlOpR2.KRelDela, 't'));
-            switchDelayTV[0][3].setText(GetZatez(oprij.KlOpR3.KRelDela, 't'));
-            switchDelayTV[0][4].setText(GetZatez(oprij.KlOpR4.KRelDela, 't'));
 
             htmlWriter.write("<tr>");
             htmlWriter.write("<th>Delay a(hh:mm:ss)</th>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR1.KRelDela, 't')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR2.KRelDela, 't')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR3.KRelDela, 't')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR4.KRelDela, 't')+"</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDela, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDela, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDela, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDela, 't') + "</td>");
             htmlWriter.write("</tr>");
 
-
-            switchDelayTV[1][1].setText(GetZatez(oprij.KlOpR1.KRelDela, 'm'));
-            switchDelayTV[1][2].setText(GetZatez(oprij.KlOpR2.KRelDela, 'm'));
-            switchDelayTV[1][3].setText(GetZatez(oprij.KlOpR3.KRelDela, 'm'));
-            switchDelayTV[1][4].setText(GetZatez(oprij.KlOpR4.KRelDela, 'm'));
 
             htmlWriter.write("<tr>");
             htmlWriter.write("<th>Delay a(hh:mm:ss)</th>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR1.KRelDela, 'm')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR2.KRelDela, 'm')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR3.KRelDela, 'm')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR4.KRelDela, 'm')+"</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDela, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDela, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDela, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDela, 'm') + "</td>");
             htmlWriter.write("</tr>");
 
 
-            switchDelayTV[2][1].setText(GetZatez(oprij.KlOpR1.KRelDelb, 't'));
-            switchDelayTV[2][2].setText(GetZatez(oprij.KlOpR2.KRelDelb, 't'));
-            switchDelayTV[2][3].setText(GetZatez(oprij.KlOpR3.KRelDelb, 't'));
-            switchDelayTV[2][4].setText(GetZatez(oprij.KlOpR4.KRelDelb, 't'));
-
             htmlWriter.write("<tr>");
             htmlWriter.write("<th>Delay b(hh:mm:ss)</th>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR1.KRelDelb, 't')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR2.KRelDelb, 't')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR3.KRelDelb, 't')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR4.KRelDelb, 't')+"</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDelb, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDelb, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDelb, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDelb, 't') + "</td>");
             htmlWriter.write("</tr>");
 
 
-            switchDelayTV[3][1].setText(GetZatez(oprij.KlOpR1.KRelDelb, 'm'));
-            switchDelayTV[3][2].setText(GetZatez(oprij.KlOpR2.KRelDelb, 'm'));
-            switchDelayTV[3][3].setText(GetZatez(oprij.KlOpR3.KRelDelb, 'm'));
-            switchDelayTV[3][4].setText(GetZatez(oprij.KlOpR4.KRelDelb, 'm'));
-
             htmlWriter.write("<tr>");
             htmlWriter.write("<th>Delay b(hh:mm:ss)</th>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR1.KRelDelb, 'm')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR2.KRelDelb, 'm')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR3.KRelDelb, 'm')+"</td>");
-            htmlWriter.write("<td>"+GetZatez(oprij.KlOpR4.KRelDelb, 'm')+"</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDelb, 'm') + "</td>");
             htmlWriter.write("</tr>");
 
             htmlWriter.write("<table>");
@@ -2476,25 +1829,12 @@ private WebView webView;
             //Switching delay END
 
 
-
-            for (int i = 0; i < 4; i++) {
-                switchingDelayLayout.addView(switchDelayTR[i]);
-
-
-            }
-            tableLayout.addView(switchingDelayRow);
-
         }
 
         //Telegrami
         if (fVis_RefPrij) {
-            TableRow TRclassicTeleTitle = new TableRow(this);
-            TextView TitleClassicTele = new TextView(this);
-            TitleClassicTele.setText("Classic telegram");
             htmlWriter.write("<h2>Classic telegram</h2>");
             htmlWriter.write("<table>");
-            TRclassicTeleTitle.addView(TitleClassicTele);
-            tableLayout.addView(TRclassicTeleTitle);
 
             GetRasterHeadStringH(htmlWriter);
 
@@ -2502,28 +1842,23 @@ private WebView webView;
 
             GetRasterHeadStringBottom(htmlWriter);
 
-            GetRasterString(m_op50Prij.TlgRel1.Uk, 1, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel1.Isk, 1, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel1.Uk, 1, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel1.Isk, 1, 'b', htmlWriter);
 
-            GetRasterString(m_op50Prij.TlgRel2.Uk, 2, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel2.Isk, 2, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel2.Uk, 2, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel2.Isk, 2, 'b', htmlWriter);
 
-            GetRasterString(m_op50Prij.TlgRel3.Uk, 3, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel3.Isk, 3, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel3.Uk, 3, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel3.Isk, 3, 'b', htmlWriter);
 
-            GetRasterString(m_op50Prij.TlgRel4.Uk, 4, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel4.Isk, 4, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel4.Uk, 4, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel4.Isk, 4, 'b', htmlWriter);
             htmlWriter.write("</table>");
 
 
         }
 
         if (fVis_Cz96P) {
-            TableRow TRadditionalTeleTitle = new TableRow(this);
-            TextView TitleadditionalTele = new TextView(this);
-            TitleadditionalTele.setText("Additional telegrams");
-            TRadditionalTeleTitle.addView(TitleadditionalTele);
-            tableLayout.addView(TRadditionalTeleTitle);
 
             htmlWriter.write("<h2>Additional telegrams</h2>");
             htmlWriter.write("<table>");
@@ -2534,26 +1869,21 @@ private WebView webView;
 
             GetRasterHeadStringBottom(htmlWriter);
 
-            GetRasterString(m_op50Prij.tlg[0].Fn1.Cmd, 1, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.tlg[1].Fn1.Cmd, 1, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.tlg[0].Fn1.Cmd, 1, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[1].Fn1.Cmd, 1, 'b', htmlWriter);
 
-            GetRasterString(m_op50Prij.tlg[2].Fn1.Cmd, 2, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.tlg[3].Fn1.Cmd, 2, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.tlg[2].Fn1.Cmd, 2, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[3].Fn1.Cmd, 2, 'b', htmlWriter);
 
-            GetRasterString(m_op50Prij.tlg[4].Fn1.Cmd, 3, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.tlg[5].Fn1.Cmd, 3, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.tlg[4].Fn1.Cmd, 3, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[5].Fn1.Cmd, 3, 'b', htmlWriter);
 
-            GetRasterString(m_op50Prij.tlg[6].Fn1.Cmd, 4, 'a',htmlWriter);
-            GetRasterString(m_op50Prij.tlg[7].Fn1.Cmd, 4, 'b',htmlWriter);
+            GetRasterString(m_op50Prij.tlg[6].Fn1.Cmd, 4, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[7].Fn1.Cmd, 4, 'b', htmlWriter);
             htmlWriter.write("</table>");
 
         }
         if (fVis_RefPrij && fVis_Cz96P) {
-            TableRow TRsyncTeleTitle = new TableRow(this);
-            TextView TitlesyncTele = new TextView(this);
-            TitlesyncTele.setText("Synchronization telegrams");
-            TRsyncTeleTitle.addView(TitlesyncTele);
-            tableLayout.addView(TRsyncTeleTitle);
             htmlWriter.write("<h2>Synchronization telegrams</h2>");
             htmlWriter.write("<table>");
 
@@ -2564,18 +1894,13 @@ private WebView webView;
             GetRasterHeadStringBottom(htmlWriter);
 
             for (int i = 0; i < 5; i++) {
-                GetRasterStringSync(m_TelegSync[i].Cmd, i,htmlWriter);
+                GetRasterStringSync(m_TelegSync[i].Cmd, i, htmlWriter);
             }
             htmlWriter.write("</table>");
 
         }
 
         if (fVis_RefPrij && fVis_Cz96P) {
-            TableRow TRsyncTeleTitle = new TableRow(this);
-            TextView TitlesyncTele = new TextView(this);
-            TitlesyncTele.setText("Synchronization telegrams - day of the week");
-            TRsyncTeleTitle.addView(TitlesyncTele);
-            tableLayout.addView(TRsyncTeleTitle);
             htmlWriter.write("<h2>Synchronization telegrams - day of the week</h2>");
             htmlWriter.write("<table>");
 
@@ -2587,7 +1912,7 @@ private WebView webView;
             GetRasterHeadStringBottom(htmlWriter);
 
             for (int i = 0; i < 8; i++) {
-                GetRasterString(m_TlgFnD[i].Cmd, i, 'a',htmlWriter);
+                GetRasterString(m_TlgFnD[i].Cmd, i, 'a', htmlWriter);
             }
             htmlWriter.write("</table>");
 
@@ -2607,13 +1932,6 @@ private WebView webView;
         }
 
         //Logic function
-        TableRow logicFunctionsTR = new TableRow(this);
-        TextView logicFunctionsTV = new TextView(this);
-        logicFunctionsTV.setText("Logic functions");
-        logicFunctionsTV.setLayoutParams(paramsExample);
-        logicFunctionsTV.setBackgroundResource(R.color.title);
-        logicFunctionsTR.addView(logicFunctionsTV);
-        tableLayout.addView(logicFunctionsTR);
         htmlWriter.write("<h2>Logic function</h2>");
 
 
@@ -2621,30 +1939,8 @@ private WebView webView;
         //Logic function END
 
         if (fVis_Realoc) {
-            TableRow[] relaySwitchAssignTR = new TableRow[11];
-            TextView[][] relaySwitchAssignTV = new TextView[11][5];
-
-            for (int i = 0; i < 11; i++) {
-                relaySwitchAssignTR[i] = new TableRow(this);
-                for (int j = 0; j < 5; j++) {
-
-                    relaySwitchAssignTV[i][j] = new TextView(this);
-                    relaySwitchAssignTR[i].addView(relaySwitchAssignTV[i][j]);
-                    if (i > 2) {
-                        relaySwitchAssignTV[i][j].setBackgroundResource(R.color.whiteColor);
-                        relaySwitchAssignTV[i][j].setLayoutParams(paramsExample);
 
 
-                    }
-                }
-            }
-
-            relaySwitchAssignTV[0][0].setText("Relay switching assignment");
-            relaySwitchAssignTV[0][0].setLayoutParams(paramsExample);
-            relaySwitchAssignTV[0][0].setBackgroundResource(R.color.title);//title
-            relaySwitchAssignTV[1][1].setText("Relay switching assignment");
-            relaySwitchAssignTV[1][1].setLayoutParams(paramsExample);
-            relaySwitchAssignTV[1][1].setBackgroundResource(R.color.title);//tableTittle
             htmlWriter.write("<h2>Relay switching assignment</h2>");
             htmlWriter.write("<table>");
             htmlWriter.write("<tr>");
@@ -2656,8 +1952,7 @@ private WebView webView;
             htmlWriter.write("<tr>");
             htmlWriter.write("<th></th>");
             for (int i = 1; i < 5; i++) {
-                relaySwitchAssignTV[2][i].setText(String.format("Relay %d", i));
-                htmlWriter.write("<th>"+String.format("Relay %d", i)+"</th>");
+                htmlWriter.write("<th>" + String.format("Relay %d", i) + "</th>");
             }
             htmlWriter.write("</tr>");
 
@@ -2665,20 +1960,15 @@ private WebView webView;
             int x = 3;
             for (int i = 0; i < 4; i++) {
                 htmlWriter.write("<tr>");
-                relaySwitchAssignTV[x][0].setText(String.format("Relay %d a", i + 1));
-                htmlWriter.write("<th>"+String.format("Relay %d a", i + 1)+"</th>");
+                htmlWriter.write("<th>" + String.format("Relay %d a", i + 1) + "</th>");
 
-                relaySwitchAssignTV[x][1].setText(PPRealoc(i, 1, m_Realloc[i].rel_on));
-                htmlWriter.write("<td>"+PPRealoc(i, 1, m_Realloc[i].rel_on)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 1, m_Realloc[i].rel_on) + "</td>");
 
-                relaySwitchAssignTV[x][2].setText(PPRealoc(i, 2, m_Realloc[i].rel_on));
-                htmlWriter.write("<td>"+PPRealoc(i, 2, m_Realloc[i].rel_on)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 2, m_Realloc[i].rel_on) + "</td>");
 
-                relaySwitchAssignTV[x][3].setText(PPRealoc(i, 3, m_Realloc[i].rel_on));
-                htmlWriter.write("<td>"+PPRealoc(i, 3, m_Realloc[i].rel_on)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 3, m_Realloc[i].rel_on) + "</td>");
 
-                relaySwitchAssignTV[x][4].setText(PPRealoc(i, 4, m_Realloc[i].rel_on));
-                htmlWriter.write("<td>"+PPRealoc(i, 4, m_Realloc[i].rel_on)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 4, m_Realloc[i].rel_on) + "</td>");
 
 
                 htmlWriter.write("</tr>");
@@ -2687,20 +1977,15 @@ private WebView webView;
 
                 htmlWriter.write("<tr>");
 
-                relaySwitchAssignTV[x][0].setText(String.format("Relay %d b", i + 1));
-                htmlWriter.write("<th>"+String.format("Relay %d b", i + 1)+"</th>");
+                htmlWriter.write("<th>" + String.format("Relay %d b", i + 1) + "</th>");
 
-                relaySwitchAssignTV[x][1].setText(PPRealoc(i, 1, m_Realloc[i].rel_of));
-                htmlWriter.write("<td>"+PPRealoc(i, 1, m_Realloc[i].rel_of)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 1, m_Realloc[i].rel_of) + "</td>");
 
-                relaySwitchAssignTV[x][2].setText(PPRealoc(i, 2, m_Realloc[i].rel_of));
-                htmlWriter.write("<td>"+PPRealoc(i, 2, m_Realloc[i].rel_of)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 2, m_Realloc[i].rel_of) + "</td>");
 
-                relaySwitchAssignTV[x][3].setText(PPRealoc(i, 3, m_Realloc[i].rel_of));
-                htmlWriter.write("<td>"+PPRealoc(i, 3, m_Realloc[i].rel_of)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 3, m_Realloc[i].rel_of) + "</td>");
 
-                relaySwitchAssignTV[x][4].setText(PPRealoc(i, 4, m_Realloc[i].rel_of));
-                htmlWriter.write("<td>"+PPRealoc(i, 4, m_Realloc[i].rel_of)+"</td>");
+                htmlWriter.write("<td>" + PPRealoc(i, 4, m_Realloc[i].rel_of) + "</td>");
 
                 htmlWriter.write("</tr>");
 
@@ -2710,9 +1995,6 @@ private WebView webView;
 
             htmlWriter.write("</table>");
 
-            for (int i = 0; i < 11; i++) {
-                tableLayout.addView(relaySwitchAssignTR[i]);
-            }
         }
 
 
@@ -2720,46 +2002,23 @@ private WebView webView;
 
     private void GetRelInterLock(OutputStreamWriter htmlWriter) throws IOException {
 
-    htmlWriter.write("<table>");
-        TableRow[] logicFuncTR = new TableRow[6];
-        TextView[][] logicFuncTV = new TextView[6][2];
-
-        for (int i = 0; i < 6; i++) {
-            logicFuncTR[i] = new TableRow(this);
-            for (int j = 0; j < 2; j++) {
-
-                logicFuncTV[i][j] = new TextView(this);
-                logicFuncTR[i].addView(logicFuncTV[i][j]);
-            }
-        }
+        htmlWriter.write("<table>");
 
 
         for (int rel = 0; rel < 3 * 2; rel++) {
             int cfg = m_RelInterLock[rel].PcCnfg[0];
             String res = UnPackLadderSTR(rel, cfg);
             if (rel < 3) {
-                logicFuncTV[rel][0].setText(String.format("R%d %s", rel + 1, "a"));
-                logicFuncTV[rel][0].setLayoutParams(paramsExample);
-                logicFuncTV[rel][0].setBackgroundResource(R.color.title);
-                logicFuncTV[rel][1].setText(res);
-                logicFuncTV[rel][1].setLayoutParams(paramsExample);
-                logicFuncTV[rel][1].setBackgroundResource(R.color.whiteColor);
-                htmlWriter.write("<tr><th>"+String.format("R%d %s", rel + 1, "a")+"</th><td>"+res+"</td></tr>");
+
+                htmlWriter.write("<tr><th>" + String.format("R%d %s", rel + 1, "a") + "</th><td>" + res + "</td></tr>");
 
             } else {
-                logicFuncTV[rel][0].setText(String.format("R%d %s", rel % 3 + 1, "b"));
-                logicFuncTV[rel][0].setLayoutParams(paramsExample);
-                logicFuncTV[rel][0].setBackgroundResource(R.color.title);
-                logicFuncTV[rel][1].setText(res);
-                logicFuncTV[rel][1].setLayoutParams(paramsExample);
-                logicFuncTV[rel][1].setBackgroundResource(R.color.whiteColor);
-                htmlWriter.write("<tr><th>"+String.format("R%d %s", rel % 3 + 1, "b")+"</th><td>"+res+"</td></tr>");
+
+                htmlWriter.write("<tr><th>" + String.format("R%d %s", rel % 3 + 1, "b") + "</th><td>" + res + "</td></tr>");
 
             }
         }
-        for (int i = 0; i < 6; i++) {
-            tableLayout.addView(logicFuncTR[i]);
-        }
+
         htmlWriter.write("</table>");
     }
 
@@ -2869,54 +2128,20 @@ private WebView webView;
         return res;
     }
 
-    private void dispTimePairs() {
-        TableRow[] timePairsTR = new TableRow[4];
-        TextView[][] timePairsTV = new TextView[4][10];
 
-        for (int i = 0; i < 10; i++) {
-            timePairsTV[0][i] = new TextView(this);
-            timePairsTV[1][i] = new TextView(this);
-            timePairsTV[2][i] = new TextView(this);
-            timePairsTV[3][i] = new TextView(this);
-
-        }
-        for (int relej = 1; relej <= 4; relej++) {
-            if ((oprij.VOpRe.StaPrij & (0x80 >> (relej - 1))) == 0) {
-                continue;
-            }
-            timePairsTR[relej - 1] = new TableRow(this);
-            timePairsTV[relej - 1][0].setText("Work Schedules");
-            timePairsTV[relej - 1][1].setText("Active");
-
-            for (int kkk = 0; kkk < 8; kkk++) {
-                timePairsTV[relej - 1][kkk + 2].setText(schDays[kkk]);
-            }
-
-            for (int i = 0; i < 10; i++) {
-                timePairsTR[relej - 1].addView(timePairsTV[relej - 1][i]);
-            }
-            tableLayout.addView(timePairsTR[relej - 1]);
-
-            //  GetRelAkProg(relej);
-
-        }
-    }
-
-    private void GetRelAkProg(int brrel, TableLayout workSchedulesLayout, TableRow workSchedulesRow, StringBuilder[] builderWorkSchedTimeDays) throws IOException {
+    private void GetRelAkProg(int brrel, StringBuilder[] builderWorkSchedTimeDays) throws IOException {
         String strItem, strx, r, tmps;
         String adani[] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Ho."};
 
-        TableRow[] relAkProgTR = new TableRow[16];
 
-        TextView[][] relAkProTV = new TextView[16][10];
         String[] temp = new String[8];
-        builderWorkSchedTimeDays[brrel-1].append("<table>");
-        builderWorkSchedTimeDays[brrel-1].append("<tr>");
-        builderWorkSchedTimeDays[brrel-1].append("<th>Work Schedules</th>");
-        builderWorkSchedTimeDays[brrel-1].append("<th>Active</th>");
+        builderWorkSchedTimeDays[brrel - 1].append("<table>");
+        builderWorkSchedTimeDays[brrel - 1].append("<tr>");
+        builderWorkSchedTimeDays[brrel - 1].append("<th>Work Schedules</th>");
+        builderWorkSchedTimeDays[brrel - 1].append("<th>Active</th>");
 
         for (String s : adani) {
-            builderWorkSchedTimeDays[brrel-1].append("<th>" + s + "</th>");
+            builderWorkSchedTimeDays[brrel - 1].append("<th>" + s + "</th>");
 
         }
 
@@ -2924,188 +2149,114 @@ private WebView webView;
         for (int pItem = 0; pItem < 16; pItem++) {
             Opprog PrPro;
             int AkPro;
-            relAkProgTR[pItem] = new TableRow(this);
 
 
             switch (brrel) {
                 case 1:
                     if (m_PProg_R1[pItem].AkTim != 0) {
 
-                        builderWorkSchedTimeDays[brrel-1].append("<tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<tr>");
 
 
-                        for (int cntTemp = 0; cntTemp < 10; cntTemp++) {
-                            relAkProTV[pItem][cntTemp] = new TextView(this);
-                            relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
-                        }
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (pItem + 1) + "</td>");
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (pItem + 1) + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
 
-
-                        relAkProTV[pItem][0].setText(String.format("%d", pItem + 1));
-                        relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][0].setLayoutParams(paramsExample);
-
-                        relAkProTV[pItem][1].setText(((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No");
-                        relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                         for (int iItem = 7; iItem >= 0; iItem--) {
                             if ((bVtmask[iItem] & (m_PProg_R1[pItem].DanPr)) != 0) {
-                                relAkProTV[pItem][9 - iItem].setText("+");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
                                 temp[iItem] = "+";
 
                             } else {
-                                relAkProTV[pItem][9 - iItem].setText("-");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
                                 temp[iItem] = "-";
 
                             }
 
                         }
                         for (int i = 7; i >= 0; i--) {
-                            builderWorkSchedTimeDays[brrel-1].append("<td>" + temp[i] + "</td>");
+                            builderWorkSchedTimeDays[brrel - 1].append("<td>" + temp[i] + "</td>");
                         }
-                        builderWorkSchedTimeDays[brrel-1].append("</tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("</tr>");
 
                     }
-                    workSchedulesLayout.addView(relAkProgTR[pItem]);
                     break;
                 case 2:
                     if (m_PProg_R2[pItem].AkTim != 0) {
-                        builderWorkSchedTimeDays[brrel-1].append("<tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<tr>");
 
 
                         for (int cntTemp = 0; cntTemp < 10; cntTemp++) {
-                            relAkProTV[pItem][cntTemp] = new TextView(this);
-                            relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
                         }
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (pItem + 1) + "</td>");
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (pItem + 1) + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
 
-
-                        relAkProTV[pItem][0].setText(String.format("%d", pItem + 1));
-                        relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][0].setLayoutParams(paramsExample);
-
-                        relAkProTV[pItem][1].setText(((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No");
-                        relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                         for (int iItem = 7; iItem >= 0; iItem--) {
                             if ((bVtmask[iItem] & (m_PProg_R2[pItem].DanPr)) != 0) {
-                                relAkProTV[pItem][9 - iItem].setText("+");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
+
                                 temp[iItem] = "+";
                             } else {
-                                relAkProTV[pItem][9 - iItem].setText("-");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
+
                                 temp[iItem] = "-";
                             }
                         }
                         for (int i = 7; i >= 0; i--) {
-                            builderWorkSchedTimeDays[brrel-1].append("<td>" + temp[i] + "</td>");
+                            builderWorkSchedTimeDays[brrel - 1].append("<td>" + temp[i] + "</td>");
                         }
-                        builderWorkSchedTimeDays[brrel-1].append("</tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("</tr>");
 
                     }
-                    workSchedulesLayout.addView(relAkProgTR[pItem]);
                     break;
 
                 case 3:
                     if (m_PProg_R3[pItem].AkTim != 0) {
-                        builderWorkSchedTimeDays[brrel-1].append("<tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<tr>");
 
 
-                        for (int cntTemp = 0; cntTemp < 10; cntTemp++) {
-                            relAkProTV[pItem][cntTemp] = new TextView(this);
-                            relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
-                        }
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (pItem + 1) + "</td>");
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (pItem + 1) + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
 
-
-                        relAkProTV[pItem][0].setText(String.format("%d", pItem + 1));
-                        relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][0].setLayoutParams(paramsExample);
-
-                        relAkProTV[pItem][1].setText(((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No");
-                        relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                         for (int iItem = 7; iItem >= 0; iItem--) {
                             if ((bVtmask[iItem] & (m_PProg_R3[pItem].DanPr)) != 0) {
-                                relAkProTV[pItem][9 - iItem].setText("+");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
                                 temp[iItem] = "+";
                             } else {
-                                relAkProTV[pItem][9 - iItem].setText("-");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
                                 temp[iItem] = "-";
                             }
                         }
                         for (int i = 7; i >= 0; i--) {
-                            builderWorkSchedTimeDays[brrel-1].append("<td>" + temp[i] + "</td>");
+                            builderWorkSchedTimeDays[brrel - 1].append("<td>" + temp[i] + "</td>");
                         }
-                        builderWorkSchedTimeDays[brrel-1].append("</tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("</tr>");
 
                     }
-                    workSchedulesLayout.addView(relAkProgTR[pItem]);
                     break;
 
                 case 4:
                     if (m_PProg_R4[pItem].AkTim != 0) {
-                        builderWorkSchedTimeDays[brrel-1].append("<tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<tr>");
 
 
-                        for (int cntTemp = 0; cntTemp < 10; cntTemp++) {
-                            relAkProTV[pItem][cntTemp] = new TextView(this);
-                            relAkProgTR[pItem].addView(relAkProTV[pItem][cntTemp]);
-                        }
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (pItem + 1) + "</td>");
-                        builderWorkSchedTimeDays[brrel-1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (pItem + 1) + "</td>");
+                        builderWorkSchedTimeDays[brrel - 1].append("<td>" + (((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No") + "</td>");
 
-
-                        relAkProTV[pItem][0].setText(String.format("%d", pItem + 1));
-                        relAkProTV[pItem][0].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][0].setLayoutParams(paramsExample);
-
-                        relAkProTV[pItem][1].setText(((iVtmask[pItem] & oprij.VOpRe.VAkProR1) != 0) ? "Yes" : "No");
-                        relAkProTV[pItem][1].setBackgroundResource(R.color.whiteColor);
-                        relAkProTV[pItem][1].setLayoutParams(paramsExample);
 
                         for (int iItem = 7; iItem >= 0; iItem--) {
                             if ((bVtmask[iItem] & (m_PProg_R4[pItem].DanPr)) != 0) {
-                                relAkProTV[pItem][9 - iItem].setText("+");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.whiteColor);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
                                 temp[iItem] = "+";
                             } else {
-                                relAkProTV[pItem][9 - iItem].setText("-");
-                                relAkProTV[pItem][9 - iItem].setBackgroundResource(R.color.colorGreen);
-                                relAkProTV[pItem][9 - iItem].setLayoutParams(paramsExample);
                                 temp[iItem] = "-";
                             }
                         }
                         for (int i = 7; i >= 0; i--) {
-                            builderWorkSchedTimeDays[brrel-1].append("<td>" + temp[i] + "</td>");
+                            builderWorkSchedTimeDays[brrel - 1].append("<td>" + temp[i] + "</td>");
                         }
-                        builderWorkSchedTimeDays[brrel-1].append("</tr>");
+                        builderWorkSchedTimeDays[brrel - 1].append("</tr>");
 
                     }
-                    workSchedulesLayout.addView(relAkProgTR[pItem]);
                     break;
             }
 
         }
-        tableLayout.addView(workSchedulesRow);
         builderWorkSchedTimeDays[brrel].append("</table>");
         System.out.println();                       //GRESKA GRESKA GRESKA
     }
@@ -3116,218 +2267,85 @@ private WebView webView;
         m_LogEnFlgs[1] = m_op50Prij.CLOGENFLGS[1];
 
 
-        TableRow[] eventLogTR = new TableRow[23];
-        for (int i = 0; i < 23; i++) {
-            eventLogTR[i] = new TableRow(this);
-        }
-        TextView title = new TextView(this);
-        title.setText("Event log");
-        eventLogTR[0].addView(title);
         htmlWriter.write("<h2>Event log</h2>");
         htmlWriter.write("<table>");
 
 
-        TextView[] eventLog = new TextView[40];
-        for (int i = 0; i < 40; i++) {
-            eventLog[i] = new TextView(this);
-            eventLog[i].setLayoutParams(paramsExample);
-            eventLog[i].setBackgroundResource(R.color.whiteColor);
-        }
-
-        eventLog[0].setText("Common Log");
-        eventLogTR[1].addView(eventLog[0]);
         htmlWriter.write("<tr><th colspan=\"2\" >Common Log</th></tr>");
-        eventLog[1].setText("Power on/off time");
-        eventLog[2].setText((m_LogEnFlgs[0] & SNE_POFF) != 0 ? "Yes" : "No");
-        eventLogTR[2].addView(eventLog[1]);
-        eventLogTR[2].addView(eventLog[2]);
-        htmlWriter.write("<tr><td>Power on/off time</td><td>"+((m_LogEnFlgs[0] & SNE_POFF) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Power on/off time</td><td>" + ((m_LogEnFlgs[0] & SNE_POFF) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-        eventLog[3].setText("Synchronization telegram - time");
-        eventLog[4].setText((m_LogEnFlgs[0] & SNE_SHT) != 0 ? "Yes" : "No");
-        eventLogTR[3].addView(eventLog[3]);
-        eventLogTR[3].addView(eventLog[4]);
-        htmlWriter.write("<tr><td>Synchronization telegram - tim</td><td>"+((m_LogEnFlgs[0] & SNE_SHT) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Synchronization telegram - tim</td><td>" + ((m_LogEnFlgs[0] & SNE_SHT) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[5].setText("Synchronization telegram - day");
-        eventLog[6].setText((m_LogEnFlgs[0] & SNE_SHD) != 0 ? "Yes" : "No");
-        eventLogTR[4].addView(eventLog[5]);
-        eventLogTR[4].addView(eventLog[6]);
-        htmlWriter.write("<tr><td>Synchronization telegram - day</td><td>"+((m_LogEnFlgs[0] & SNE_SHD) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Synchronization telegram - day</td><td>" + ((m_LogEnFlgs[0] & SNE_SHD) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-        eventLog[7].setText("Local change of time");
-        eventLog[8].setText((m_LogEnFlgs[0] & SNE_LSINH) != 0 ? "Yes" : "No");
-        eventLogTR[5].addView(eventLog[7]);
-        eventLogTR[5].addView(eventLog[8]);
-        htmlWriter.write("<tr><td>Local change of time</td><td>"+((m_LogEnFlgs[0] & SNE_LSINH) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Local change of time</td><td>" + ((m_LogEnFlgs[0] & SNE_LSINH) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-        eventLog[9].setText("RTC Log");
-        eventLogTR[6].addView(eventLog[9]);
         htmlWriter.write("<tr><th colspan=\"2\" >RTC Log</th></tr>");
 
 
-        eventLog[10].setText("Oscillator fail");
-        eventLog[11].setText((m_LogEnFlgs[0] & SNE_RTC_OF) != 0 ? "Yes" : "No");
-        eventLogTR[7].addView(eventLog[10]);
-        eventLogTR[7].addView(eventLog[11]);
-        htmlWriter.write("<tr><td>Oscillator fail</td><td>"+((m_LogEnFlgs[0] & SNE_RTC_OF) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Oscillator fail</td><td>" + ((m_LogEnFlgs[0] & SNE_RTC_OF) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[12].setText("RTC stop");
-        eventLog[13].setText((m_LogEnFlgs[0] & SNE_RTC_ST) != 0 ? "Yes" : "No");
-        eventLogTR[8].addView(eventLog[12]);
-        eventLogTR[8].addView(eventLog[13]);
-        htmlWriter.write("<tr><td>RTC stop</td><td>"+((m_LogEnFlgs[0] & SNE_RTC_ST) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>RTC stop</td><td>" + ((m_LogEnFlgs[0] & SNE_RTC_ST) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[14].setText("Battery low");
-        eventLog[15].setText((m_LogEnFlgs[0] & SNE_RTC_BL) != 0 ? "Yes" : "No");
-        eventLogTR[9].addView(eventLog[14]);
-        eventLogTR[9].addView(eventLog[15]);
-        htmlWriter.write("<tr><td>Battery low</td><td>"+((m_LogEnFlgs[0] & SNE_RTC_BL) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Battery low</td><td>" + ((m_LogEnFlgs[0] & SNE_RTC_BL) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[16].setText("Relay Log");
-        eventLogTR[10].addView(eventLog[16]);
         htmlWriter.write("<tr><th colspan=\"2\" >Relay Log</th></tr>");
 
 
-
-        eventLog[17].setText("Relay switched by telegram");
-        eventLog[18].setText((m_LogEnFlgs[1] & REL_ON) != 0 ? "Yes" : "No");
-        eventLogTR[11].addView(eventLog[17]);
-        eventLogTR[11].addView(eventLog[18]);
-        htmlWriter.write("<tr><td>Relay switched by telegram</td><td>"+((m_LogEnFlgs[1] & REL_ON) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Relay switched by telegram</td><td>" + ((m_LogEnFlgs[1] & REL_ON) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
+        htmlWriter.write("<tr><td>Relay switched by program</td><td>" + ((m_LogEnFlgs[1] & PRO_REL_X) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-        eventLog[19].setText("Relay switched by program");
-        eventLog[20].setText((m_LogEnFlgs[1] & PRO_REL_X) != 0 ? "Yes" : "No");
-        eventLogTR[12].addView(eventLog[19]);
-        eventLogTR[12].addView(eventLog[20]);
-        htmlWriter.write("<tr><td>Relay switched by program</td><td>"+((m_LogEnFlgs[1] & PRO_REL_X) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Start Wiper</td><td>" + ((m_LogEnFlgs[1] & REL_WIP_S) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[21].setText("Start Wiper");
-        eventLog[22].setText((m_LogEnFlgs[1] & REL_WIP_S) != 0 ? "Yes" : "No");
-        eventLogTR[13].addView(eventLog[21]);
-        eventLogTR[13].addView(eventLog[22]);
-        htmlWriter.write("<tr><td>Start Wiper</td><td>"+((m_LogEnFlgs[1] & REL_WIP_S) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>End Wiper</td><td>" + ((m_LogEnFlgs[1] & REL_WIP_R) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[23].setText("End Wiper");
-        eventLog[24].setText((m_LogEnFlgs[1] & REL_WIP_R) != 0 ? "Yes" : "No");
-        eventLogTR[14].addView(eventLog[23]);
-        eventLogTR[14].addView(eventLog[24]);
-        htmlWriter.write("<tr><td>End Wiper</td><td>"+((m_LogEnFlgs[1] & REL_WIP_R) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Telegram absence start</td><td>" + ((m_LogEnFlgs[1] & REL_TA_S) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[25].setText("Telegram absence start");
-        eventLog[26].setText((m_LogEnFlgs[1] & REL_TA_S) != 0 ? "Yes" : "No");
-        eventLogTR[15].addView(eventLog[25]);
-        eventLogTR[15].addView(eventLog[26]);
-        htmlWriter.write("<tr><td>Telegram absence start</td><td>"+((m_LogEnFlgs[1] & REL_TA_S) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Telegram absence restart</td><td>" + ((m_LogEnFlgs[1] & REL_TA_R) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
+        htmlWriter.write("<tr><td>Work schedule disabled</td><td>" + ((m_LogEnFlgs[1] & REL_PROBLOCK) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-        eventLog[27].setText("Telegram absence restart");
-        eventLog[28].setText((m_LogEnFlgs[1] & REL_TA_R) != 0 ? "Yes" : "No");
-        eventLogTR[16].addView(eventLog[27]);
-        eventLogTR[16].addView(eventLog[28]);
-        htmlWriter.write("<tr><td>Telegram absence restart</td><td>"+((m_LogEnFlgs[1] & REL_TA_R) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Work schedule enabled</td><td>" + ((m_LogEnFlgs[1] & REL_PROUNBLOCK) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-
-        eventLog[29].setText("Work schedule disabled");
-        eventLog[30].setText((m_LogEnFlgs[1] & REL_PROBLOCK) != 0 ? "Yes" : "No");
-        eventLogTR[17].addView(eventLog[29]);
-        eventLogTR[17].addView(eventLog[30]);
-        htmlWriter.write("<tr><td>Work schedule disabled</td><td>"+((m_LogEnFlgs[1] & REL_PROBLOCK) != 0 ? "Yes" : "No")+"</td></tr>");
-
-
-
-        eventLog[31].setText("Work schedule enabled");
-        eventLog[32].setText((m_LogEnFlgs[1] & REL_PROUNBLOCK) != 0 ? "Yes" : "No");
-        eventLogTR[18].addView(eventLog[31]);
-        eventLogTR[18].addView(eventLog[32]);
-        htmlWriter.write("<tr><td>Work schedule enabled</td><td>"+((m_LogEnFlgs[1] & REL_PROUNBLOCK) != 0 ? "Yes" : "No")+"</td></tr>");
-
-
-        eventLog[33].setText("Telegram Log");
-        eventLogTR[19].addView(eventLog[33]);
         htmlWriter.write("<tr><th colspan=\"2\" >Telegram Log</th></tr>");
 
 
-
-        eventLog[34].setText("Log all telegrams");
-        eventLog[35].setText((m_LogEnFlgs[0] & OPT_LOG_TLG) != 0 ? "Yes" : "No");
-        eventLogTR[20].addView(eventLog[34]);
-        eventLogTR[20].addView(eventLog[35]);
-        htmlWriter.write("<tr><td>Log all telegrams</td><td>"+((m_LogEnFlgs[0] & OPT_LOG_TLG) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Log all telegrams</td><td>" + ((m_LogEnFlgs[0] & OPT_LOG_TLG) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
+        htmlWriter.write("<tr><td>Log telegrams for this receiver</td><td>" + ((m_LogEnFlgs[0] & OPT_LOG_MYTLG) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-        eventLog[36].setText("Log telegrams for this receiver");
-        eventLog[37].setText((m_LogEnFlgs[0] & OPT_LOG_MYTLG) != 0 ? "Yes" : "No");
-        eventLogTR[21].addView(eventLog[36]);
-        eventLogTR[21].addView(eventLog[37]);
-        htmlWriter.write("<tr><td>Log telegrams for this receiver</td><td>"+((m_LogEnFlgs[0] & OPT_LOG_MYTLG) != 0 ? "Yes" : "No")+"</td></tr>");
+        htmlWriter.write("<tr><td>Log only telegrams which change the state</td><td>" + ((m_LogEnFlgs[0] & OPT_LOG_REPTLG) != 0 ? "Yes" : "No") + "</td></tr>");
 
 
-
-        eventLog[38].setText("Log only telegrams which change the state");
-        eventLog[39].setText((m_LogEnFlgs[0] & OPT_LOG_REPTLG) != 0 ? "Yes" : "No");
-        eventLogTR[22].addView(eventLog[38]);
-        eventLogTR[22].addView(eventLog[39]);
-        htmlWriter.write("<tr><td>Log only telegrams which change the state</td><td>"+((m_LogEnFlgs[0] & OPT_LOG_REPTLG) != 0 ? "Yes" : "No")+"</td></tr>");
-
-
-        for (int i = 0; i < 23; i++) {
-            tableLayout.addView(eventLogTR[i]);
-        }
         htmlWriter.write("</table>");
 
     }
 
-    private void GetRasterStringSync(TelegCMD t, int x,OutputStreamWriter htmlWriter) throws IOException {
-        TableRow telegramStatTR = new TableRow(this);
-        TextView[] emptyTv = new TextView[5];
-        for (int i = 0; i < 5; i++) {
-            emptyTv[i] = new TextView(this);
-            telegramStatTR.addView(emptyTv[i]);
-        }
-        TextView[] telegramStat = new TextView[50];
-        TextView unkwnTv = new TextView(this);
-        unkwnTv.setText("Unknown");
-        TextView rTv = new TextView(this);
-        rTv.setText(GetSyncTime(m_op50Prij.SinhTime[x], m_HWVerPri));
+    private void GetRasterStringSync(TelegCMD t, int x, OutputStreamWriter htmlWriter) throws IOException {
+
 
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Unknown</th>");
-        htmlWriter.write("<th>"+GetSyncTime(m_op50Prij.SinhTime[x], m_HWVerPri)+"</th>");
+        htmlWriter.write("<th>" + GetSyncTime(m_op50Prij.SinhTime[x], m_HWVerPri) + "</th>");
 
-        telegramStatTR.addView(unkwnTv);
-        telegramStatTR.addView(rTv);
-
-        for (int i = 0; i < 50; i++) {
-            telegramStat[i] = new TextView(this);
-            telegramStatTR.addView(telegramStat[i]);
-        }
 
         for (int ibimp = 0; ibimp < 50; ibimp++) {
             int nBitNumber = ibimp % 8;
@@ -3340,13 +2358,10 @@ private WebView webView;
                 break;
             }
             if (A != 0 && N != 0) {
-                telegramStat[ibimp].setText(" + ");
                 htmlWriter.write("<td class=\"impNeAkt\"><b>+</b></td>");
             } else if (A == 0 && N != 0) {
-                telegramStat[ibimp].setText(" - ");
                 htmlWriter.write("<td class=\"impAkt\"><b>-</b></td>");
             } else {
-                telegramStat[ibimp].setText("  ");
                 htmlWriter.write("<td class=\"impNeutr\"></td>");
 
             }
@@ -3354,7 +2369,6 @@ private WebView webView;
         }
         htmlWriter.write("</tr>");
 
-        tableLayout.addView(telegramStatTR);
 
     }
 
@@ -3387,33 +2401,13 @@ private WebView webView;
 
     }
 
-    private void GetRasterString(TelegCMD t, int num, char ch,OutputStreamWriter htmlWriter) throws IOException {
-        TableRow telegramStatTR = new TableRow(this);
-        TextView[] emptyTv = new TextView[5];
-        for (int i = 0; i < 5; i++) {
-            emptyTv[i] = new TextView(this);
-            telegramStatTR.addView(emptyTv[i]);
-        }
-        TextView[] telegramStat = new TextView[50];
-        TextView unkwnTv = new TextView(this);
-        unkwnTv.setText("Unknown");
-        TextView rTv = new TextView(this);
-        rTv.setText(String.format("R%d %c", num, ch));
+    private void GetRasterString(TelegCMD t, int num, char ch, OutputStreamWriter htmlWriter) throws IOException {
+
 
         htmlWriter.write("<tr>");
         htmlWriter.write("<th>Unknown</th>");
-        htmlWriter.write("<th>"+String.format("R%d %c", num, ch)+"</th>");
+        htmlWriter.write("<th>" + String.format("R%d %c", num, ch) + "</th>");
 
-        telegramStatTR.addView(unkwnTv);
-        telegramStatTR.addView(rTv);
-
-        for (int i = 0; i < 50; i++) {
-            telegramStat[i] = new TextView(this);
-
-            telegramStat[i].setBackgroundResource(R.color.whiteColor);
-            telegramStat[i].setLayoutParams(paramsExample);
-            telegramStatTR.addView(telegramStat[i]);
-        }
 
         for (int ibimp = 0; ibimp < 50; ibimp++) {
             int nBitNumber = ibimp % 8;
@@ -3426,139 +2420,59 @@ private WebView webView;
                 break;
             }
             if (A != 0 && N != 0) {
-                telegramStat[ibimp].setText(" + ");
                 htmlWriter.write("<td class=\"impNeAkt\"><b>+</b></td>");
-                telegramStat[ibimp].setBackgroundResource(R.color.colorRed);
             } else if (A == 0 && N != 0) {
-                telegramStat[ibimp].setText(" - ");
                 htmlWriter.write("<td class=\"impAkt\"><b>-</b></td>");
-                telegramStat[ibimp].setBackgroundResource(R.color.colorGreen);
             } else {
-                telegramStat[ibimp].setText("  ");
                 htmlWriter.write("<td class=\"impNeutr\"></td>");
             }
 
         }
         htmlWriter.write("</tr>");
 
-        tableLayout.addView(telegramStatTR);
 
     }
 
     private void GetRasterHeadStringH(OutputStreamWriter htmlWriter) throws IOException {
 
-        TableRow subTitle1TR = new TableRow(this);
-        TextView[] emptyTv = new TextView[5];
-        for (int i = 0; i < 5; i++) {
-            emptyTv[i] = new TextView(this);
-            subTitle1TR.addView(emptyTv[i]);
-        }
-        TextView[] subTitle1 = new TextView[20];
-        for (int i = 0; i < 20; i++) {
-            subTitle1[i] = new TextView(this);
-        }
+
         htmlWriter.write("<tr>");
 
 
-        //column spans
-        TableRow.LayoutParams twoColumnSpan = new TableRow.LayoutParams();
-        twoColumnSpan.span = 2;
-        twoColumnSpan.setMargins(3, 3, 3, 3);
-
-
-        TableRow.LayoutParams fourColumnSpan = new TableRow.LayoutParams();
-        fourColumnSpan.span = 4;
-        fourColumnSpan.setMargins(3, 3, 3, 3);
-
-        TableRow.LayoutParams eightColumnSpan = new TableRow.LayoutParams();
-        eightColumnSpan.span = 8;
-        eightColumnSpan.setMargins(3, 3, 3, 3);
-
-        subTitle1[2].setLayoutParams(fourColumnSpan);
-        subTitle1[3].setLayoutParams(eightColumnSpan);
-
-
-        //TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,TableRow.LayoutParams.WRAP_CONTENT);
-
-        for (int i = 4; i < 20; i++) {
-            subTitle1[i].setLayoutParams(twoColumnSpan);
-            subTitle1[i].setBackgroundResource(R.color.whiteColor);
-
-            // subTitle1[i].setLayoutParams(paramsExample);
-        }
-
-
-        subTitle1[0].setText("Name");
-        subTitle1[1].setText("Telegram");
-        subTitle1[2].setText("A");
-        subTitle1[3].setText("B");
         htmlWriter.write("<th>Name</th>");
         htmlWriter.write("<th>Telegram</th>");
         htmlWriter.write("<th colspan=\"4\">A</th>");
         htmlWriter.write("<th colspan=\"8\">B</th>");
 
 
-
-        subTitle1[0].setBackgroundResource(R.color.whiteColor);
-        subTitle1[1].setLayoutParams(paramsExample);
-        subTitle1[0].setLayoutParams(paramsExample);
-        subTitle1[1].setBackgroundResource(R.color.whiteColor);
-        subTitle1[2].setBackgroundResource(R.color.whiteColor);
-        subTitle1[3].setBackgroundResource(R.color.whiteColor);
-
-
         for (int i = 4; i < 20; i++) {
-            subTitle1[i].setText(String.format("DP%d", i - 3));
-            htmlWriter.write("<th colspan=\"2\">"+String.format("DP%d", i - 3)+"</th>");
+            htmlWriter.write("<th colspan=\"2\">" + String.format("DP%d", i - 3) + "</th>");
 
         }
 
-
-        for (int i = 0; i < 20; i++) {
-            subTitle1TR.addView(subTitle1[i]);
-        }
 
         htmlWriter.write("</tr>");
 
-        tableLayout.addView(subTitle1TR);
     }
 
     private void GetRasterHeadStringTop(OutputStreamWriter htmlWriter) throws IOException {
-        TableRow subTitleTopTR = new TableRow(this);
-        TextView[] emptyTv = new TextView[5];
-        for (int i = 0; i < 5; i++) {
-            emptyTv[i] = new TextView(this);
-            subTitleTopTR.addView(emptyTv[i]);
-        }
-        TextView[] subTitleTop1 = new TextView[46];
-        for (int i = 0; i < 46; i++) {
-            subTitleTop1[i] = new TextView(this);
-            subTitleTop1[i].setLayoutParams(paramsExample);
-            subTitleTop1[i].setBackgroundResource(R.color.whiteColor);
-        }
 
         htmlWriter.write("<tr>");
 
 
-        subTitleTop1[0].setText("");
-        subTitleTop1[1].setText("");
         htmlWriter.write("<th></th>");
         htmlWriter.write("<th></th>");
 
         for (int i = 1; i < 5; i++) {
-            subTitleTop1[i + 1].setText(String.format("%d ", i));
-            htmlWriter.write("<th>"+String.format("%d", i)+"</th>");
+            htmlWriter.write("<th>" + String.format("%d", i) + "</th>");
 
         }
 
         for (int i = 1; i < 9; i++) {
-            subTitleTop1[i + 5].setText(String.format("%d ", i));
-            htmlWriter.write("<th>"+String.format("%d", i)+"</th>");
+            htmlWriter.write("<th>" + String.format("%d", i) + "</th>");
         }
 
         for (int i = 14; i < 46; i += 2) {
-            subTitleTop1[i].setText("  Z ");
-            subTitleTop1[i + 1].setText("  V ");
             htmlWriter.write("<th>Z</th>");
             htmlWriter.write("<th>V</th>");
 
@@ -3566,52 +2480,26 @@ private WebView webView;
         }
 
 
-        for (int i = 0; i < 46; i++) {
-            subTitleTopTR.addView(subTitleTop1[i]);
-        }
-
-
         htmlWriter.write("<tr>");
 
-        tableLayout.addView(subTitleTopTR);
     }
 
     private void GetRasterHeadStringBottom(OutputStreamWriter htmlWriter) throws IOException {
-        TableRow subTitleBotTR = new TableRow(this);
 
-        TextView[] emptyTv = new TextView[5];
-        for (int i = 0; i < 5; i++) {
-            emptyTv[i] = new TextView(this);
-            subTitleBotTR.addView(emptyTv[i]);
-        }
-        TextView[] subTitleBot1 = new TextView[46];
-        for (int i = 0; i < 46; i++) {
-            subTitleBot1[i] = new TextView(this);
-            subTitleBot1[i].setBackgroundResource(R.color.whiteColor);
-            subTitleBot1[i].setLayoutParams(paramsExample);
-        }
         htmlWriter.write("<tr>");
 
 
-        subTitleBot1[0].setText("");
-        subTitleBot1[1].setText("");
         htmlWriter.write("<th></th>");
         htmlWriter.write("<th></th>");
 
 
         for (int i = 2; i < 46; i++) {
-            subTitleBot1[i].setText(String.format("%d", i - 1));
-            htmlWriter.write("<th>"+String.format("%d", i - 1)+"</th>");
+            htmlWriter.write("<th>" + String.format("%d", i - 1) + "</th>");
         }
 
-
-        for (int i = 0; i < 46; i++) {
-            subTitleBotTR.addView(subTitleBot1[i]);
-        }
 
         htmlWriter.write("</tr>");
 
-        tableLayout.addView(subTitleBotTR);
     }
 
     private String GetZatez(int zz, char NT) {
@@ -3663,84 +2551,7 @@ private WebView webView;
         m_Realloc[3].rel_of = 0x00;
 
     }
-/*
-    private byte GetRelSw(){
-        byte val = 0;
-        for (int uIndex = 0; uIndex < 4; uIndex++)
-        {
-            val <<=2;
-            val = val | (GetStatButon( &pRelBtnRow[uIndex])  & 3);
-            //	val <<=2;
-        }
-        return val;
-    }
 
-    private byte GetStatButon( CTStateSwitchBtn* pReallocRx)
-    {
-        if(!(pReallocRx->IsWindowEnabled()))return 0;
-        byte state = 0;
-        VARIANT vv=	pReallocRx->get_Value();
-        if(vv.vt == 1)
-        {
-            state = 0;
-        }
-        else if(vv.iVal == 0)
-        {
-            state = 1;
-        }
-        else
-        {
-            state = 2;
-        }
-        return (state);
-    }
-
-
-   private  void RefReallocRel()
-    {
-     //   static UINT aGrRRSTATIC[] = { IDC_STATIC_RR1,IDC_STATIC_RR2,IDC_STATIC_RR3,
-      //          IDC_STATIC_RRR1,IDC_STATIC_RRR2,IDC_STATIC_RRR3,IDC_STATIC_RRR4,
-      //          IDC_STATIC_RARU1,IDC_STATIC_RARU2,IDC_STATIC_RARU3,IDC_STATIC_RARU4,
-      //          IDC_STATIC_RARI1,IDC_STATIC_RARI2,IDC_STATIC_RARI3,IDC_STATIC_RARI4};
-
-        // static UINT aGrREALLOCR1U[] = {IDC_REALLOCR1UK4,IDC_REALLOCR1UK3,IDC_REALLOCR1UK2,IDC_REALLOCR1UK1};
-        // static UINT aGrREALLOCR1I[] = {IDC_REALLOCR1ISK4,IDC_REALLOCR1ISK3,IDC_REALLOCR1ISK2,IDC_REALLOCR1ISK1};
-        // static UINT aGrREALLOCR2U[] = {IDC_REALLOCR2UK4,IDC_REALLOCR2UK3,IDC_REALLOCR2UK2,IDC_REALLOCR2UK1};
-        // static UINT aGrREALLOCR2I[] = {IDC_REALLOCR2ISK4,IDC_REALLOCR2ISK3,IDC_REALLOCR2ISK2,IDC_REALLOCR2ISK1};
-        // static UINT aGrREALLOCR3U[] = {IDC_REALLOCR3UK4,IDC_REALLOCR3UK3,IDC_REALLOCR3UK2,IDC_REALLOCR3UK1};
-        // static UINT aGrREALLOCR3I[] = {IDC_REALLOCR3ISK4,IDC_REALLOCR3ISK3,IDC_REALLOCR3ISK2,IDC_REALLOCR3ISK1};
-        // static UINT aGrREALLOCR4U[] = {IDC_REALLOCR4UK4,IDC_REALLOCR4UK3,IDC_REALLOCR4UK2,IDC_REALLOCR4UK1};
-        // static UINT aGrREALLOCR4I[] = {IDC_REALLOCR4ISK4,IDC_REALLOCR4ISK3,IDC_REALLOCR4ISK2,IDC_REALLOCR4ISK1};
-
-     boolean fVisible=((m_SWVerPri) >= 82);
-
-     CWnd *pwnd;
-     for (int uIndex = 0; uIndex < SIZEOF_ARRAY(aGrRRSTATIC); uIndex++)
-     {
-         pwnd  = GetDlgItem(aGrRRSTATIC[uIndex]);
-         pwnd->ShowWindow(fVisible);
-     }
-
-
-        SetRelSw(mmCtlReAllocR1U,m_Realloc[0].rel_on,fVisible);
-
-        SetRelSw(mmCtlReAllocR1I,m_Realloc[0].rel_of,fVisible);
-
-        SetRelSw(mmCtlReAllocR2U,m_Realloc[1].rel_on,fVisible);
-
-        SetRelSw(mmCtlReAllocR2I,m_Realloc[1].rel_of,fVisible);
-
-
-        SetRelSw(mmCtlReAllocR3U,m_Realloc[2].rel_on,fVisible);
-
-        SetRelSw(mmCtlReAllocR3I,m_Realloc[2].rel_of,fVisible);
-
-
-        SetRelSw(mmCtlReAllocR4U,m_Realloc[3].rel_on,fVisible);
-
-        SetRelSw(mmCtlReAllocR4I,m_Realloc[3].rel_of,fVisible);
-    }
-*/
 
     private String GetHMSfromInt(int time) {
         int hh, mm, ss;
@@ -3770,7 +2581,7 @@ private WebView webView;
         return String.format("%02d:%02d:%02d", hh, mm, ss);
     }
 
-    private void showTimePairs(Opprog[] m_PProg_R1, Opprog[] m_PProg_R2, Opprog[] m_PProg_R3, Opprog[] m_PProg_R4, TableRow[] workTB1, TableRow[] workTB2, TableRow[] workTB3, StringBuilder[] builderWorkSchedTimePairs) throws IOException {
+    private void showTimePairs(Opprog[] m_PProg_R1, Opprog[] m_PProg_R2, Opprog[] m_PProg_R3, Opprog[] m_PProg_R4, StringBuilder[] builderWorkSchedTimePairs) throws IOException {
         if (fVis_Versacom) {
 
             for (int relej = 1; relej <= 4; relej++) {
@@ -3782,7 +2593,7 @@ private WebView webView;
                 builderWorkSchedTimePairs[relej - 1].append("<th>T- b test4</th>");
                 builderWorkSchedTimePairs[relej - 1].append("</tr>");
                 for (int rp = 0; rp < 16; rp++) {
-                    GetRelVremPar(relej, rp, m_PProg_R1, m_PProg_R2, m_PProg_R3, m_PProg_R4, workTB1, workTB2, workTB3, builderWorkSchedTimePairs[relej - 1]);
+                    GetRelVremPar(relej, rp, m_PProg_R1, m_PProg_R2, m_PProg_R3, m_PProg_R4, builderWorkSchedTimePairs[relej - 1]);
                 }
                 builderWorkSchedTimePairs[relej - 1].append("</table>");
             }
@@ -3791,8 +2602,7 @@ private WebView webView;
     }
 
     private void GetRelVremPar(int relej, int rp, Opprog[] m_PProg_R1, Opprog[] m_PProg_R2, Opprog[] m_PProg_R3,
-                               Opprog[] m_PProg_R4, TableRow[] workTB1, TableRow[] workTB2, TableRow[] workTB3,
-                               StringBuilder builderWorkSchedTimePairs) throws IOException {
+                               Opprog[] m_PProg_R4, StringBuilder builderWorkSchedTimePairs) throws IOException {
         int cnt = 0;
 
         switch (relej) {
@@ -3805,25 +2615,9 @@ private WebView webView;
 
                         builderWorkSchedTimePairs.append("<tr>");
 
-                        workTB1[cnt1] = new TableRow(this);
-                        workSchedTime1[cnt1][iItem] = new TextView(this);
-                        timePair1[cnt1][iItem] = new TextView(this);
-                        Ta_test1[cnt1][iItem] = new TextView(this);
-                        Tb_test1[cnt1][iItem] = new TextView(this);
-
-                        workSchedTime1[cnt1][iItem].setLayoutParams(paramsExample);
-                        timePair1[cnt1][iItem].setLayoutParams(paramsExample);
-                        Ta_test1[cnt1][iItem].setLayoutParams(paramsExample);
-                        Tb_test1[cnt1][iItem].setLayoutParams(paramsExample);
-
-                        workSchedTime1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
-                        timePair1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
-                        Ta_test1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
-                        Tb_test1[cnt1][iItem].setBackgroundResource(R.color.whiteColor);
 
                         cnt++;
                         if (cnt == 1) {
-                            workSchedTime1[cnt1][iItem].setText(String.valueOf(cntWork1 + 1));
                             builderWorkSchedTimePairs.append("<td>" + String.valueOf(cntWork1 + 1) + "</td>");
                             cntWork1++;
 
@@ -3831,22 +2625,13 @@ private WebView webView;
                             builderWorkSchedTimePairs.append("<td></td>");
                         }
 
-                        timePair1[cnt1][iItem].setText(String.format("%02d", iItem + 1));
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d", iItem + 1) + "</td>");
 
 
-                        Ta_test1[cnt1][iItem].setText(String.format("%02d:%02d", (m_PProg_R1[rp].Tpro[iItem].Ton) / 60, (m_PProg_R1[rp].Tpro[iItem].Ton) % 60));
-                        Tb_test1[cnt1][iItem].setText(String.format("%02d:%02d", (m_PProg_R1[rp].Tpro[iItem].Toff) / 60, (m_PProg_R1[rp].Tpro[iItem].Toff) % 60));
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d:%02d", (m_PProg_R1[rp].Tpro[iItem].Ton) / 60, (m_PProg_R1[rp].Tpro[iItem].Ton) % 60) + "</td>");
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d:%02d", (m_PProg_R1[rp].Tpro[iItem].Toff) / 60, (m_PProg_R1[rp].Tpro[iItem].Toff) % 60) + "</td>");
 
 
-                        workTB1[cnt1].addView(workSchedTime1[cnt1][iItem]);
-                        workTB1[cnt1].addView(timePair1[cnt1][iItem]);
-                        workTB1[cnt1].addView(Ta_test1[cnt1][iItem]);
-                        workTB1[cnt1].addView(Tb_test1[cnt1][iItem]);
-
-                        //   tableLayout.addView(workTB1[iItem]);
                         cnt1++;
                         builderWorkSchedTimePairs.append("</tr>");
                     }
@@ -3860,25 +2645,8 @@ private WebView webView;
                         builderWorkSchedTimePairs.append("<tr>");
 
 
-                        workTB2[cnt2] = new TableRow(this);
-                        workSchedTime2[cnt2][iItem] = new TextView(this);
-                        timePair2[cnt2][iItem] = new TextView(this);
-                        Ta_test2[cnt2][iItem] = new TextView(this);
-                        Tb_test2[cnt2][iItem] = new TextView(this);
-
-                        workSchedTime2[cnt2][iItem].setLayoutParams(paramsExample);
-                        timePair2[cnt2][iItem].setLayoutParams(paramsExample);
-                        Ta_test2[cnt2][iItem].setLayoutParams(paramsExample);
-                        Tb_test2[cnt2][iItem].setLayoutParams(paramsExample);
-
-                        workSchedTime2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
-                        timePair2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
-                        Ta_test2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
-                        Tb_test2[cnt2][iItem].setBackgroundResource(R.color.whiteColor);
-
                         cnt++;
                         if (cnt == 1) {
-                            workSchedTime2[cnt2][iItem].setText(String.valueOf(cntWork2 + 1));
                             builderWorkSchedTimePairs.append("<td>" + String.valueOf(cntWork2 + 1) + "</td>");
                             cntWork2++;
                         } else {
@@ -3886,22 +2654,13 @@ private WebView webView;
 
                         }
 
-                        timePair2[cnt2][iItem].setText(String.format("%02d", iItem + 1));
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d", iItem + 1) + "</td>");
 
 
-                        Ta_test2[cnt2][iItem].setText(String.format("%02d:%02d", (m_PProg_R2[rp].Tpro[iItem].Ton) / 60, (m_PProg_R2[rp].Tpro[iItem].Ton) % 60));
-                        Tb_test2[cnt2][iItem].setText(String.format("%02d:%02d", (m_PProg_R2[rp].Tpro[iItem].Toff) / 60, (m_PProg_R2[rp].Tpro[iItem].Toff) % 60));
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d:%02d", (m_PProg_R2[rp].Tpro[iItem].Ton) / 60, (m_PProg_R2[rp].Tpro[iItem].Ton) % 60) + "</td>");
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d:%02d", (m_PProg_R2[rp].Tpro[iItem].Toff) / 60, (m_PProg_R2[rp].Tpro[iItem].Toff) % 60) + "</td>");
 
 
-                        workTB2[cnt2].addView(workSchedTime2[cnt2][iItem]);
-                        workTB2[cnt2].addView(timePair2[cnt2][iItem]);
-                        workTB2[cnt2].addView(Ta_test2[cnt2][iItem]);
-                        workTB2[cnt2].addView(Tb_test2[cnt2][iItem]);
-
-                        //   tableLayout.addView(workTB2[iItem]);
                         cnt2++;
                         builderWorkSchedTimePairs.append("</tr>");
 
@@ -3917,25 +2676,8 @@ private WebView webView;
 
                         builderWorkSchedTimePairs.append("<tr>");
 
-                        workTB3[cnt3] = new TableRow(this);
-                        workSchedTime3[cnt3][iItem] = new TextView(this);
-                        timePair3[cnt3][iItem] = new TextView(this);
-                        Ta_test3[cnt3][iItem] = new TextView(this);
-                        Tb_test3[cnt3][iItem] = new TextView(this);
-
-                        workSchedTime3[cnt3][iItem].setLayoutParams(paramsExample);
-                        timePair3[cnt3][iItem].setLayoutParams(paramsExample);
-                        Ta_test3[cnt3][iItem].setLayoutParams(paramsExample);
-                        Tb_test3[cnt3][iItem].setLayoutParams(paramsExample);
-
-                        workSchedTime3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
-                        timePair3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
-                        Ta_test3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
-                        Tb_test3[cnt3][iItem].setBackgroundResource(R.color.whiteColor);
-
                         cnt++;
                         if (cnt == 1) {
-                            workSchedTime3[cnt3][iItem].setText(String.valueOf(cntWork3 + 1));
                             builderWorkSchedTimePairs.append("<td>" + String.valueOf(cntWork3 + 1) + "</td>");
                             cntWork3++;
                         } else {
@@ -3944,22 +2686,13 @@ private WebView webView;
                         }
 
 
-                        timePair3[cnt3][iItem].setText(String.format("%02d", iItem + 1));
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d", iItem + 1) + "</td>");
 
 
-                        Ta_test3[cnt3][iItem].setText(String.format("%02d:%02d", (m_PProg_R3[rp].Tpro[iItem].Ton) / 60, (m_PProg_R3[rp].Tpro[iItem].Ton) % 60));
-                        Tb_test3[cnt3][iItem].setText(String.format("%02d:%02d", (m_PProg_R3[rp].Tpro[iItem].Toff) / 60, (m_PProg_R3[rp].Tpro[iItem].Toff) % 60));
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d:%02d", (m_PProg_R3[rp].Tpro[iItem].Ton) / 60, (m_PProg_R3[rp].Tpro[iItem].Ton) % 60) + "</td>");
                         builderWorkSchedTimePairs.append("<td>" + String.format("%02d:%02d", (m_PProg_R3[rp].Tpro[iItem].Toff) / 60, (m_PProg_R3[rp].Tpro[iItem].Toff) % 60) + "</td>");
 
 
-                        workTB3[cnt3].addView(workSchedTime3[cnt3][iItem]);
-                        workTB3[cnt3].addView(timePair3[cnt3][iItem]);
-                        workTB3[cnt3].addView(Ta_test3[cnt3][iItem]);
-                        workTB3[cnt3].addView(Tb_test3[cnt3][iItem]);
-
-                        //   tableLayout.addView(workTB3[iItem]);
                         cnt3++;
                         builderWorkSchedTimePairs.append("</tr>");
 
@@ -4008,56 +2741,30 @@ private WebView webView;
 
         }
         htmlWriter.write("<tr>");
-        TableRow TRdeviceType = new TableRow(this);
-        TextView deviceType = new TextView(this);
-        TextView deviceTypeRes = new TextView(this);
-        deviceType.setText("Device type");
         htmlWriter.write("<th>Device type</th>");
-        deviceType.setLayoutParams(paramsExample);
-        deviceType.setBackgroundResource(R.color.title);
-        deviceTypeRes.setText(String.format("MTK-%d-%s-V-%d", m_tip + 1, str, m_SWVerPri));
-        htmlWriter.write("<td>"+String.format("MTK-%d-%s-V-%d", m_tip + 1, str, m_SWVerPri)+"</td>");
-        deviceTypeRes.setLayoutParams(paramsExample);
-        deviceTypeRes.setBackgroundResource(R.color.whiteColor);
-        TRdeviceType.addView(deviceType);
-        TRdeviceType.addView(deviceTypeRes);
+        htmlWriter.write("<td>" + String.format("MTK-%d-%s-V-%d", m_tip + 1, str, m_SWVerPri) + "</td>");
         htmlWriter.write("</tr>");
 
 
-        tableLayout.addView(TRdeviceType);
-
         if (fVis_RefPrij) {
             htmlWriter.write("<tr>");
-            TableRow TRHDOfrequency = new TableRow(this);
-            TextView HDOfrequency = new TextView(this);
-            TextView HDOfrequencyRes = new TextView(this);
-            HDOfrequency.setText("HDO frequency ");
             htmlWriter.write("<th>HDO frequency</th>");
-            HDOfrequency.setLayoutParams(paramsExample);
-            HDOfrequency.setBackgroundResource(R.color.title);
-            HDOfrequencyRes.setLayoutParams(paramsExample);
-            HDOfrequencyRes.setBackgroundResource(R.color.whiteColor);
-            TRHDOfrequency.addView(HDOfrequency);
-            TRHDOfrequency.addView(HDOfrequencyRes);
 
             int broj;
             if (m_SWVerPri >= 90) {
                 broj = m_ParFilteraCF.BROJ;
                 if (broj >= 0) {
-                    HDOfrequencyRes.setText(String.format("%4.2f Hz", TbParFilteraVer9[broj].fre));
-                    htmlWriter.write("<td>"+String.format("%4.2f Hz", TbParFilteraVer9[broj].fre)+"</td>");
+                    htmlWriter.write("<td>" + String.format("%4.2f Hz", TbParFilteraVer9[broj].fre) + "</td>");
 
                 }
             } else {
                 broj = m_ParFiltera.BROJ;
                 if (broj >= 0) {
                     if (m_SWVerPri < 80) {
-                        HDOfrequencyRes.setText(String.format("%4.2f Hz", TbParFiltera[broj].fre)); //ptabpar=(STR_PARFIL *)&TbParFiltera[broj];
-                        htmlWriter.write("<td>"+String.format("%4.2f Hz", TbParFiltera[broj].fre)+"</td>");
+                        htmlWriter.write("<td>" + String.format("%4.2f Hz", TbParFiltera[broj].fre) + "</td>");
 
                     } else {
-                        HDOfrequencyRes.setText(String.format("%4.2f Hz", TbParFiltera9_8MHz[broj].fre)); //ptabpar=(STR_PARFIL *)&TbParFiltera9_8MHz[broj];
-                        htmlWriter.write("<td>"+String.format("%4.2f Hz", TbParFiltera9_8MHz[broj].fre)+"</td>");
+                        htmlWriter.write("<td>" + String.format("%4.2f Hz", TbParFiltera9_8MHz[broj].fre) + "</td>");
                     }
 
 
@@ -4066,98 +2773,44 @@ private WebView webView;
             htmlWriter.write("</tr>");
 
 
-            tableLayout.addView(TRHDOfrequency);
-
             htmlWriter.write("<tr>");
-            TableRow TRraster = new TableRow(this);
-            TextView raster = new TextView(this);
-            TextView rasterRes = new TextView(this);
-            raster.setText("Raster");
             htmlWriter.write("<th>Raster</th>");
-            raster.setLayoutParams(paramsExample);
-            raster.setBackgroundResource(R.color.title);
-            rasterRes.setLayoutParams(paramsExample);
-            rasterRes.setBackgroundResource(R.color.whiteColor);
-            TRraster.addView(raster);
-            TRraster.addView(rasterRes);
             String[] rra = {"Semagyr 50a", "Ricontic b", "Pulsadis(EdF)", "Inematic 2000", "ZPA-I-I", "ZPA-I-Ik", "CEZ 50D", "CEZ 50K"};
-            rasterRes.setText(rra[data.m_BrojRast]);
-            htmlWriter.write("<td>"+rra[data.m_BrojRast]+"</td>");
+            htmlWriter.write("<td>" + rra[data.m_BrojRast] + "</td>");
             IsCZ44raster = (data.m_BrojRast == 4 || data.m_BrojRast == 5);
             IsCZRaster = ((data.m_BrojRast) > 3) && ((data.m_BrojRast) < 8);
             htmlWriter.write("</tr>");
 
-            tableLayout.addView(TRraster);
 
             htmlWriter.write("<tr>");
-            TableRow TRSensitivity = new TableRow(this);
-            TextView sensitivity = new TextView(this);
-            TextView sensitivityRes = new TextView(this);
-            sensitivity.setText("Sensitivity");
             htmlWriter.write("<th>Sensitivity</th>");
-            sensitivity.setLayoutParams(paramsExample);
-            sensitivity.setBackgroundResource(R.color.title);
-            sensitivityRes.setLayoutParams(paramsExample);
-            sensitivityRes.setBackgroundResource(R.color.whiteColor);
-            TRSensitivity.addView(sensitivity);
-            TRSensitivity.addView(sensitivityRes);
 
-            sensitivityRes.setText(String.format("%4.2f %%", data.m_Utf_posto));
-            htmlWriter.write("<td>"+String.format("%4.2f %%", data.m_Utf_posto)+"</td>");
+            htmlWriter.write("<td>" + String.format("%4.2f %%", data.m_Utf_posto) + "</td>");
             htmlWriter.write("</tr>");
 
-            tableLayout.addView(TRSensitivity);
 
             htmlWriter.write("<tr>");
-            TableRow TRTelRaster = new TableRow(this);
-            TextView telRaster = new TextView(this);
-            TextView telRasterRes = new TextView(this);
-            telRaster.setText("Tel. raster time base");
             htmlWriter.write("<th>Tel. raster time base</th>");
-            telRaster.setLayoutParams(paramsExample);
-            telRaster.setBackgroundResource(R.color.title);
-            telRasterRes.setLayoutParams(paramsExample);
-            telRasterRes.setBackgroundResource(R.color.whiteColor);
-
-            TRTelRaster.addView(telRaster);
-            TRTelRaster.addView(telRasterRes);
 
             if ((m_op50Prij.RTCSinh & 0x80) != 0) {// m_General50.m_RTCSinh
-                telRasterRes.setText("Network(50Hz)");
                 htmlWriter.write("<td>Network(50Hz)</td>");
             } else {
-                telRasterRes.setText("Clock");
                 htmlWriter.write("<td>Clock</td>");
             }
             htmlWriter.write("</tr>");
 
 
-            tableLayout.addView(TRTelRaster);
         }
 
         htmlWriter.write("<tr>");
-        TableRow TRRTCTimeBase = new TableRow(this);
-        TextView RTCTimeBase = new TextView(this);
-        TextView RTCTimeBaseRes = new TextView(this);
-        RTCTimeBase.setText("RTC time base");
         htmlWriter.write("<th>RTC time base</th>");
-        RTCTimeBase.setLayoutParams(paramsExample);
-        RTCTimeBase.setBackgroundResource(R.color.title);
-        RTCTimeBaseRes.setLayoutParams(paramsExample);
-        RTCTimeBaseRes.setBackgroundResource(R.color.whiteColor);
-
-        TRRTCTimeBase.addView(RTCTimeBase);
-        TRRTCTimeBase.addView(RTCTimeBaseRes);
 
         if ((m_op50Prij.RTCSinh & 0x03) != 0) {// m_General50.m_RasTSinh = 1;
-            RTCTimeBaseRes.setText(String.format("Quartz 32768 Hz"));
             htmlWriter.write("<td>Quartz 32768 Hz</td>");
         } else {
-            RTCTimeBaseRes.setText(String.format("Network(50Hz)"));
             htmlWriter.write("<td>Network(50Hz)</td>");
         }
         htmlWriter.write("</tr>");
-        tableLayout.addView(TRRTCTimeBase);
 
 
         if (!fVis_VersacomPS) {
@@ -4165,19 +2818,7 @@ private WebView webView;
 
 
             htmlWriter.write("<tr>");
-            TableRow TRRTCLossAction = new TableRow(this);
-            TextView RTCLossAction = new TextView(this);
-            TextView RTCLossActionRes = new TextView(this);
-            RTCLossAction.setText("RTC Loss action");
             htmlWriter.write("<th>RTC Loss action</th>");
-            RTCLossAction.setLayoutParams(paramsExample);
-            RTCLossAction.setBackgroundResource(R.color.title);
-            RTCLossActionRes.setLayoutParams(paramsExample);
-            RTCLossActionRes.setBackgroundResource(R.color.whiteColor);
-
-            TRRTCLossAction.addView(RTCLossAction);
-            TRRTCLossAction.addView(RTCLossActionRes);
-
 
             int inx = (byte) ((m_op50Prij.RTCSinh >> TIM_LOSS_RTC_POS) & 0x0F);
 
@@ -4185,11 +2826,9 @@ private WebView webView;
                 inx = 0;
             }
 
-            RTCLossActionRes.setText(rtcloss[inx]);
-            htmlWriter.write("<td>"+rtcloss[inx]+"</td>");
+            htmlWriter.write("<td>" + rtcloss[inx] + "</td>");
 
             htmlWriter.write("</tr>");
-            tableLayout.addView(TRRTCLossAction);
         }
 
 
@@ -4199,52 +2838,25 @@ private WebView webView;
             if (fVis_VersacomPS) {
 
                 htmlWriter.write("<tr>");
-                TableRow TRAdressLength = new TableRow(this);
-                TextView AdressLength = new TextView(this);
-                TextView AdressLengthRes = new TextView(this);
-                AdressLength.setText("Address length of telegram DIN-43861-301 ");
                 htmlWriter.write("<th>Address length of telegram DIN-43861-301</th>");
-                AdressLength.setLayoutParams(paramsExample);
-                AdressLength.setBackgroundResource(R.color.title);
-                AdressLengthRes.setLayoutParams(paramsExample);
-                AdressLengthRes.setBackgroundResource(R.color.whiteColor);
-                TRAdressLength.addView(AdressLength);
-                TRAdressLength.addView(AdressLengthRes);
 
-
-                AdressLength.setText(String.format("%d", oprij.VDuzAdr));
-                htmlWriter.write("<td>"+String.format("%d", oprij.VDuzAdr)+"</td>");
+                htmlWriter.write("<td>" + String.format("%d", oprij.VDuzAdr) + "</td>");
 
 
                 htmlWriter.write("</tr>");
 
-                tableLayout.addView(TRAdressLength);
 
             }
 
             if (!fVis_Cz95P) {
 
                 htmlWriter.write("<tr>");
-                TableRow TRSyncTelegram = new TableRow(this);
-                TextView SyncTelegram = new TextView(this);
-                TextView SyncTelegramRes = new TextView(this);
-                SyncTelegram.setText("synchronization telegram - day >> time ");
                 htmlWriter.write("<th>synchronization telegram - day >> time</th>");
-                SyncTelegram.setLayoutParams(paramsExample);
-                SyncTelegram.setBackgroundResource(R.color.title);
-                SyncTelegramRes.setLayoutParams(paramsExample);
-                SyncTelegramRes.setBackgroundResource(R.color.whiteColor);
-
-                TRSyncTelegram.addView(SyncTelegram);
-                TRSyncTelegram.addView(SyncTelegramRes);
 
 
-                SyncTelegram.setText(String.format("%d", oprij.VDuzAdr));
-                htmlWriter.write("<td>"+String.format("%d", oprij.VDuzAdr)+"</td>");
+                htmlWriter.write("<td>" + String.format("%d", oprij.VDuzAdr) + "</td>");
 
                 htmlWriter.write("</tr>");
-
-                tableLayout.addView(TRSyncTelegram);
 
 
             }
@@ -4253,26 +2865,12 @@ private WebView webView;
             if (fVis_VersacomPS) {
 
                 htmlWriter.write("<tr>");
-                TableRow TRID = new TableRow(this);
-                TextView ID = new TextView(this);
-                TextView IDRes = new TextView(this);
-                ID.setText("ID");
                 htmlWriter.write("<th>ID</th>");
-                ID.setLayoutParams(paramsExample);
-                ID.setBackgroundResource(R.color.title);
-                IDRes.setLayoutParams(paramsExample);
-                IDRes.setBackgroundResource(R.color.whiteColor);
-
-                TRID.addView(ID);
-                TRID.addView(IDRes);
 
 
-                IDRes.setText(String.format("%d", oprij.VIdBr));
-                htmlWriter.write("<td>"+String.format("%d", oprij.VIdBr)+"</td>");
+                htmlWriter.write("<td>" + String.format("%d", oprij.VIdBr) + "</td>");
 
                 htmlWriter.write("</tr>");
-
-                tableLayout.addView(TRID);
 
 
             }
@@ -4281,71 +2879,32 @@ private WebView webView;
             if (!fVis_Cz95P) {
 
                 htmlWriter.write("<tr>");
-                TableRow TRIDSI_24HC_ACT = new TableRow(this);
-                TextView IDSI_24HC_ACT = new TextView(this);
-                TextView IDSI_24HC_ACTRes = new TextView(this);
-                IDSI_24HC_ACT.setText("24h cycle - active ");
                 htmlWriter.write("<th>24h cycle - active </th>");
-                IDSI_24HC_ACT.setLayoutParams(paramsExample);
-                IDSI_24HC_ACT.setBackgroundResource(R.color.title);
-                IDSI_24HC_ACTRes.setLayoutParams(paramsExample);
-                IDSI_24HC_ACTRes.setBackgroundResource(R.color.whiteColor);
 
-                TRIDSI_24HC_ACT.addView(IDSI_24HC_ACT);
-                TRIDSI_24HC_ACT.addView(IDSI_24HC_ACTRes);
                 String datstr = (oprij.ParFlags & 0x1) != 0 ? "Yes" : "No";
-                htmlWriter.write("<td>"+datstr+"</td>");
-                IDSI_24HC_ACTRes.setText(datstr);
+                htmlWriter.write("<td>" + datstr + "</td>");
                 htmlWriter.write("</tr>");
-
-                tableLayout.addView(TRIDSI_24HC_ACT);
 
 
                 htmlWriter.write("<tr>");
-                TableRow TRIDSI_24HC_DLY = new TableRow(this);
-                TextView IDSI_24HC_DLY = new TextView(this);
-                TextView IDSI_24HC_DLYRes = new TextView(this);
-                IDSI_24HC_DLY.setText("24h cycle - delay ");
                 htmlWriter.write("<th>24h cycle - delay </th>");
-                IDSI_24HC_DLY.setLayoutParams(paramsExample);
-                IDSI_24HC_DLY.setBackgroundResource(R.color.title);
-                IDSI_24HC_DLYRes.setLayoutParams(paramsExample);
-                IDSI_24HC_DLYRes.setBackgroundResource(R.color.whiteColor);
 
-                TRIDSI_24HC_DLY.addView(IDSI_24HC_DLY);
-                TRIDSI_24HC_DLY.addView(IDSI_24HC_DLYRes);
 
-                IDSI_24HC_ACTRes.setText(String.format("%02d:%02d", oprij.Dly24H / 60, oprij.Dly24H % 60));
-                htmlWriter.write("<td>"+String.format("%02d:%02d", oprij.Dly24H / 60, oprij.Dly24H % 60)+"</td>");
+                htmlWriter.write("<td>" + String.format("%02d:%02d", oprij.Dly24H / 60, oprij.Dly24H % 60) + "</td>");
 
                 htmlWriter.write("</tr>");
-
-                tableLayout.addView(IDSI_24HC_DLY);
 
 
             } else {
 
                 htmlWriter.write("<tr>");
-                TableRow TRIDSI_SYNC_TRACK = new TableRow(this);
-                TextView IDSI_SYNC_TRACK = new TextView(this);
-                TextView IDSI_SYNC_TRACKRes = new TextView(this);
-                IDSI_SYNC_TRACK.setText("Track relay position after time synchronization ");
                 htmlWriter.write("<th>Track relay position after time synchronization </th>");
-                IDSI_SYNC_TRACK.setLayoutParams(paramsExample);
-                IDSI_SYNC_TRACK.setBackgroundResource(R.color.title);
-                IDSI_SYNC_TRACKRes.setLayoutParams(paramsExample);
-                IDSI_SYNC_TRACKRes.setBackgroundResource(R.color.whiteColor);
 
-                TRIDSI_SYNC_TRACK.addView(IDSI_SYNC_TRACK);
-                TRIDSI_SYNC_TRACK.addView(IDSI_SYNC_TRACKRes);
                 String datstr = (m_op50Prij.RTCSinh & SINH_REL_POS_MASK) != 0 ? "Yes" : "No";
 
-                IDSI_SYNC_TRACKRes.setText(datstr);
-                htmlWriter.write("<td>"+datstr+"</td>");
+                htmlWriter.write("<td>" + datstr + "</td>");
 
                 htmlWriter.write("</tr>");
-
-                tableLayout.addView(TRIDSI_SYNC_TRACK);
 
 
             }
@@ -4353,36 +2912,15 @@ private WebView webView;
 
 
         htmlWriter.write("<tr>");
-        TableRow TRPowerBridge = new TableRow(this);
-        TextView PowerBridge = new TextView(this);
-        TextView PowerBridgeRes = new TextView(this);
-        PowerBridge.setText("Power bridging time");
         htmlWriter.write("<th>Power bridging time</th>");
-        PowerBridge.setLayoutParams(paramsExample);
-        PowerBridge.setBackgroundResource(R.color.title);
-        PowerBridgeRes.setLayoutParams(paramsExample);
-        PowerBridgeRes.setBackgroundResource(R.color.whiteColor);
-
-        TRPowerBridge.addView(PowerBridge);
-        TRPowerBridge.addView(PowerBridgeRes);
 
         float timebridge = (m_op50Prij.CPWBRTIME * 5);
 
-        PowerBridgeRes.setText(String.format("%.2f s", timebridge / 1000));
-        htmlWriter.write("<td>"+String.format("%.2f s", timebridge / 1000)+"</td>");
+        htmlWriter.write("<td>" + String.format("%.2f s", timebridge / 1000) + "</td>");
 
         htmlWriter.write("</tr>");
 
-        tableLayout.addView(TRPowerBridge);
 
-
-        TableRow TRParameters = new TableRow(this);
-        TextView Parameters = new TextView(this);
-        Parameters.setText("Parameters");
-
-
-        TRParameters.addView(Parameters);
-        tableLayout.addView(TRParameters);
         htmlWriter.write("</table>");
 
     }
@@ -4472,10 +3010,7 @@ private WebView webView;
         }
 
 
-        //CString str2;
-//	str2.Format("nIndex=%02X chk=%02X \r\n",nIndex,(BYTE)chksum);
-//	ShowData(str2);
-//	if(chksum !=0)return(-1);
+
         return (i - 1);//makni cheksum
     }
 
@@ -4503,12 +3038,7 @@ private WebView webView;
         return builder.toString();
     }
 
-    public void writeHTML() throws IOException {
-        String html = "<html><head><title>Title</title></head><body>This is random text.</body></html>";
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("myfile.html", Context.MODE_PRIVATE));
-        outputStreamWriter.write(html);
-        outputStreamWriter.close();
-    }
+
 
 
     private String readFromFile(String filename, Context context) {
