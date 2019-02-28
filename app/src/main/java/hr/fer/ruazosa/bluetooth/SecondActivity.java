@@ -1,11 +1,14 @@
 package hr.fer.ruazosa.bluetooth;
 
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TableRow;
@@ -1173,13 +1176,13 @@ public class SecondActivity extends AppCompatActivity {
     IntrlockStr[] m_RelInterLock = new IntrlockStr[8];
 
 
-
     private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSupportActionBar().hide();
 
 
         wiper = new Wiper[4];
@@ -1316,7 +1319,13 @@ public class SecondActivity extends AppCompatActivity {
         webView = new WebView(this);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
+        webView.setInitialScale(1);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
 
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
 
         String filename = "measurment.htm";
         OutputStreamWriter htmlWriter;
@@ -1333,11 +1342,325 @@ public class SecondActivity extends AppCompatActivity {
         String wholeFile = readFromFile(filename, getApplicationContext());
 
         webView.loadData(wholeFile, "text/html", "UTF-8");
-         setContentView(webView);
+
+
+        setContentView(webView);
+
         System.out.println();
     }
 
     private void displayValues(Wiper[] wiper, PonPoffStr[] ponPoffStr, TlgAbstr[] tlgAbstrs, StrLoadMng[] strLoadMng, Opprog[] m_PProg_R1, Opprog[] m_PProg_R2, Opprog[] m_PProg_R3, Opprog[] m_PProg_R4, Oprij oprij, OutputStreamWriter htmlWriter) throws IOException {
+
+        //General
+        DisplayGeneral(htmlWriter);
+        //General END
+
+
+        //Relay settings
+        htmlWriter.write("<h2>Relay settings</h2>");
+        htmlWriter.write("<table>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th></th>");
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<th>Relay " + (i + 1) + "</th>");
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Relay installed(active) </th>");
+        for (int i = 0; i < 4; i++) {
+            int msk = 0x80 >> i;
+            if ((oprij.VOpRe.StaPrij & msk) != 0) {
+                htmlWriter.write("<td>Yes</td>");
+            } else {
+                htmlWriter.write("<td>No</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Inverted logic</th>");
+
+        for (int i = 0; i < 4; i++) {
+            int msk = 0x80 >> i;
+            if ((oprij.PolUKRe & msk) != 0) {
+                htmlWriter.write("<td>Yes</td>");
+            } else {
+                htmlWriter.write("<td>No</td>");
+            }
+
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("</table>");
+        //Relay settings END
+
+
+        //Relay switching assignment
+        if (fVis_Realoc) {
+
+
+            htmlWriter.write("<h2>Relay switching assignment</h2>");
+            htmlWriter.write("<table>");
+            htmlWriter.write("<tr>");
+            htmlWriter.write("<th></th>");
+            htmlWriter.write("<th colspan=\"4\">Relay switching assignment</th>");
+            htmlWriter.write("</tr>");
+
+
+            htmlWriter.write("<tr>");
+            htmlWriter.write("<th></th>");
+            for (int i = 1; i < 5; i++) {
+                htmlWriter.write("<th>" + String.format("Relay %d", i) + "</th>");
+            }
+            htmlWriter.write("</tr>");
+
+
+            int x = 3;
+            for (int i = 0; i < 4; i++) {
+                htmlWriter.write("<tr>");
+                htmlWriter.write("<th>" + String.format("Relay %d a", i + 1) + "</th>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 1, m_Realloc[i].rel_on) + "</td>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 2, m_Realloc[i].rel_on) + "</td>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 3, m_Realloc[i].rel_on) + "</td>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 4, m_Realloc[i].rel_on) + "</td>");
+
+
+                htmlWriter.write("</tr>");
+
+                x++;
+
+                htmlWriter.write("<tr>");
+
+                htmlWriter.write("<th>" + String.format("Relay %d b", i + 1) + "</th>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 1, m_Realloc[i].rel_of) + "</td>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 2, m_Realloc[i].rel_of) + "</td>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 3, m_Realloc[i].rel_of) + "</td>");
+
+                htmlWriter.write("<td>" + PPRealoc(i, 4, m_Realloc[i].rel_of) + "</td>");
+
+                htmlWriter.write("</tr>");
+
+                x++;
+
+            }
+
+            htmlWriter.write("</table>");
+
+        }
+        //Relay switching assignment END
+
+
+
+        //Switching delay
+        if (fVis_RefPrij) {
+
+            htmlWriter.write("<h2>Switching delay</h2>");
+            htmlWriter.write("<table>");
+
+
+            htmlWriter.write("<tr>");
+
+
+            htmlWriter.write("<th></th>");
+            htmlWriter.write("<th>Relay 1</th>");
+            htmlWriter.write("<th>Relay 2</th>");
+            htmlWriter.write("<th>Relay 3</th>");
+            htmlWriter.write("<th>Relay 4</th>");
+
+            htmlWriter.write("</tr>");
+
+
+            htmlWriter.write("<tr>");
+            htmlWriter.write("<th>Delay a(hh:mm:ss)</th>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDela, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDela, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDela, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDela, 't') + "</td>");
+            htmlWriter.write("</tr>");
+
+
+            htmlWriter.write("<tr>");
+            htmlWriter.write("<th>Delay a(hh:mm:ss)</th>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDela, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDela, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDela, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDela, 'm') + "</td>");
+            htmlWriter.write("</tr>");
+
+
+            htmlWriter.write("<tr>");
+            htmlWriter.write("<th>Delay b(hh:mm:ss)</th>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDelb, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDelb, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDelb, 't') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDelb, 't') + "</td>");
+            htmlWriter.write("</tr>");
+
+
+            htmlWriter.write("<tr>");
+            htmlWriter.write("<th>Delay b(hh:mm:ss)</th>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDelb, 'm') + "</td>");
+            htmlWriter.write("</tr>");
+
+            htmlWriter.write("<table>");
+
+        }
+        //Switching delay END
+
+
+
+        //Telegrami
+        if (fVis_RefPrij) {
+            htmlWriter.write("<h2>Classic telegram</h2>");
+            htmlWriter.write("<table>");
+
+            GetRasterHeadStringH(htmlWriter);
+
+            GetRasterHeadStringTop(htmlWriter);
+
+            GetRasterHeadStringBottom(htmlWriter);
+
+            GetRasterString(m_op50Prij.TlgRel1.Uk, 1, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel1.Isk, 1, 'b', htmlWriter);
+
+            GetRasterString(m_op50Prij.TlgRel2.Uk, 2, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel2.Isk, 2, 'b', htmlWriter);
+
+            GetRasterString(m_op50Prij.TlgRel3.Uk, 3, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel3.Isk, 3, 'b', htmlWriter);
+
+            GetRasterString(m_op50Prij.TlgRel4.Uk, 4, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.TlgRel4.Isk, 4, 'b', htmlWriter);
+            htmlWriter.write("</table>");
+
+
+        }
+
+        if (fVis_Cz96P) {
+
+            htmlWriter.write("<h2>Additional telegrams</h2>");
+            htmlWriter.write("<table>");
+
+            GetRasterHeadStringH(htmlWriter);
+
+            GetRasterHeadStringTop(htmlWriter);
+
+            GetRasterHeadStringBottom(htmlWriter);
+
+            GetRasterString(m_op50Prij.tlg[0].Fn1.Cmd, 1, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[1].Fn1.Cmd, 1, 'b', htmlWriter);
+
+            GetRasterString(m_op50Prij.tlg[2].Fn1.Cmd, 2, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[3].Fn1.Cmd, 2, 'b', htmlWriter);
+
+            GetRasterString(m_op50Prij.tlg[4].Fn1.Cmd, 3, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[5].Fn1.Cmd, 3, 'b', htmlWriter);
+
+            GetRasterString(m_op50Prij.tlg[6].Fn1.Cmd, 4, 'a', htmlWriter);
+            GetRasterString(m_op50Prij.tlg[7].Fn1.Cmd, 4, 'b', htmlWriter);
+            htmlWriter.write("</table>");
+
+        }
+        if (fVis_RefPrij && fVis_Cz96P) {
+            htmlWriter.write("<h2>Synchronization telegrams</h2>");
+            htmlWriter.write("<table>");
+
+            GetRasterHeadStringH(htmlWriter);
+
+            GetRasterHeadStringTop(htmlWriter);
+
+            GetRasterHeadStringBottom(htmlWriter);
+
+            for (int i = 0; i < 5; i++) {
+                GetRasterStringSync(m_TelegSync[i].Cmd, i, htmlWriter);
+            }
+            htmlWriter.write("</table>");
+
+        }
+
+        if (fVis_RefPrij && fVis_Cz96P) {
+            htmlWriter.write("<h2>Synchronization telegrams - day of the week</h2>");
+            htmlWriter.write("<table>");
+
+
+            GetRasterHeadStringH(htmlWriter);
+
+            GetRasterHeadStringTop(htmlWriter);
+
+            GetRasterHeadStringBottom(htmlWriter);
+
+            for (int i = 0; i < 8; i++) {
+                GetRasterString(m_TlgFnD[i].Cmd, i, 'a', htmlWriter);
+            }
+            htmlWriter.write("</table>");
+
+        }
+
+        //Telegrami END
+
+
+        //Work schedules
+
+
+        //Work schedules - Time pairs Relay
+
+        //Svaki element builderWorkSchedTimePairs ce imat cijelu tablicu u sebi (Work schedules - Time pairs Relay 1)
+        StringBuilder[] builderWorkSchedTimePairs = new StringBuilder[4];
+        for (int i = 0; i < 4; i++) {
+            builderWorkSchedTimePairs[i] = new StringBuilder();
+        }
+
+        StringBuilder[] builderWorkSchedTimeDays = new StringBuilder[4];
+        for (int i = 0; i < 4; i++) {
+            builderWorkSchedTimeDays[i] = new StringBuilder();
+        }
+
+        showTimePairs(m_PProg_R1, m_PProg_R2, m_PProg_R3, m_PProg_R4, builderWorkSchedTimePairs);
+
+        //Work schedules - Time pairs Relay END
+        for (int relej = 1; relej <= 4; relej++) {
+            if ((oprij.VOpRe.StaPrij & (0x80 >> (relej - 1))) == 0) {
+                continue;
+            }
+            switch (relej) {
+
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
+
+
+            //Work schedules - Time pairs Relay Days
+
+            GetRelAkProg(relej, builderWorkSchedTimeDays);
+
+            //Work schedules - Time pairs Relay Days END
+
+
+        }
+        //Work schedules - Time pairs Relay (DAYS) ispis
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<h2>Work schedules - Time pairs Relay " + (i + 1) + "</h2>");
+            htmlWriter.write(builderWorkSchedTimeDays[i].toString());
+            htmlWriter.write(builderWorkSchedTimePairs[i].toString());
+        }
+        //Work schedules - Time pairs Relay (DAYS) ispis
+
+        //Work schedules END
+
 
 
         //Wiper and Closed Loop
@@ -1442,6 +1765,125 @@ public class SecondActivity extends AppCompatActivity {
         htmlWriter.write("</table>");
 
         //Wiper and Closed Loop END
+
+
+
+        //Learn functions
+
+        htmlWriter.write("<h2>Learn functions</h2>");
+        htmlWriter.write("<table>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th></th>");
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<th>Relay " + (i + 1) + "</th>");
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Learn period</th>");
+        for (int i = 0; i < 4; i++) {
+            if ((strLoadMng[i].Status & LEARN_7DAYS_MASK) == 0) {
+                htmlWriter.write("<td>24 h</td>");
+            } else {
+                htmlWriter.write("<td>7 days</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Position</th>");
+
+        for (int i = 0; i < 4; i++) {
+            if ((strLoadMng[i].RelPos & LEARN_R_ON_MASK) != 0) {
+                htmlWriter.write("<td>a</td>");
+            } else if ((strLoadMng[i].RelPos & LEARN_R_OFF_MASK) != 0) {
+                htmlWriter.write("<td>b</td>");
+            } else {
+                htmlWriter.write("<td>XX</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Min</th>");
+
+
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<td>" + GetHMfromInt(strLoadMng[i].TPosMin) + "</td>");
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Max</th>");
+
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<td>" + GetHMfromInt(strLoadMng[i].TPosMax) + "</td>");
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("</table>");
+        //Learn functions END
+
+
+        //Telegram absence
+
+        htmlWriter.write("<h2>Telegram absence</h2>");
+        htmlWriter.write("<table>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th></th>");
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<th>Relay " + (i + 1) + "</th>");
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Absence time</th>");
+        for (int i = 0; i < 4; i++) {
+            htmlWriter.write("<td>" + GetHMSfromInt(tlgAbstrs[i].TDetect) + "</td>");
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Absence time</th>");
+        for (int i = 0; i < 4; i++) {
+            byte ss = tlgAbstrs[i].RestOn;
+            if (ss < 0x0F) {
+                htmlWriter.write("<td>" + rst[ss] + "</td>");
+            } else {
+                htmlWriter.write("<td>XX</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>On timer restart event disables work schedule</th>");
+
+        for (int i = 0; i < 4; i++) {
+            if ((tlgAbstrs[i].OnRes & 0x01) != 0) {
+                htmlWriter.write("<td>Yes</td>");
+            } else {
+                htmlWriter.write("<td>No</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Action</th>");
+
+
+        for (int i = 0; i < 4; i++) {
+            byte ss = (byte) (tlgAbstrs[i].OnTaExe & 0x0F);
+            if (ss < 0x0F) {
+                htmlWriter.write("<td>" + act[ss] + "</td>");
+            } else {
+                htmlWriter.write("<td>XX</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("<tr>");
+        htmlWriter.write("<th>Learn function disabled</th>");
+        for (int i = 0; i < 4; i++) {
+            if ((tlgAbstrs[i].OnTaExe & TLGA_ON_DISLRN) != 0) {
+                htmlWriter.write("<td>Yes</td>");
+            } else {
+                htmlWriter.write("<td>No</td>");
+            }
+        }
+        htmlWriter.write("</tr>");
+        htmlWriter.write("</table>");
+        //Telegram absence END
+
 
 
         //Arival and loss of supply
@@ -1556,369 +1998,8 @@ public class SecondActivity extends AppCompatActivity {
         //Arival and loss of supply END
 
 
-        //Telegram absence
-
-        htmlWriter.write("<h2>Telegram</h2>");
-        htmlWriter.write("<table>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th></th>");
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<th>Relay " + (i + 1) + "</th>");
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Absence time</th>");
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<td>" + GetHMSfromInt(tlgAbstrs[i].TDetect) + "</td>");
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Absence time</th>");
-        for (int i = 0; i < 4; i++) {
-            byte ss = tlgAbstrs[i].RestOn;
-            if (ss < 0x0F) {
-                htmlWriter.write("<td>" + rst[ss] + "</td>");
-            } else {
-                htmlWriter.write("<td>XX</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>On timer restart event disables work schedule</th>");
-
-        for (int i = 0; i < 4; i++) {
-            if ((tlgAbstrs[i].OnRes & 0x01) != 0) {
-                htmlWriter.write("<td>Yes</td>");
-            } else {
-                htmlWriter.write("<td>No</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Action</th>");
-
-
-        for (int i = 0; i < 4; i++) {
-            byte ss = (byte) (tlgAbstrs[i].OnTaExe & 0x0F);
-            if (ss < 0x0F) {
-                htmlWriter.write("<td>" + act[ss] + "</td>");
-            } else {
-                htmlWriter.write("<td>XX</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Learn function disabled</th>");
-        for (int i = 0; i < 4; i++) {
-            if ((tlgAbstrs[i].OnTaExe & TLGA_ON_DISLRN) != 0) {
-                htmlWriter.write("<td>Yes</td>");
-            } else {
-                htmlWriter.write("<td>No</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("</table>");
-        //Telegram absence END
-
-
-        //Learn functions
-
-        htmlWriter.write("<h2>Learn functions</h2>");
-        htmlWriter.write("<table>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th></th>");
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<th>Relay " + (i + 1) + "</th>");
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Learn period</th>");
-        for (int i = 0; i < 4; i++) {
-            if ((strLoadMng[i].Status & LEARN_7DAYS_MASK) == 0) {
-                htmlWriter.write("<td>24 h</td>");
-            } else {
-                htmlWriter.write("<td>7 days</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Position</th>");
-
-        for (int i = 0; i < 4; i++) {
-            if ((strLoadMng[i].RelPos & LEARN_R_ON_MASK) != 0) {
-                htmlWriter.write("<td>a</td>");
-            } else if ((strLoadMng[i].RelPos & LEARN_R_OFF_MASK) != 0) {
-                htmlWriter.write("<td>b</td>");
-            } else {
-                htmlWriter.write("<td>XX</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Min</th>");
-
-
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<td>" + GetHMfromInt(strLoadMng[i].TPosMin) + "</td>");
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Max</th>");
-
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<td>" + GetHMfromInt(strLoadMng[i].TPosMax) + "</td>");
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("</table>");
-        //Learn functions END
-
-
-        //Relay settings
-        htmlWriter.write("<h2>Relay settings</h2>");
-        htmlWriter.write("<table>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th></th>");
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<th>Relay " + (i + 1) + "</th>");
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Relay installed(active) </th>");
-        for (int i = 0; i < 4; i++) {
-            int msk = 0x80 >> i;
-            if ((oprij.VOpRe.StaPrij & msk) != 0) {
-                htmlWriter.write("<td>Yes</td>");
-            } else {
-                htmlWriter.write("<td>No</td>");
-            }
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("<tr>");
-        htmlWriter.write("<th>Inverted logic</th>");
-
-        for (int i = 0; i < 4; i++) {
-            int msk = 0x80 >> i;
-            if ((oprij.PolUKRe & msk) != 0) {
-                htmlWriter.write("<td>Yes</td>");
-            } else {
-                htmlWriter.write("<td>No</td>");
-            }
-
-        }
-        htmlWriter.write("</tr>");
-        htmlWriter.write("</table>");
-        //Relay settings END
-
-
-        //Work schedules
-
-
-        //Work schedules - Time pairs Relay
-
-        //Svaki element builderWorkSchedTimePairs ce imat cijelu tablicu u sebi (Work schedules - Time pairs Relay 1)
-        StringBuilder[] builderWorkSchedTimePairs = new StringBuilder[4];
-        for (int i = 0; i < 4; i++) {
-            builderWorkSchedTimePairs[i] = new StringBuilder();
-        }
-
-        StringBuilder[] builderWorkSchedTimeDays = new StringBuilder[4];
-        for (int i = 0; i < 4; i++) {
-            builderWorkSchedTimeDays[i] = new StringBuilder();
-        }
-
-        showTimePairs(m_PProg_R1, m_PProg_R2, m_PProg_R3, m_PProg_R4, builderWorkSchedTimePairs);
-
-        //Work schedules - Time pairs Relay END
-        for (int relej = 1; relej <= 4; relej++) {
-            if ((oprij.VOpRe.StaPrij & (0x80 >> (relej - 1))) == 0) {
-                continue;
-            }
-            switch (relej) {
-
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-            }
-
-
-            //Work schedules - Time pairs Relay Days
-
-            GetRelAkProg(relej, builderWorkSchedTimeDays);
-
-            //Work schedules - Time pairs Relay Days END
-
-
-        }
-        //Work schedules - Time pairs Relay (DAYS) ispis
-        for (int i = 0; i < 4; i++) {
-            htmlWriter.write("<h2>Work schedules - Time pairs Relay " + (i + 1) + "</h2>");
-            htmlWriter.write(builderWorkSchedTimeDays[i].toString());
-            htmlWriter.write(builderWorkSchedTimePairs[i].toString());
-        }
-        //Work schedules - Time pairs Relay (DAYS) ispis
-
-
-        //General
-        DisplayGeneral(htmlWriter);
-        //General END
-
         GetReallocRel();
 
-        if (fVis_RefPrij) {
-
-
-            //Switching delay
-            htmlWriter.write("<h2>Switching delay</h2>");
-            htmlWriter.write("<table>");
-
-
-            htmlWriter.write("<tr>");
-
-
-            htmlWriter.write("<th></th>");
-            htmlWriter.write("<th>Relay 1</th>");
-            htmlWriter.write("<th>Relay 2</th>");
-            htmlWriter.write("<th>Relay 3</th>");
-            htmlWriter.write("<th>Relay 4</th>");
-
-            htmlWriter.write("</tr>");
-
-
-            htmlWriter.write("<tr>");
-            htmlWriter.write("<th>Delay a(hh:mm:ss)</th>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDela, 't') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDela, 't') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDela, 't') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDela, 't') + "</td>");
-            htmlWriter.write("</tr>");
-
-
-            htmlWriter.write("<tr>");
-            htmlWriter.write("<th>Delay a(hh:mm:ss)</th>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDela, 'm') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDela, 'm') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDela, 'm') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDela, 'm') + "</td>");
-            htmlWriter.write("</tr>");
-
-
-            htmlWriter.write("<tr>");
-            htmlWriter.write("<th>Delay b(hh:mm:ss)</th>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDelb, 't') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDelb, 't') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDelb, 't') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDelb, 't') + "</td>");
-            htmlWriter.write("</tr>");
-
-
-            htmlWriter.write("<tr>");
-            htmlWriter.write("<th>Delay b(hh:mm:ss)</th>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR1.KRelDelb, 'm') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR2.KRelDelb, 'm') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR3.KRelDelb, 'm') + "</td>");
-            htmlWriter.write("<td>" + GetZatez(oprij.KlOpR4.KRelDelb, 'm') + "</td>");
-            htmlWriter.write("</tr>");
-
-            htmlWriter.write("<table>");
-
-            //Switching delay END
-
-
-        }
-
-        //Telegrami
-        if (fVis_RefPrij) {
-            htmlWriter.write("<h2>Classic telegram</h2>");
-            htmlWriter.write("<table>");
-
-            GetRasterHeadStringH(htmlWriter);
-
-            GetRasterHeadStringTop(htmlWriter);
-
-            GetRasterHeadStringBottom(htmlWriter);
-
-            GetRasterString(m_op50Prij.TlgRel1.Uk, 1, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel1.Isk, 1, 'b', htmlWriter);
-
-            GetRasterString(m_op50Prij.TlgRel2.Uk, 2, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel2.Isk, 2, 'b', htmlWriter);
-
-            GetRasterString(m_op50Prij.TlgRel3.Uk, 3, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel3.Isk, 3, 'b', htmlWriter);
-
-            GetRasterString(m_op50Prij.TlgRel4.Uk, 4, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.TlgRel4.Isk, 4, 'b', htmlWriter);
-            htmlWriter.write("</table>");
-
-
-        }
-
-        if (fVis_Cz96P) {
-
-            htmlWriter.write("<h2>Additional telegrams</h2>");
-            htmlWriter.write("<table>");
-
-            GetRasterHeadStringH(htmlWriter);
-
-            GetRasterHeadStringTop(htmlWriter);
-
-            GetRasterHeadStringBottom(htmlWriter);
-
-            GetRasterString(m_op50Prij.tlg[0].Fn1.Cmd, 1, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.tlg[1].Fn1.Cmd, 1, 'b', htmlWriter);
-
-            GetRasterString(m_op50Prij.tlg[2].Fn1.Cmd, 2, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.tlg[3].Fn1.Cmd, 2, 'b', htmlWriter);
-
-            GetRasterString(m_op50Prij.tlg[4].Fn1.Cmd, 3, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.tlg[5].Fn1.Cmd, 3, 'b', htmlWriter);
-
-            GetRasterString(m_op50Prij.tlg[6].Fn1.Cmd, 4, 'a', htmlWriter);
-            GetRasterString(m_op50Prij.tlg[7].Fn1.Cmd, 4, 'b', htmlWriter);
-            htmlWriter.write("</table>");
-
-        }
-        if (fVis_RefPrij && fVis_Cz96P) {
-            htmlWriter.write("<h2>Synchronization telegrams</h2>");
-            htmlWriter.write("<table>");
-
-            GetRasterHeadStringH(htmlWriter);
-
-            GetRasterHeadStringTop(htmlWriter);
-
-            GetRasterHeadStringBottom(htmlWriter);
-
-            for (int i = 0; i < 5; i++) {
-                GetRasterStringSync(m_TelegSync[i].Cmd, i, htmlWriter);
-            }
-            htmlWriter.write("</table>");
-
-        }
-
-        if (fVis_RefPrij && fVis_Cz96P) {
-            htmlWriter.write("<h2>Synchronization telegrams - day of the week</h2>");
-            htmlWriter.write("<table>");
-
-
-            GetRasterHeadStringH(htmlWriter);
-
-            GetRasterHeadStringTop(htmlWriter);
-
-            GetRasterHeadStringBottom(htmlWriter);
-
-            for (int i = 0; i < 8; i++) {
-                GetRasterString(m_TlgFnD[i].Cmd, i, 'a', htmlWriter);
-            }
-            htmlWriter.write("</table>");
-
-        }
-
-        //Telegrami END
 
         //Event log
         GetUserRecOpt(htmlWriter);
@@ -1938,64 +2019,7 @@ public class SecondActivity extends AppCompatActivity {
         GetRelInterLock(htmlWriter);
         //Logic function END
 
-        if (fVis_Realoc) {
 
-
-            htmlWriter.write("<h2>Relay switching assignment</h2>");
-            htmlWriter.write("<table>");
-            htmlWriter.write("<tr>");
-            htmlWriter.write("<th></th>");
-            htmlWriter.write("<th colspan=\"4\">Relay switching assignment</th>");
-            htmlWriter.write("</tr>");
-
-
-            htmlWriter.write("<tr>");
-            htmlWriter.write("<th></th>");
-            for (int i = 1; i < 5; i++) {
-                htmlWriter.write("<th>" + String.format("Relay %d", i) + "</th>");
-            }
-            htmlWriter.write("</tr>");
-
-
-            int x = 3;
-            for (int i = 0; i < 4; i++) {
-                htmlWriter.write("<tr>");
-                htmlWriter.write("<th>" + String.format("Relay %d a", i + 1) + "</th>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 1, m_Realloc[i].rel_on) + "</td>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 2, m_Realloc[i].rel_on) + "</td>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 3, m_Realloc[i].rel_on) + "</td>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 4, m_Realloc[i].rel_on) + "</td>");
-
-
-                htmlWriter.write("</tr>");
-
-                x++;
-
-                htmlWriter.write("<tr>");
-
-                htmlWriter.write("<th>" + String.format("Relay %d b", i + 1) + "</th>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 1, m_Realloc[i].rel_of) + "</td>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 2, m_Realloc[i].rel_of) + "</td>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 3, m_Realloc[i].rel_of) + "</td>");
-
-                htmlWriter.write("<td>" + PPRealoc(i, 4, m_Realloc[i].rel_of) + "</td>");
-
-                htmlWriter.write("</tr>");
-
-                x++;
-
-            }
-
-            htmlWriter.write("</table>");
-
-        }
 
 
     }
@@ -3010,7 +3034,6 @@ public class SecondActivity extends AppCompatActivity {
         }
 
 
-
         return (i - 1);//makni cheksum
     }
 
@@ -3037,8 +3060,6 @@ public class SecondActivity extends AppCompatActivity {
         }
         return builder.toString();
     }
-
-
 
 
     private String readFromFile(String filename, Context context) {
