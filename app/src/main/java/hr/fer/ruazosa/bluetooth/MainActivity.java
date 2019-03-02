@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
-    private int mProgressStatus=0;
+    private int mProgressStatus = 0;
 
-    private Handler mHandler=new Handler();
+    private Handler mHandler = new Handler();
 
 
     TextView statusView;
@@ -50,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
     boolean CONNECTED = false;
 
-
+    ConnectThread createSocketThread;
+    ConnectThread connectThread;
+    ConnectedThread2 writeThread;
+    ConnectedThread readThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         showMeasurmentButton.setEnabled(false);
         closeConnectionButton.setEnabled(false);
+        progressBar.setVisibility(View.INVISIBLE);
 
         pairedDevices = mBluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
@@ -111,25 +115,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Create Socket
                 device = mBluetoothAdapter.getRemoteDevice("00:07:80:F5:ED:BF");
-                ConnectThread createSocketThread = new ConnectThread(device);
+                createSocketThread = new ConnectThread(device);
                 statusView.setText("Trying to connect to: " + device.getName());
 
+                showMeasurmentButton.setEnabled(false);
+                closeConnectionButton.setEnabled(false);
+                progressBar.setVisibility(View.VISIBLE);
 
                 //Connect to device
-                ConnectThread connectThread = new ConnectThread(device);
+                connectThread = new ConnectThread(device);
                 connectThread.start();
 
 
                 //Start reading
-                ConnectedThread2 writeThread = new ConnectedThread2(tempSocket);
-                ConnectedThread readThread = new ConnectedThread(tempSocket);
+                writeThread = new ConnectedThread2(tempSocket);
+                readThread = new ConnectedThread(tempSocket);
 
 
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        progressBar.setProgress(View.VISIBLE);
-                        while(mProgressStatus<100){
+                        while (mProgressStatus < 100) {
                             mProgressStatus++;
                             android.os.SystemClock.sleep(550);
                             mHandler.post(new Runnable() {
@@ -189,14 +195,11 @@ public class MainActivity extends AppCompatActivity {
 
                 connectAndReadButton.setEnabled(true);
 
-                ConnectThread connectThread = new ConnectThread(device);
-                ConnectedThread2 writeThread = new ConnectedThread2(tempSocket);
-                ConnectedThread readThread = new ConnectedThread(tempSocket);
 
                 writeThread.cancel();
                 readThread.cancel();
                 connectThread.cancel();
-                mProgressStatus=0;
+                mProgressStatus = 0;
                 Toast.makeText(MainActivity.this, "Connection closed", Toast.LENGTH_SHORT).show();
             }
         });
@@ -285,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
 
     private class ConnectedThread extends Thread {
