@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    private int mProgressStatus=0;
+
+    private Handler mHandler=new Handler();
+
 
     TextView statusView;
 
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     boolean CONNECTED = false;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         statusView = findViewById(R.id.textView);
 
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressbar);
 
 
         //Buttons
@@ -65,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         closeConnectionButton = findViewById(R.id.closeBtn);
 
 
-        progressBar.setVisibility(View.GONE);
-        progressBar.setIndeterminate(true);
         showMeasurmentButton.setEnabled(false);
         closeConnectionButton.setEnabled(false);
 
@@ -122,7 +125,24 @@ public class MainActivity extends AppCompatActivity {
                 ConnectedThread readThread = new ConnectedThread(tempSocket);
 
 
-                progressBar.setVisibility(View.VISIBLE);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setProgress(View.VISIBLE);
+                        while(mProgressStatus<100){
+                            mProgressStatus++;
+                            android.os.SystemClock.sleep(550);
+                            mHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar.setProgress(mProgressStatus);
+                                }
+                            });
+
+                        }
+                    }
+
+                }).start();
 
                 //connectedThread.start();
                 writeThread.start();
@@ -172,9 +192,11 @@ public class MainActivity extends AppCompatActivity {
                 ConnectThread connectThread = new ConnectThread(device);
                 ConnectedThread2 writeThread = new ConnectedThread2(tempSocket);
                 ConnectedThread readThread = new ConnectedThread(tempSocket);
+
                 writeThread.cancel();
                 readThread.cancel();
                 connectThread.cancel();
+                mProgressStatus=0;
                 Toast.makeText(MainActivity.this, "Connection closed", Toast.LENGTH_SHORT).show();
             }
         });
