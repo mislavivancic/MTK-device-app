@@ -91,16 +91,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (device == null) {
-                Toast.makeText(MainActivity.this, "Connecting failed", Toast.LENGTH_LONG).show();
+                statusView.setError("Make sure to pair with device");
+                statusView.setText("Make sure to pair with device");
+                statusView.setTextSize(25);
+                connectAndReadButton.setEnabled(false);
+
+            }else {
+                ParcelUuid a = device.getUuids()[0];
+                System.out.println(device.getName());
+                System.out.println(a.toString());
             }
-
-            //device = mBluetoothAdapter.getRemoteDevice("00:07:80:F5:ED:BF");
-            ParcelUuid a = device.getUuids()[0];
-
-
-            System.out.println(device.getName());
-            System.out.println(a.toString());
-
 
         }
 
@@ -240,7 +240,6 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Socket's create() method did not fail");
             } catch (IOException e) {
                 System.out.println("Socket's create() method failed");
-                //Log.e(TAG, "Socket's create() method failed", e);
             }
             mmSocket = tmp;
             tempSocket = tmp;
@@ -269,7 +268,16 @@ public class MainActivity extends AppCompatActivity {
 
             if (mmSocket.isConnected()) {
                 System.out.println("CONNECTED");
-                statusView.setText("Connected and ready to read");
+                runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        // Stuff that updates the UI
+                        statusView.setText("Connected and ready to read");
+
+                    }
+                });
 
                 CONNECTED = true;
             }
@@ -283,7 +291,6 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("CLOSED");
             } catch (IOException e) {
                 System.out.println("Could not close the client socket");
-                //Log.e(TAG, "Could not close the client socket", e);
             }
         }
 
@@ -318,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
-            System.out.println("CONNECTED2");
+            System.out.println("Streams connected");
 
         }
 
@@ -330,7 +337,16 @@ public class MainActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 //ignore
             }
-            statusView.setText("Rading data...");
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+
+                    // Stuff that updates the UI
+                    statusView.setText("Rading data...");
+
+                }
+            });
             mmBuffer = new byte[1024];
             Looper.prepare();
             mHandler = new Handler();
@@ -340,18 +356,24 @@ public class MainActivity extends AppCompatActivity {
             // Keep listening to the InputStream until an exception occurs.
             while (true) {
                 try {
-                    // System.out.print(" k");
                     // Read from the InputStream.
                     word = mmInStream.read();
-                    //System.out.print((char) word);
-                    input.add((Character.valueOf((char) word)));
+                    input.add((char) word);
                     if (word == 0x21) {
 
+                        runOnUiThread(new Runnable() {
 
-                        statusView.setText("Completed reading");
-                        progressBar.setVisibility(View.INVISIBLE);
-                        showMeasurmentButton.setEnabled(true);
-                        closeConnectionButton.setEnabled(true);
+                            @Override
+                            public void run() {
+
+                                // Stuff that updates the UI
+                                statusView.setText("Completed reading");
+                                progressBar.setVisibility(View.INVISIBLE);
+                                showMeasurmentButton.setEnabled(true);
+                                closeConnectionButton.setEnabled(true);
+
+                            }
+                        });
                     }
 
                 } catch (IOException e) {
@@ -369,62 +391,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 mmOutStream.write(hexStringToByteArray("2F3F210D0A"));
 
-                // Share the sent message with the UI activity.
-                //  Message writtenMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-                // writtenMsg.sendToTarget();
             } catch (IOException e) {
                 Log.e("DEBUGG", "Error occurred when sending data", e);
-
-                // Send a failure message back to the activity.
-                // Message writeErrorMsg =mHandler.obtainMessage(MessageConstants.MESSAGE_TOAST);
-                Bundle bundle = new Bundle();
-                bundle.putString("toast",
-                        "Couldn't send data to the other device");
-                //writeErrorMsg.setData(bundle);
-                //mHandler.sendMessage(writeErrorMsg);
             }
         }
-
-        public void write2(byte[] bytes) {
-            try {
-
-                mmOutStream.write(hexStringToByteArray("063034360D0A"));
-
-                //Share the sent message with the UI activity.
-                //  Message writtenMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-                // writtenMsg.sendToTarget();
-            } catch (IOException e) {
-                Log.e("DEBUGG", "Error occurred when sending data", e);
-
-                // Send a failure message back to the activity.
-                // Message writeErrorMsg =mHandler.obtainMessage(MessageConstants.MESSAGE_TOAST);
-                Bundle bundle = new Bundle();
-                bundle.putString("toast",
-                        "Couldn't send data to the other device");
-                //writeErrorMsg.setData(bundle);
-                //mHandler.sendMessage(writeErrorMsg);
-            }
-        }
-
-        public void write3(byte[] bytes) {
-            try {
-                mmOutStream.write(hexStringToByteArray("015503560D0A"));
-                // Share the sent message with the UI activity.
-                //  Message writtenMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-                // writtenMsg.sendToTarget();
-            } catch (IOException e) {
-                Log.e("DEBUGG", "Error occurred when sending data", e);
-
-                // Send a failure message back to the activity.
-                // Message writeErrorMsg =mHandler.obtainMessage(MessageConstants.MESSAGE_TOAST);
-                Bundle bundle = new Bundle();
-                bundle.putString("toast",
-                        "Couldn't send data to the other device");
-                //writeErrorMsg.setData(bundle);
-                //mHandler.sendMessage(writeErrorMsg);
-            }
-        }
-
         // Call this method from the main activity to shut down the connection.
         public void cancel() {
             try {
@@ -463,13 +433,7 @@ public class MainActivity extends AppCompatActivity {
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
-            System.out.println("CONNECTED2");
-               /* try{
-                    this.sleep(1000);
-                }catch (InterruptedException e){
-                    //ignore
-                }
-                System.out.println("Slept 1 sec");*/
+            System.out.println("Connected");
         }
 
         public void run() {
@@ -481,20 +445,8 @@ public class MainActivity extends AppCompatActivity {
                     //ignore
                 }
                 mmOutStream.write(hexStringToByteArray("2F3F210D0A"));
-
-                // Share the sent message with the UI activity.
-                //  Message writtenMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-                // writtenMsg.sendToTarget();
             } catch (IOException e) {
                 Log.e("DEBUGG", "Error occurred when sending data", e);
-
-                // Send a failure message back to the activity.
-                // Message writeErrorMsg =mHandler.obtainMessage(MessageConstants.MESSAGE_TOAST);
-                Bundle bundle = new Bundle();
-                bundle.putString("toast",
-                        "Couldn't send data to the other device");
-                //writeErrorMsg.setData(bundle);
-                //mHandler.sendMessage(writeErrorMsg);
             }
             try {
                 TimeUnit.MILLISECONDS.sleep(5000);
@@ -504,20 +456,9 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 mmOutStream.write(hexStringToByteArray("063034360D0A"));
-
-                //Share the sent message with the UI activity.
-                //  Message writtenMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-                // writtenMsg.sendToTarget();
             } catch (IOException e) {
                 Log.e("DEBUGG", "Error occurred when sending data", e);
 
-                // Send a failure message back to the activity.
-                // Message writeErrorMsg =mHandler.obtainMessage(MessageConstants.MESSAGE_TOAST);
-                Bundle bundle = new Bundle();
-                bundle.putString("toast",
-                        "Couldn't send data to the other device");
-                //writeErrorMsg.setData(bundle);
-                //mHandler.sendMessage(writeErrorMsg);
             }
             try {
                 TimeUnit.MILLISECONDS.sleep(2000);
@@ -526,19 +467,8 @@ public class MainActivity extends AppCompatActivity {
             }
             try {
                 mmOutStream.write(hexStringToByteArray("015503560D0A"));
-                // Share the sent message with the UI activity.
-                //  Message writtenMsg = mHandler.obtainMessage(MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-                // writtenMsg.sendToTarget();
             } catch (IOException e) {
                 Log.e("DEBUGG", "Error occurred when sending data", e);
-
-                // Send a failure message back to the activity.
-                // Message writeErrorMsg =mHandler.obtainMessage(MessageConstants.MESSAGE_TOAST);
-                Bundle bundle = new Bundle();
-                bundle.putString("toast",
-                        "Couldn't send data to the other device");
-                //writeErrorMsg.setData(bundle);
-                //mHandler.sendMessage(writeErrorMsg);
             }
 
 
